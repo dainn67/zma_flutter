@@ -1,0 +1,172 @@
+{
+  "name": "Form",
+  "route": "/form",
+  "uiConfig": {
+    "type": "scaffold",
+    "backgroundColor": "#F5F6FA",
+    "appBar": {
+      "type": "appBar",
+      "elevation": 0,
+      "backgroundColor": "#4A00E0",
+      "title": {
+        "type": "text",
+        "data": "Form Demo",
+        "style": {
+          "color": "#ffffff",
+          "fontSize": 24,
+          "fontWeight": "w700"
+        }
+      },
+      "leading": {
+        "type": "iconButton",
+        "icon": {
+          "type": "icon",
+          "iconType": "material",
+          "icon": "arrow_back",
+          "color": "#ffffff"
+        },
+        "onPressed": {
+          "actionType": "navigate",
+          "navigationStyle": "pop"
+        }
+      }
+    },
+    "body": {
+      "type": "singleChildScrollView",
+      "child": {
+        "type": "container",
+        "padding": {
+          "all": 24
+        },
+        "child": {
+          "type": "column",
+          "mainAxisAlignment": "start",
+          "crossAxisAlignment": "stretch",
+          "children": [
+            {
+              "type": "container",
+              "margin": {
+                "bottom": 24
+              },
+              "decoration": {
+                "color": "#ffffff",
+                "borderRadius": 16,
+                "boxShadow": [
+                  {
+                    "color": "#00000020",
+                    "blurRadius": 10,
+                    "spreadRadius": 0,
+                    "offset": {
+                      "dx": 0,
+                      "dy": 4
+                    }
+                  }
+                ]
+              },
+              "child": {
+                "type": "container",
+                "padding": {
+                  "all": 24
+                },
+                "child": {
+                  "type": "column",
+                  "crossAxisAlignment": "stretch",
+                  "children": [
+                    {
+                      "type": "textField",
+                      "decoration": {
+                        "labelText": "Name",
+                        "hintText": "Enter your name",
+                        "filled": true,
+                        "fillColor": "#F5F6FA",
+                        "border": {
+                          "borderRadius": 12
+                        }
+                      }
+                    },
+                    {
+                      "type": "sizedBox",
+                      "height": 16
+                    },
+                    {
+                      "type": "textField",
+                      "decoration": {
+                        "labelText": "Email",
+                        "hintText": "Enter your email",
+                        "filled": true,
+                        "fillColor": "#F5F6FA",
+                        "border": {
+                          "borderRadius": 12
+                        }
+                      },
+                      "keyboardType": "emailAddress"
+                    },
+                    {
+                      "type": "sizedBox",
+                      "height": 16
+                    },
+                    {
+                      "type": "textField",
+                      "decoration": {
+                        "labelText": "Phone",
+                        "hintText": "Enter your phone number",
+                        "filled": true,
+                        "fillColor": "#F5F6FA",
+                        "border": {
+                          "borderRadius": 12
+                        }
+                      },
+                      "keyboardType": "phone"
+                    },
+                    {
+                      "type": "sizedBox",
+                      "height": 24
+                    },
+                    {
+                      "type": "container",
+                      "height": 56,
+                      "child": {
+                        "type": "elevatedButton",
+                        "style": {
+                          "backgroundColor": "#4A00E0",
+                          "elevation": 0,
+                          "borderRadius": 28
+                        },
+                        "child": {
+                          "type": "row",
+                          "mainAxisAlignment": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "data": "Submit Form",
+                              "style": {
+                                "fontSize": 18,
+                                "fontWeight": "w600",
+                                "color": "#ffffff"
+                              }
+                            },
+                            {
+                              "type": "sizedBox",
+                              "width": 8
+                            },
+                            {
+                              "type": "icon",
+                              "iconType": "material",
+                              "icon": "check_circle",
+                              "color": "#ffffff"
+                            }
+                          ]
+                        },
+                        "onPressed": {}
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+} 

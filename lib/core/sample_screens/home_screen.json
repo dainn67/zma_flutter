@@ -1,0 +1,276 @@
+{
+  "name": "Home",
+  "route": "/",
+  "uiConfig": {
+    "type": "scaffold",
+    "backgroundColor": "#F5F6FA",
+    "appBar": {
+      "type": "appBar",
+      "elevation": 0,
+      "backgroundColor": "#4A00E0",
+      "title": {
+        "type": "text",
+        "data": "Stac SDUI",
+        "style": {
+          "color": "#ffffff",
+          "fontSize": 24,
+          "fontWeight": "w700"
+        }
+      }
+    },
+    "body": {
+      "type": "container",
+      "margin": {
+        "all": 16
+      },
+      "padding": {
+        "all": 16
+      },
+      "decoration": {
+        "gradient": {
+          "begin": "topCenter",
+          "end": "bottomCenter",
+          "colors": ["#4A00E0", "#8E2DE2"]
+        }
+      },
+      "child": {
+        "type": "singleChildScrollView",
+        "child": {
+          "type": "container",
+          "padding": {
+            "all": 24
+          },
+          "child": {
+            "type": "column",
+            "mainAxisAlignment": "start",
+            "crossAxisAlignment": "stretch",
+            "children": [
+              {
+                "type": "container",
+                "margin": {
+                  "bottom": 32
+                },
+                "child": {
+                  "type": "column",
+                  "crossAxisAlignment": "start",
+                  "children": [
+                    {
+                      "type": "text",
+                      "data": "Welcome to",
+                      "style": {
+                        "fontSize": 32,
+                        "fontWeight": "w300",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "data": "Server-Driven UI",
+                      "style": {
+                        "fontSize": 40,
+                        "fontWeight": "w700",
+                        "color": "#ffffff"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "container",
+                "margin": {
+                  "bottom": 24
+                },
+                "decoration": {
+                  "color": "#ffffff",
+                  "borderRadius": 16,
+                  "boxShadow": [
+                    {
+                      "color": "#00000020",
+                      "blurRadius": 10,
+                      "spreadRadius": 0,
+                      "offset": {
+                        "dx": 0,
+                        "dy": 4
+                      }
+                    }
+                  ]
+                },
+                "child": {
+                  "type": "container",
+                  "padding": {
+                    "all": 24
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "container",
+                        "margin": {
+                          "bottom": 16
+                        },
+                        "decoration": {
+                          "color": "#F0F3FF",
+                          "borderRadius": 12
+                        },
+                        "padding": {
+                          "all": 12
+                        },
+                        "child": {
+                          "type": "icon",
+                          "iconType": "material",
+                          "icon": "devices",
+                          "size": 32,
+                          "color": "#4A00E0"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "Dynamic UI Components",
+                        "style": {
+                          "fontSize": 24,
+                          "fontWeight": "w600",
+                          "color": "#1A1A1A"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 8
+                      },
+                      {
+                        "type": "text",
+                        "data": "Experience the power of server-driven UI with dynamic components that adapt to your needs",
+                        "style": {
+                          "fontSize": 16,
+                          "color": "#666666",
+                          "height": 1.5
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "margin": {
+                  "bottom": 24
+                },
+                "decoration": {
+                  "color": "#ffffff",
+                  "borderRadius": 16,
+                  "boxShadow": [
+                    {
+                      "color": "#00000020",
+                      "blurRadius": 10,
+                      "spreadRadius": 0,
+                      "offset": {
+                        "dx": 0,
+                        "dy": 4
+                      }
+                    }
+                  ]
+                },
+                "child": {
+                  "type": "container",
+                  "padding": {
+                    "all": 24
+                  },
+                  "child": {
+                    "type": "column",
+                    "crossAxisAlignment": "start",
+                    "children": [
+                      {
+                        "type": "container",
+                        "margin": {
+                          "bottom": 16
+                        },
+                        "decoration": {
+                          "color": "#FFF0F3",
+                          "borderRadius": 12
+                        },
+                        "padding": {
+                          "all": 12
+                        },
+                        "child": {
+                          "type": "icon",
+                          "iconType": "material",
+                          "icon": "auto_awesome",
+                          "size": 32,
+                          "color": "#E91E63"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "data": "Instant Updates",
+                        "style": {
+                          "fontSize": 24,
+                          "fontWeight": "w600",
+                          "color": "#1A1A1A"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "height": 8
+                      },
+                      {
+                        "type": "text",
+                        "data": "Update your app's UI instantly without requiring a new app release",
+                        "style": {
+                          "fontSize": 16,
+                          "color": "#666666",
+                          "height": 1.5
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "container",
+                "height": 56,
+                "child": {
+                  "type": "elevatedButton",
+                  "style": {
+                    "backgroundColor": "#ffffff",
+                    "elevation": 0,
+                    "borderRadius": 28
+                  },
+                  "child": {
+                    "type": "row",
+                    "mainAxisAlignment": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "data": "Try Form Demo",
+                        "style": {
+                          "fontSize": 18,
+                          "fontWeight": "w600",
+                          "color": "#4A00E0"
+                        }
+                      },
+                      {
+                        "type": "sizedBox",
+                        "width": 8
+                      },
+                      {
+                        "type": "icon",
+                        "iconType": "material",
+                        "icon": "arrow_forward",
+                        "color": "#4A00E0"
+                      }
+                    ]
+                  },
+                  "onPressed": {
+                    "actionType": "navigate",
+                    "routeName": "/form_screen",
+                    "navigationStyle": "pushNamed"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+} 
