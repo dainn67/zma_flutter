@@ -1,0 +1,17 @@
+{
+  "app_name": "App Two",
+  "package_name": "com.example.app2",
+  "bundle_id": "com.example.app2",
+  "api": {
+    "dev": "https://dev-api.app2.example.com",
+    "staging": "https://staging-api.app2.example.com",
+    "prod": "https://api.app2.example.com"
+  },
+  "version": "1.0.0",
+  "build": "1",
+  "assets": {
+    "logo": "assets/app2/logo.png",
+    "splash": "assets/app2/splash.png",
+    "icon": "assets/app2/icon.png"
+  }
+} 

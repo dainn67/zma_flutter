@@ -1,0 +1,17 @@
+{
+  "app_name": "App One",
+  "package_name": "com.example.app1",
+  "bundle_id": "com.example.app1",
+  "api": {
+    "dev": "https://dev-api.app1.example.com",
+    "staging": "https://staging-api.app1.example.com",
+    "prod": "https://api.app1.example.com"
+  },
+  "version": "1.0.0",
+  "build": "1",
+  "assets": {
+    "logo": "assets/app1/logo.png",
+    "splash": "assets/app1/splash.png",
+    "icon": "assets/app1/icon.png"
+  }
+} 

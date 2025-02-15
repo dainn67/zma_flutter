@@ -6,9 +6,9 @@ import '../routing/app_router.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  // Register API client
+  // Register API client with dummy URL
   getIt.registerLazySingleton<ApiClient>(
-    () => ApiClient(baseUrl: 'YOUR_API_BASE_URL'),
+    () => ApiClient(baseUrl: 'https://dummy-api.example.com'),
   );
 
   // Register screen service

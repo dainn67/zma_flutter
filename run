@@ -1,2 +1,132 @@
 #!/bin/bash
-fvm flutter run "$@" 
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+# Logging functions
+log_info() {
+    echo "$1"
+}
+
+log_success() {
+    echo -e "${GREEN}$1${NC}"
+}
+
+log_warning() {
+    echo -e "${YELLOW}$1${NC}"
+}
+
+log_error() {
+    echo -e "${RED}$1${NC}"
+}
+
+# Default values
+APP="app1"
+ENV="dev"
+PLATFORM="ios"
+
+# Help function
+show_help() {
+    log_info "Usage: ./run [options]"
+    log_info "Options:"
+    log_info "  -a, --app      Specify app (app1, app2, etc.)"
+    log_info "  -e, --env      Specify environment (dev, staging, prod)"
+    log_info "  -p, --platform Specify platform (ios, android)"
+    log_info "  -h, --help     Show this help message"
+    exit 0
+}
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -a|--app)
+            APP="$2"
+            shift 2
+            ;;
+        -e|--env)
+            ENV="$2"
+            shift 2
+            ;;
+        -p|--platform)
+            PLATFORM="$2"
+            shift 2
+            ;;
+        -h|--help)
+            show_help
+            ;;
+        *)
+            log_error "Unknown option: $1"
+            show_help
+            ;;
+    esac
+done
+
+# Config file path
+CONFIG_FILE="configs/apps/$APP.json"
+
+# Check if config file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    log_error "Error: Config file not found: $CONFIG_FILE"
+    exit 1
+fi
+
+# Read config file
+APP_NAME=$(cat $CONFIG_FILE | jq -r '.app_name')
+API_URL=$(cat $CONFIG_FILE | jq -r ".api.$ENV")
+VERSION=$(cat $CONFIG_FILE | jq -r '.version')
+BUILD_NUMBER=$(cat $CONFIG_FILE | jq -r '.build')
+
+# Print configuration
+log_success "Building $APP_NAME"
+log_info "Environment: $ENV"
+log_info "API URL: $API_URL"
+log_info "Version: $VERSION ($BUILD_NUMBER)"
+log_info "Platform: $PLATFORM"
+
+# Update app configuration
+log_info "Generating configuration file..."
+cat > lib/core/config/current_config.dart << EOF
+// Generated file - do not modify manually
+// Generated on $(date)
+
+class CurrentConfig {
+  static const String appName = '$APP_NAME';
+  static const String apiUrl = '$API_URL';
+  static const String version = '$VERSION';
+  static const String buildNumber = '$BUILD_NUMBER';
+  static const String environment = '$ENV';
+}
+EOF
+
+# Copy assets
+ASSETS_DIR="assets/$APP"
+mkdir -p $ASSETS_DIR
+
+# Update app assets
+log_info "Copying assets..."
+LOGO_PATH=$(cat $CONFIG_FILE | jq -r '.assets.logo')
+SPLASH_PATH=$(cat $CONFIG_FILE | jq -r '.assets.splash')
+ICON_PATH=$(cat $CONFIG_FILE | jq -r '.assets.icon')
+
+# Copy assets if they exist
+[ -f "$LOGO_PATH" ] && cp "$LOGO_PATH" "$ASSETS_DIR/logo.png" && log_success "Logo copied"
+[ -f "$SPLASH_PATH" ] && cp "$SPLASH_PATH" "$ASSETS_DIR/splash.png" && log_success "Splash screen copied"
+[ -f "$ICON_PATH" ] && cp "$ICON_PATH" "$ASSETS_DIR/icon.png" && log_success "Icon copied"
+
+# Run the app
+log_info "Starting Flutter..."
+case $PLATFORM in
+    "ios")
+        flutter run
+        ;;
+    "android")
+        flutter run
+        ;;
+    *)
+        log_error "Unknown platform: $PLATFORM"
+        exit 1
+        ;;
+esac 
