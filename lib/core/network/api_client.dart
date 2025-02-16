@@ -14,15 +14,11 @@ class ApiClient {
 
   Future<Map<String, dynamic>> getScreenData(String route) async {
     try {
-      debugPrint('Fetching screen data for route: $route');
+      debugPrint('Route: $route');
 
       switch (route) {
         case '/':
           return _getHomeScreen();
-        case '/form':
-          return _getFormScreen();
-        case '/dummy':
-          return _getDummyScreen();
         default:
           return await _fetchScreenDataFromServer(route);
       }
@@ -36,8 +32,7 @@ class ApiClient {
     var response = await _client.get(Uri.parse('$baseUrl$route'));
 
     if (response.statusCode == 200) {
-      return Map<String, dynamic>.from(
-          jsonDecode(kDebugMode ? _getFormScreen().toString() : response.body));
+      return Map<String, dynamic>.from(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load screen data from server');
     }
@@ -102,29 +97,6 @@ class ApiClient {
                 "child": {
                   "type": "text",
                   "data": "Form screen",
-                  "style": {
-                    "fontSize": 18,
-                    "fontWeight": "w500",
-                    "color": "#ffffff"
-                  }
-                }
-              },
-              {"type": "sizedBox", "height": 32},
-              {
-                "type": "filledButton",
-                "style": {
-                  "backgroundColor": "#212121",
-                  "shape": {"borderRadius": 8},
-                  "padding": {"top": 14, "bottom": 14, "left": 16, "right": 16},
-                },
-                "onPressed": {
-                  "actionType": "navigate",
-                  "routeName": "/dummy",
-                  "navigationStyle": "pushNamed"
-                },
-                "child": {
-                  "type": "text",
-                  "data": "Dummy screen",
                   "style": {
                     "fontSize": 18,
                     "fontWeight": "w500",
@@ -239,190 +211,6 @@ class ApiClient {
                 ]
               }
             ]
-          }
-        }
-      }
-    };
-  }
-
-  Map<String, dynamic> _getFormScreen() {
-    return {
-      "name": "Form",
-      "route": "/form",
-      "uiConfig": {
-        "type": "scaffold",
-        "backgroundColor": "#F4F6FA",
-        "appBar": {
-          "type": "appBar",
-          "backgroundColor": "#00FFFFFF",
-        },
-        "body": {
-          "type": "form",
-          "child": {
-            "type": "padding",
-            "padding": {"left": 24, "right": 24},
-            "child": {
-              "type": "column",
-              "crossAxisAlignment": "start",
-              "children": [
-                {
-                  "type": "text",
-                  "data": "Sign in",
-                  "style": {"fontSize": 24, "fontWeight": "w800", "height": 1.3}
-                },
-                {"type": "sizedBox", "height": 24},
-                {
-                  "type": "textFormField",
-                  "id": "email",
-                  "autovalidateMode": "onUserInteraction",
-                  "validatorRules": [
-                    {"rule": "isEmail", "message": "Please enter a valid email"}
-                  ],
-                  "style": {
-                    "fontSize": 16,
-                    "fontWeight": "w400",
-                    "height": 1.5
-                  },
-                  "decoration": {
-                    "hintText": "Email",
-                    "filled": true,
-                    "fillColor": "#FFFFFF",
-                    "border": {
-                      "type": "outlineInputBorder",
-                      "borderRadius": 8,
-                      "color": "#24151D29"
-                    }
-                  }
-                },
-                {"type": "sizedBox", "height": 16},
-                {
-                  "type": "textFormField",
-                  "autovalidateMode": "onUserInteraction",
-                  "validatorRules": [
-                    {
-                      "rule": "isPassword",
-                      "message": "Please enter a valid password"
-                    }
-                  ],
-                  "obscureText": true,
-                  "maxLines": 1,
-                  "style": {
-                    "fontSize": 16,
-                    "fontWeight": "w400",
-                    "height": 1.5
-                  },
-                  "decoration": {
-                    "hintText": "Password",
-                    "filled": true,
-                    "fillColor": "#FFFFFF",
-                    "border": {
-                      "type": "outlineInputBorder",
-                      "borderRadius": 8,
-                      "color": "#24151D29"
-                    }
-                  }
-                },
-                {"type": "sizedBox", "height": 32},
-                {
-                  "type": "filledButton",
-                  "style": {
-                    "backgroundColor": "#151D29",
-                    "shape": {"borderRadius": 8}
-                  },
-                  "onPressed": {
-                    "actionType": "none",
-                  },
-                  "child": {
-                    "type": "padding",
-                    "padding": {
-                      "top": 14,
-                      "bottom": 14,
-                      "left": 16,
-                      "right": 16
-                    },
-                    "child": {
-                      "type": "row",
-                      "mainAxisAlignment": "spaceBetween",
-                      "children": [
-                        {"type": "text", "data": "Proceed"},
-                        {
-                          "type": "icon",
-                          "iconType": "material",
-                          "icon": "arrow_forward"
-                        }
-                      ]
-                    }
-                  }
-                },
-                {"type": "sizedBox", "height": 16},
-                {
-                  "type": "align",
-                  "alignment": "center",
-                  "child": {
-                    "type": "textButton",
-                    "onPressed": {
-                      "actionType": "none",
-                    },
-                    "child": {
-                      "type": "text",
-                      "data": "Forgot password?",
-                      "style": {
-                        "fontSize": 15,
-                        "fontWeight": "w500",
-                        "color": "#4745B4"
-                      }
-                    }
-                  }
-                },
-                {"type": "sizedBox", "height": 8},
-                {
-                  "type": "align",
-                  "alignment": "center",
-                  "child": {
-                    "type": "text",
-                    "data": "Don't have an account? ",
-                    "style": {
-                      "fontSize": 15,
-                      "fontWeight": "w400",
-                      "color": "#000000"
-                    },
-                    "children": [
-                      {
-                        "data": "Sign Up for BettrDo",
-                        "style": {
-                          "fontSize": 15,
-                          "fontWeight": "w500",
-                          "color": "#4745B4"
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        }
-      }
-    };
-  }
-
-  Map<String, dynamic> _getDummyScreen() {
-    return {
-      "name": "Dummy",
-      "route": "/dummy",
-      "uiConfig": {
-        "type": "scaffold",
-        "backgroundColor": "#FFFFFF",
-        "appBar": {
-          "type": "appBar",
-          "backgroundColor": "#00FFFFFF",
-        },
-        "body": {
-          "type": "center",
-          "child": {
-            "type": "text",
-            "data": "This is a dummy screen.",
-            "style": {"fontSize": 24, "fontWeight": "w600", "height": 1.3}
           }
         }
       }
