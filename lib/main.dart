@@ -4,9 +4,14 @@ import 'core/di/service_locator.dart';
 import 'core/routing/app_router.dart';
 import 'core/config/config.dart';
 import 'core/services/log_service.dart';
+import 'core/services/shared_prefs_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize SharedPreferences
+  await SharedPrefsService.init();
+  
   await Stac.initialize();
   setupServiceLocator();
 

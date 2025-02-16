@@ -20,7 +20,11 @@ class AppRouter {
           } else if (snapshot.hasError) {
             return ErrorScreen(error: snapshot.error.toString());
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         },
       ),
     );
