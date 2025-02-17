@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/screens/error_screen.dart';
 import '../core/models/screen_config.dart';
+import '../core/widgets/main_layout.dart';
 
 class DynamicScreen extends StatelessWidget {
   final ScreenConfig screenConfig;
@@ -13,6 +14,8 @@ class DynamicScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stac.fromJson(screenConfig.uiConfig, context) ?? const ErrorScreen(error: 'Failed to load screen');
+    return MainLayout(
+      child: Stac.fromJson(screenConfig.uiConfig, context) ?? const ErrorScreen(error: 'Failed to load screen'),
+    );
   }
 } 
