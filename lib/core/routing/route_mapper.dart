@@ -9,8 +9,9 @@ class RouteMapper {
       case RouteConfig.home:
         return const HomeScreen();
       case RouteConfig.login:
-        return const AuthScreen();
+        return const AuthScreen();  
       default:
+        // TODO: Add a dynamic screen here (SDUI) 
         return Scaffold(
           body: Center(
             child: Text('No route defined for $routeName'),

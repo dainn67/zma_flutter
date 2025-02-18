@@ -76,6 +76,7 @@ class _AppStarterState extends State<AppStarter> {
         LogService.info('App Name: ${AppConfig.appName}');
         LogService.info('Version: ${AppConfig.sdkVersion}');
         LogService.info('Build: ${AppConfig.buildNumber}');
+        LogService.info('--------------------------------');
       }
 
       // Check authentication status

@@ -83,7 +83,7 @@ class _AuthScreenState extends State<AuthScreen> {
           _isLoading = false;
         });
         await SharedPrefsService.instance.setIsLoggedIn(true);
-        RouteManagement.instance.pushNamed(RouteConfig.home);
+        RouteManagement.instance.pushReplacementNamed(RouteConfig.home);
       }
     }
   }
