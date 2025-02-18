@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/screens/auth/auth_screen.dart';
+import 'package:stac_test/screens/dynamic/dynamic_screen.dart';
 import 'package:stac_test/screens/home/home_screen.dart';
 
 class RouteMapper {
@@ -11,12 +12,7 @@ class RouteMapper {
       case RouteConfig.login:
         return const AuthScreen();  
       default:
-        // TODO: Add a dynamic screen here (SDUI) 
-        return Scaffold(
-          body: Center(
-            child: Text('No route defined for $routeName'),
-          ),
-        );
+        return DynamicScreen(routeName: routeName);
     }
   }
 }
