@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:stac_test/screens/basic/error_screen.dart';
+import '../common/error_screen.dart';
 import '../../core/models/screen_config.dart';
 
 class DynamicScreen extends StatelessWidget {

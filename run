@@ -120,10 +120,10 @@ ICON_PATH=$(cat $CONFIG_FILE | jq -r '.assets.icon')
 log_info "Starting Flutter..."
 case $PLATFORM in
     "ios")
-        flutter run
+        fvm flutter run
         ;;
     "android")
-        flutter run
+        fvm flutter run
         ;;
     *)
         log_error "Unknown platform: $PLATFORM"

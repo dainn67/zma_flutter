@@ -13,12 +13,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   late final PageController _pageController;
-  late final List<HomeTabConfig> tabs;
+  late final List<HomeTabConfig> _tabs;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
-    tabs = _getTabConfigurations();
+    _tabs = _getTabConfigurations();
     super.initState();
   }
 
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  void _onChangePage(int index) {
+  _onChangePage(int index) {
     setState(() => currentIndex = index);
     _pageController.animateToPage(
       index,
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _onPageViewChanged(int index) {
+  _onPageViewChanged(int index) {
     setState(() => currentIndex = index);
   }
 
@@ -106,18 +106,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(tabs[currentIndex].name),
+        title: Text(_tabs[currentIndex].name),
         elevation: 0,
       ),
       body: PageView(
         onPageChanged: _onPageViewChanged,
         controller: _pageController,
-        children: tabs.map((tab) => DynamicTab(tab: tab)).toList(),
+        children: _tabs.map((tab) => DynamicTab(tab: tab)).toList(),
       ),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: currentIndex,
         onTap: _onChangePage,
-        tabs: tabs,
+        tabs: _tabs,
       ),
     );
   }
