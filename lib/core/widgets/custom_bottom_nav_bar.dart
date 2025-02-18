@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/core/models/home_tab_config.dart';
+import 'package:stac_test/core/widgets/custom_icon.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
+  final List<HomeTabConfig> tabs;
 
   const CustomBottomNavBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.onTap,
-  }) : super(key: key);
+    required this.tabs,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +22,23 @@ class CustomBottomNavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Theme.of(context).primaryColor,
       unselectedItemColor: Colors.grey,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.explore),
-          label: 'Explore',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Settings',
-        ),
-      ],
+      items: tabs
+          .map((tab) => BottomNavigationBarItem(
+                icon: CustomIcon(
+                  source: tab.icon,
+                  width: 24,
+                  height: 24,
+                  color: Colors.grey,
+                ),
+                activeIcon: CustomIcon(
+                  source: tab.icon,
+                  width: 24,
+                  height: 24,
+                  color: Theme.of(context).primaryColor,
+                ),
+                label: tab.name,
+              ))
+          .toList(),
     );
   }
 } 
