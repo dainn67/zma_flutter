@@ -84,6 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     'style': {'fontSize': 16.0, 'color': '#757575'}
                   },
                   {
+                    'type': 'text',
+                    'data': 'This is the $content section where you can find various features.',
+                    'style': {'fontSize': 14.0, 'color': '#9E9E9E'}
+                  },
+                  {
                     'type': 'elevatedButton',
                     'child': {
                       'type': 'text',
@@ -94,7 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       'routeName': '/details',
                       'navigationStyle': 'pushNamed'
                     }
-                  }
+                  },
+                  {
+                    'type': 'text',
+                    'data': 'More information about $name will be available soon.',
+                    'style': {'fontSize': 12.0, 'color': '#BDBDBD'}
+                  },
                 ]
               }
             }
