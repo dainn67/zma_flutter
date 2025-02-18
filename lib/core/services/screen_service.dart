@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/screens/dynamic/dynamic_screen.dart';
+import 'package:stac_test/screens/home/home_screen.dart';
 import '../network/api_client.dart';
 import '../models/screen_config.dart';
 
@@ -10,20 +13,25 @@ class ScreenService {
     required ApiClient apiClient,
   }) : _apiClient = apiClient;
 
-  Future<ScreenConfig> getScreen(String route) async {
-    if (_screenCache.containsKey(route)) {
-      return _screenCache[route]!;
+  Future<Widget> getScreen(String route) async {
+    // Handle static routes
+    if (route == RouteConfig.home) {
+      return const HomeScreen();
     }
 
-    try {
+    // Handle dynamic routes
+    late ScreenConfig screenConfig;
+
+    // Load from cache if available
+    if (_screenCache.containsKey(route)) {
+      screenConfig = _screenCache[route]!;
+    } else {
       final json = await _apiClient.getScreenData(route);
-      final screenConfig = ScreenConfig.fromJson(json);
+      screenConfig = ScreenConfig.fromJson(json);
       _screenCache[route] = screenConfig;
-      return screenConfig;
-    } catch (e) {
-      debugPrint('Error loading screen: $e');
-      throw Exception('Failed to load screen: $e');
     }
+
+    return DynamicScreen(screenConfig: screenConfig);
   }
 
   void clearCache() {

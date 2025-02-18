@@ -69,19 +69,10 @@ class _AppStarterState extends State<AppStarter> {
       // Wait for either initialization or minimum time, whichever takes longer
       await Future.wait([minLoadingFuture, initFuture]);
 
-      if (AppConfig.enableLogging) {
-        LogService.success('App initialized successfully');
-        LogService.info('Environment: ${AppConfig.environment}');
-        LogService.info('API URL: ${AppConfig.apiBaseUrl}');
-        LogService.info('App Name: ${AppConfig.appName}');
-        LogService.info('Version: ${AppConfig.sdkVersion}');
-        LogService.info('Build: ${AppConfig.buildNumber}');
-        LogService.info('--------------------------------');
-      }
-
       // Check authentication status
       final prefs = await SharedPreferences.getInstance();
-      final authToken = prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
+      final authToken =
+          prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
 
       setState(() {
         _initialized = true;
@@ -99,7 +90,11 @@ class _AppStarterState extends State<AppStarter> {
       return const SplashScreen();
     }
 
-    return _isAuthenticated ? const MainApp() : const AuthScreen();
+    if (!_isAuthenticated) {
+      return const AuthScreen();
+    }
+
+    return const MainApp();
   }
 }
 

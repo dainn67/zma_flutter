@@ -9,6 +9,14 @@ import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:stac_test/screens/dynamic/dynamic_tab.dart';
 
+class DrawerItem {
+  final IconData icon;
+  final String title;
+  final int pageIndex;
+
+  DrawerItem({required this.icon, required this.title, required this.pageIndex});
+}
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,6 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
   late final List<HomeTabConfig> _tabs;
 
   final screenService = getIt<ScreenService>();
+
+  final List<DrawerItem> _drawerItems = [
+    DrawerItem(icon: Icons.home, title: 'Home', pageIndex: 0),
+    DrawerItem(icon: Icons.search, title: 'Search', pageIndex: 1),
+    DrawerItem(icon: Icons.person, title: 'Profile', pageIndex: 2),
+    DrawerItem(icon: Icons.settings, title: 'Settings', pageIndex: 3),
+  ];
 
   @override
   void initState() {
@@ -64,10 +79,12 @@ class _HomeScreenState extends State<HomeScreen> {
     required String content,
   }) {
     return HomeTabConfig(
-        index: index,
-        name: name,
-        icon: 'assets/icons/home.png',
-        uiConfig: {
+      index: index,
+      name: name,
+      icon: 'assets/icons/home.png',
+      uiConfig: {
+        'type': 'center',
+        'child': {
           'type': 'column',
           'children': [
             {
@@ -90,15 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   {
                     'type': 'elevatedButton',
-                    'child': {
-                      'type': 'text',
-                      'data': 'Navigate to Details'
-                    },
-                    'onPressed': {
-                      'actionType': 'navigate',
-                      'routeName': '/details',
-                      'navigationStyle': 'pushNamed'
-                    }
+                    'child': {'type': 'text', 'data': 'Navigate to Details'},
+                    'onPressed': {'actionType': 'navigate', 'routeName': '/details', 'navigationStyle': 'pushNamed'}
                   },
                   {
                     'type': 'text',
@@ -109,7 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             }
           ]
-        });
+        },
+      },
+    );
   }
 
   @override
@@ -144,13 +156,13 @@ class _HomeScreenState extends State<HomeScreen> {
               final prefs = await SharedPreferences.getInstance();
               await prefs.setBool(SharedPrefsKeys.isLoggedIn, false);
               if (context.mounted) {
-                RouteManagement.instance
-                    .pushReplacementNamed(RouteConfig.login);
+                RouteManagement.instance.pushReplacementNamed(RouteConfig.login);
               }
             },
           ),
         ],
       ),
+      drawer: _buildDrawer(),
       body: PageView(
         onPageChanged: _onPageViewChanged,
         controller: _pageController,
@@ -160,6 +172,36 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: currentIndex,
         onTap: _onChangePage,
         tabs: _tabs,
+      ),
+    );
+  }
+
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'Drawer Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ..._drawerItems.map((item) => ListTile(
+                leading: Icon(item.icon),
+                title: Text(item.title),
+                onTap: () {
+                  Navigator.pop(context);
+                  _onChangePage(item.pageIndex);
+                },
+              )),
+        ],
       ),
     );
   }

@@ -11,7 +11,7 @@ class AppConfig {
   static late final String buildNumber;
 
   static void initialize() {
-    environment = _parseEnvironment(CurrentConfig.environment);
+    environment = _getEnvironment(CurrentConfig.environment);
     apiBaseUrl = CurrentConfig.apiUrl;
     appName = CurrentConfig.appName;
     sdkVersion = CurrentConfig.version;
@@ -19,7 +19,7 @@ class AppConfig {
     enableLogging = environment != Environment.prod;
   }
 
-  static Environment _parseEnvironment(String env) {
+  static Environment _getEnvironment(String env) {
     switch (env.toLowerCase()) {
       case 'dev':
         return Environment.dev;

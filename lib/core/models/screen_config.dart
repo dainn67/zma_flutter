@@ -24,4 +24,4 @@ class ScreenConfig {
       'uiConfig': uiConfig,
     };
   }
-} 
+}

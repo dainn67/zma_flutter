@@ -14,8 +14,6 @@ class ApiClient {
 
   Future<Map<String, dynamic>> getScreenData(String route) async {
     try {
-      debugPrint('Route: $route');
-
       switch (route) {
         case '/':
           return _getHomeScreen();
@@ -57,17 +55,15 @@ class ApiClient {
                 "height": 56,
                 "decoration": {"borderRadius": 12},
                 "clipBehavior": "hardEdge",
-                "child": {
-                  "type": "image",
-                  "src":
-                      "https://pbs.twimg.com/profile_images/1886322776921042944/5Nveo4M2_400x400.png"
-                }
+                "child": {"type": "image", "src": "https://pbs.twimg.com/profile_images/1886322776921042944/5Nveo4M2_400x400.png"}
               },
-              {"type": "sizedBox", "height": 40},
+              {
+                "type": "sizedBox",
+                "height": 40,
+              },
               {
                 "type": "image",
-                "src":
-                    "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/Welcome%20to.png"
+                "src": "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/Welcome%20to.png",
               },
               {
                 "type": "text",
@@ -89,38 +85,20 @@ class ApiClient {
                   "shape": {"borderRadius": 8},
                   "padding": {"top": 14, "bottom": 14, "left": 16, "right": 16},
                 },
-                "onPressed": {
-                  "actionType": "navigate",
-                  "routeName": "/form",
-                  "navigationStyle": "pushNamed"
-                },
+                "onPressed": {"actionType": "navigate", "routeName": "/form", "navigationStyle": "pushNamed"},
                 "child": {
                   "type": "text",
                   "data": "Form screen",
-                  "style": {
-                    "fontSize": 18,
-                    "fontWeight": "w500",
-                    "color": "#ffffff"
-                  }
+                  "style": {"fontSize": 18, "fontWeight": "w500", "color": "#ffffff"}
                 }
               },
               {"type": "spacer"},
-              {
-                "type": "container",
-                "height": 1,
-                "widht": 1000,
-                "color": "#20010810"
-              },
+              {"type": "container", "height": 1, "widht": 1000, "color": "#20010810"},
               {"type": "sizedBox", "height": 24},
               {
                 "type": "text",
                 "data": "Follow us for more updates:",
-                "style": {
-                  "fontSize": 18,
-                  "fontWeight": "w400",
-                  "height": 1.5,
-                  "color": "#80010810"
-                }
+                "style": {"fontSize": 18, "fontWeight": "w400", "height": 1.5, "color": "#80010810"}
               },
               {"type": "sizedBox", "height": 20},
               {
@@ -137,20 +115,12 @@ class ApiClient {
                         "height": 44,
                         "decoration": {"borderRadius": 12},
                         "clipBehavior": "hardEdge",
-                        "child": {
-                          "type": "image",
-                          "src":
-                              "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/github.png"
-                        }
+                        "child": {"type": "image", "src": "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/github.png"}
                       },
                       {
                         "type": "text",
                         "data": "github.com/StacDev",
-                        "style": {
-                          "fontSize": 18,
-                          "fontWeight": "w500",
-                          "height": 1.5
-                        }
+                        "style": {"fontSize": 18, "fontWeight": "w500", "height": 1.5}
                       }
                     ]
                   },
@@ -164,20 +134,12 @@ class ApiClient {
                         "height": 44,
                         "decoration": {"borderRadius": 12},
                         "clipBehavior": "hardEdge",
-                        "child": {
-                          "type": "image",
-                          "src":
-                              "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/x.png"
-                        }
+                        "child": {"type": "image", "src": "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/x.png"}
                       },
                       {
                         "type": "text",
                         "data": "x.com/stac_dev",
-                        "style": {
-                          "fontSize": 18,
-                          "fontWeight": "w500",
-                          "height": 1.5
-                        }
+                        "style": {"fontSize": 18, "fontWeight": "w500", "height": 1.5}
                       }
                     ]
                   },
@@ -191,20 +153,12 @@ class ApiClient {
                         "height": 44,
                         "decoration": {"borderRadius": 12},
                         "clipBehavior": "hardEdge",
-                        "child": {
-                          "type": "image",
-                          "src":
-                              "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/linkedin.png"
-                        }
+                        "child": {"type": "image", "src": "https://raw.githubusercontent.com/StacDev/stac/refs/heads/dev/assets/linkedin.png"}
                       },
                       {
                         "type": "text",
                         "data": "/company/StacDev",
-                        "style": {
-                          "fontSize": 18,
-                          "fontWeight": "w500",
-                          "height": 1.5
-                        }
+                        "style": {"fontSize": 18, "fontWeight": "w500", "height": 1.5}
                       }
                     ]
                   }
