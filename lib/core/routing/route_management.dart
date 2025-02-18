@@ -57,7 +57,10 @@ class RouteManagement {
     return CupertinoPageRoute(
         settings: settings,
         builder: (context) {
-          return RouteMapper.getRoute(settings.name ?? '', settings.arguments != null ? settings.arguments as Map<String, dynamic> : {});
+          return RouteMapper.getRoute(
+            settings.name ?? '',
+            settings.arguments != null ? settings.arguments as Map<String, dynamic> : {},
+          );
         });
   }
 }

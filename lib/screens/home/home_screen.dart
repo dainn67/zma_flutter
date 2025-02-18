@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
-import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
-import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:stac_test/screens/dynamic/dynamic_tab.dart';
 
@@ -29,8 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   late final PageController _pageController;
   late final List<HomeTabConfig> _tabs;
 
-  final screenService = getIt<ScreenService>();
-
   final List<DrawerItem> _drawerItems = [
     DrawerItem(icon: Icons.home, title: 'Home', pageIndex: 0),
     DrawerItem(icon: Icons.search, title: 'Search', pageIndex: 1),
@@ -42,8 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
     _tabs = _getTabConfigurations();
-
-    screenService.getScreen(RouteConfig.home);
 
     super.initState();
   }
@@ -101,14 +95,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     'style': {'fontSize': 16.0, 'color': '#757575'}
                   },
                   {
-                    'type': 'text',
-                    'data': 'This is the $content section where you can find various features.',
-                    'style': {'fontSize': 14.0, 'color': '#9E9E9E'}
+                    'type': 'sizedBox',
+                    'height': 32,
                   },
                   {
                     'type': 'elevatedButton',
                     'child': {'type': 'text', 'data': 'Navigate to Details'},
-                    'onPressed': {'actionType': 'navigate', 'routeName': '/details', 'navigationStyle': 'pushNamed'}
+                    'onPressed': {
+                      'actionType': 'navigate',
+                      'routeName': '/details',
+                      'navigationStyle': 'pushNamed',
+                    }
+                  },
+                  {
+                    'type': 'sizedBox',
+                    'height': 32,
                   },
                   {
                     'type': 'text',
