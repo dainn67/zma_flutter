@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/core/routing/route_management.dart';
+import 'package:stac_test/core/services/shared_prefs_service.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -79,6 +82,8 @@ class _AuthScreenState extends State<AuthScreen> {
         setState(() {
           _isLoading = false;
         });
+        await SharedPrefsService.instance.setIsLoggedIn(true);
+        RouteManagement.instance.pushNamed(RouteConfig.home);
       }
     }
   }

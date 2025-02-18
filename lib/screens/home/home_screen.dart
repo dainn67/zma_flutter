@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:stac_test/screens/dynamic/dynamic_tab.dart';
 
@@ -53,34 +57,30 @@ class _HomeScreenState extends State<HomeScreen> {
     required String content,
   }) {
     return HomeTabConfig(
-      index: index,
-      name: name,
-      icon: 'assets/icons/home.png',
-      uiConfig: {
-        'type': 'column',
-        'children': [
-          {
-            'type': 'container',
-            'padding': {'all': 16.0},
-            'child': {
-              'type': 'column',
-              'mainAxisAlignment': 'center',
-              'crossAxisAlignment': 'center', 
-              'children': [
-                {
-                  'type': 'text',
-                  'data': 'Welcome to the $name tab',
-                  'style': {
-                    'fontSize': 16.0,
-                    'color': '#757575'
+        index: index,
+        name: name,
+        icon: 'assets/icons/home.png',
+        uiConfig: {
+          'type': 'column',
+          'children': [
+            {
+              'type': 'container',
+              'padding': {'all': 16.0},
+              'child': {
+                'type': 'column',
+                'mainAxisAlignment': 'center',
+                'crossAxisAlignment': 'center',
+                'children': [
+                  {
+                    'type': 'text',
+                    'data': 'Welcome to the $name tab',
+                    'style': {'fontSize': 16.0, 'color': '#757575'}
                   }
-                }
-              ]
+                ]
+              }
             }
-          }
-        ]
-      }
-    );
+          ]
+        });
   }
 
   @override
@@ -108,6 +108,19 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(_tabs[currentIndex].name),
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.setBool(SharedPrefsKeys.isLoggedIn, false);
+              if (context.mounted) {
+                RouteManagement.instance
+                    .pushReplacementNamed(RouteConfig.login);
+              }
+            },
+          ),
+        ],
       ),
       body: PageView(
         onPageChanged: _onPageViewChanged,

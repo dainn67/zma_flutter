@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stac_test/core/constants/shared_prefs_keys.dart';
+import 'package:stac_test/core/routing/my_navigator_observer.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/screens/splash/splash_screen.dart';
 import 'core/di/service_locator.dart';
-import 'core/routing/app_router.dart';
 import 'core/config/config.dart';
 import 'core/services/log_service.dart';
 import 'core/services/shared_prefs_service.dart';
@@ -40,6 +43,7 @@ class AppStarter extends StatefulWidget {
 
 class _AppStarterState extends State<AppStarter> {
   bool _initialized = false;
+  bool _isAuthenticated = false;
 
   @override
   void initState() {
@@ -51,7 +55,7 @@ class _AppStarterState extends State<AppStarter> {
     try {
       // Start a timer for minimum splash screen duration
       final minLoadingFuture = Future.delayed(const Duration(seconds: 1));
-      
+
       // Run all initialization tasks
       final initFuture = Future.wait([
         SharedPrefsService.init(),
@@ -64,7 +68,7 @@ class _AppStarterState extends State<AppStarter> {
 
       // Wait for either initialization or minimum time, whichever takes longer
       await Future.wait([minLoadingFuture, initFuture]);
-      
+
       if (AppConfig.enableLogging) {
         LogService.success('App initialized successfully');
         LogService.info('Environment: ${AppConfig.environment}');
@@ -74,12 +78,17 @@ class _AppStarterState extends State<AppStarter> {
         LogService.info('Build: ${AppConfig.buildNumber}');
       }
 
+      // Check authentication status
+      final prefs = await SharedPreferences.getInstance();
+      final authToken = prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
+
       setState(() {
         _initialized = true;
+        _isAuthenticated = authToken != null;
       });
     } catch (e) {
       LogService.error('Failed to initialize app: $e');
-      setState(() => _initialized = true); // Still mark as initialized to show auth screen
+      setState(() => _initialized = true);
     }
   }
 
@@ -89,7 +98,7 @@ class _AppStarterState extends State<AppStarter> {
       return const SplashScreen();
     }
 
-    return const MainApp();
+    return _isAuthenticated ? const MainApp() : const AuthScreen();
   }
 }
 
@@ -105,8 +114,10 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      onGenerateRoute: getIt<AppRouter>().generateRoute,
-      initialRoute: '/',
+      navigatorObservers: [MyNavigatorObServer()],
+      onGenerateRoute: RouteManagement.instance.onGenerateRoute,
+      initialRoute: RouteConfig.home,
+      navigatorKey: RouteManagement.navigationKey,
     );
   }
 }
