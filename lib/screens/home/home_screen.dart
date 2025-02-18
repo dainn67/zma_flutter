@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
+import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
+import 'package:stac_test/core/network/api_client.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
+import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:stac_test/screens/common/loading_screen.dart';
 import 'package:stac_test/screens/dynamic/dynamic_tab.dart';
 
 class DrawerItem {
@@ -25,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   late final PageController _pageController;
-  late final List<HomeTabConfig> _tabs;
+  List<HomeTabConfig> _tabs = [];
 
   final List<DrawerItem> _drawerItems = [
     DrawerItem(icon: Icons.home, title: 'Home', pageIndex: 0),
@@ -37,92 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
-    _tabs = _getTabConfigurations();
-
+    ScreenService.loadHomeTabs().then((tabs) => setState(() => _tabs = tabs));
+    
     super.initState();
-  }
-
-  List<HomeTabConfig> _getTabConfigurations() {
-    return [
-      _createTabConfig(
-        index: 0,
-        name: 'Home',
-        content: 'Home Tab',
-      ),
-      _createTabConfig(
-        index: 1,
-        name: 'Search',
-        content: 'Search Tab',
-      ),
-      _createTabConfig(
-        index: 2,
-        name: 'Profile',
-        content: 'Profile Tab',
-      ),
-      _createTabConfig(
-        index: 3,
-        name: 'Settings',
-        content: 'Settings Tab',
-      ),
-    ];
-  }
-
-  HomeTabConfig _createTabConfig({
-    required int index,
-    required String name,
-    required String content,
-  }) {
-    return HomeTabConfig(
-      index: index,
-      name: name,
-      icon: 'assets/icons/home.png',
-      uiConfig: {
-        'type': 'center',
-        'child': {
-          'type': 'column',
-          'children': [
-            {
-              'type': 'container',
-              'padding': {'all': 16.0},
-              'child': {
-                'type': 'column',
-                'mainAxisAlignment': 'center',
-                'crossAxisAlignment': 'center',
-                'children': [
-                  {
-                    'type': 'text',
-                    'data': 'Welcome to the $name tab',
-                    'style': {'fontSize': 16.0, 'color': '#757575'}
-                  },
-                  {
-                    'type': 'sizedBox',
-                    'height': 32,
-                  },
-                  {
-                    'type': 'elevatedButton',
-                    'child': {'type': 'text', 'data': 'Navigate to Details'},
-                    'onPressed': {
-                      'actionType': 'navigate',
-                      'routeName': '/details',
-                      'navigationStyle': 'pushNamed',
-                    }
-                  },
-                  {
-                    'type': 'sizedBox',
-                    'height': 32,
-                  },
-                  {
-                    'type': 'text',
-                    'data': 'More information about $name will be available soon.',
-                    'style': {'fontSize': 12.0, 'color': '#BDBDBD'}
-                  },
-                ]
-              }
-            }
-          ]
-        },
-      },
-    );
   }
 
   @override
@@ -131,21 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  _onChangePage(int index) {
-    setState(() => currentIndex = index);
-    _pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  _onPageViewChanged(int index) {
-    setState(() => currentIndex = index);
-  }
-
   @override
   Widget build(BuildContext context) {
+    if (_tabs.isEmpty) {
+      return const LoadingScreen();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_tabs[currentIndex].name),
@@ -153,13 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () async {
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setBool(SharedPrefsKeys.isLoggedIn, false);
-              if (context.mounted) {
-                RouteManagement.instance.pushReplacementNamed(RouteConfig.login);
-              }
-            },
+            onPressed: _handleLogout,
           ),
         ],
       ),
@@ -205,5 +111,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  _onChangePage(int index) {
+    setState(() => currentIndex = index);
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  _onPageViewChanged(int index) {
+    setState(() => currentIndex = index);
+  }
+
+  _handleLogout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(SharedPrefsKeys.isLoggedIn, false);
+    if (context.mounted) {
+      RouteManagement.instance.pushReplacementNamed(RouteConfig.login);
+    }
   }
 }

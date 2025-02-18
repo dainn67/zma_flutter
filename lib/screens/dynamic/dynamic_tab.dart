@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
+import 'package:stac_test/screens/common/error_screen.dart';
 
 class DynamicTab extends StatefulWidget {
   final HomeTabConfig tab;
@@ -14,7 +15,6 @@ class DynamicTab extends StatefulWidget {
 class _DynamicTabState extends State<DynamicTab> {
   @override
   Widget build(BuildContext context) {
-    return Stac.fromJson(widget.tab.uiConfig, context) ??
-        const Center(child: Text('Failed to load tab'));
+    return Stac.fromJson(widget.tab.uiConfig, context) ?? ErrorScreen(error: 'Failed to load tab ${widget.tab.name}');
   }
 }

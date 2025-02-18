@@ -12,27 +12,33 @@ class ApiClient {
     http.Client? client,
   }) : _client = client ?? http.Client();
 
-  Future<Map<String, dynamic>> getScreenData(String route) async {
-    try {
-      switch (route) {
-        case '/details':
-          return _getDetailScreen();
-        default:
-          return await _fetchScreenDataFromServer(route);
-      }
-    } catch (e) {
-      debugPrint('Error in getScreenData: $e');
-      throw Exception('Failed to load screen data: $e');
+  Future<Map<String, dynamic>?> getScreenData(String inputRoute) async {
+    // Normalize the route
+    String route = inputRoute;
+    if (!route.startsWith('/')) {
+      route = '/$route';
+    }
+
+    switch (route) {
+      case '/details':
+        return _getDetailScreen();
+      default:
+        return await _fetchScreenDataFromServer(route);
     }
   }
 
-  Future<Map<String, dynamic>> _fetchScreenDataFromServer(String route) async {
-    var response = await _client.get(Uri.parse('$baseUrl$route'));
+  Future<Map<String, dynamic>?> _fetchScreenDataFromServer(String route) async {
+    try {
+      var response = await _client.get(Uri.parse('$baseUrl$route'));
 
-    if (response.statusCode == 200) {
-      return Map<String, dynamic>.from(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to load screen data from server');
+      if (response.statusCode == 200) {
+        return Map<String, dynamic>.from(jsonDecode(response.body));
+      } 
+
+      return null;
+    } catch (e) {
+      debugPrint('Fetching screen data failed: $e');
+      return null;
     }
   }
 

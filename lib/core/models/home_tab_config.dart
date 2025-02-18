@@ -8,7 +8,7 @@ class HomeTabConfig {
     required this.name,
     required this.icon,
     required this.index,
-    this.uiConfig,
+    required this.uiConfig,
   });
 
   factory HomeTabConfig.fromJson(Map<String, dynamic> json) {
