@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/screens/common/error_screen.dart';
+import 'package:stac_test/screens/dynamic/dynamic_screen.dart';
+import 'package:stac_test/screens/home/home_screen.dart';
 import '../services/screen_service.dart';
-import '../../screens/dynamic/dynamic_screen.dart';
-import '../../screens/common/error_screen.dart';
-import '../../screens/home/home_screen.dart';
 
 class AppRouter {
   final ScreenService _screenService;

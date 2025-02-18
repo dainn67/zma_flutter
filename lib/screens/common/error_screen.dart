@@ -13,6 +13,7 @@ class ErrorScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Error'),
+        backgroundColor: Colors.red,
       ),
       body: Center(
         child: Padding(
@@ -29,21 +30,17 @@ class ErrorScreen extends StatelessWidget {
               Text(
                 'Something went wrong',
                 style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               Text(
                 error,
-                style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 24),
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(Icons.arrow_back),
-                label: const Text('Go Back'),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Go Back'),
               ),
             ],
           ),
