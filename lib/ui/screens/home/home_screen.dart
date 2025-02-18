@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
-import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
-import 'package:stac_test/core/network/api_client.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/services/screen_service.dart';
-import 'package:stac_test/core/widgets/custom_bottom_nav_bar.dart';
-import 'package:stac_test/screens/common/loading_screen.dart';
-import 'package:stac_test/screens/dynamic/dynamic_tab.dart';
+import 'package:stac_test/ui/components/custom_bottom_nav_bar.dart';
+import 'package:stac_test/ui/screens/common/loading_screen.dart';
+import 'package:stac_test/ui/screens/dynamic/dynamic_tab.dart';
 
 class DrawerItem {
   final IconData icon;
