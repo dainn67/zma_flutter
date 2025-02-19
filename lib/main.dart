@@ -5,12 +5,14 @@ import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/routing/my_navigator_observer.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
-import 'package:stac_test/screens/splash/splash_screen.dart';
+import 'package:stac_test/core/stac_parser/parser/custom_button_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/log_action_parser.dart';
+import 'package:stac_test/ui/screens/auth/auth_screen.dart';
+import 'package:stac_test/ui/screens/splash/splash_screen.dart';
 import 'core/di/service_locator.dart';
 import 'core/config/config.dart';
 import 'core/services/log_service.dart';
 import 'core/services/shared_prefs_service.dart';
-import 'screens/auth/auth_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,14 +61,21 @@ class _AppStarterState extends State<AppStarter> {
       // Run all initialization tasks
       final initFuture = Future.wait([
         SharedPrefsService.init(),
-        Stac.initialize(),
+        Stac.initialize(
+          parsers: [
+            CustomButtonParser(),
+          ],
+          actionParsers: [
+            LogActionParser(),
+          ]
+        ),
         Future(() {
           setupServiceLocator();
           AppConfig.initialize();
         }),
       ]);
 
-      // Wait for either initialization or minimum time, whichever takes longer
+      // Wait for Reither initialization or minimum time, whichever takes longer
       await Future.wait([minLoadingFuture, initFuture]);
 
       // Check authentication status

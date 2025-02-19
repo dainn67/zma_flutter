@@ -8,14 +8,7 @@ import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/ui/components/custom_bottom_nav_bar.dart';
 import 'package:stac_test/ui/screens/common/loading_screen.dart';
 import 'package:stac_test/ui/screens/dynamic/dynamic_tab.dart';
-
-class DrawerItem {
-  final IconData icon;
-  final String title;
-  final int pageIndex;
-
-  DrawerItem({required this.icon, required this.title, required this.pageIndex});
-}
+import 'package:stac_test/ui/screens/home/home_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,18 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   late final PageController _pageController;
   List<HomeTabConfig> _tabs = [];
 
-  final List<DrawerItem> _drawerItems = [
-    DrawerItem(icon: Icons.home, title: 'Home', pageIndex: 0),
-    DrawerItem(icon: Icons.search, title: 'Search', pageIndex: 1),
-    DrawerItem(icon: Icons.person, title: 'Profile', pageIndex: 2),
-    DrawerItem(icon: Icons.settings, title: 'Settings', pageIndex: 3),
-  ];
-
   @override
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
     ScreenService.loadHomeTabs().then((tabs) => setState(() => _tabs = tabs));
-    
     super.initState();
   }
 
@@ -67,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: _buildDrawer(),
+      drawer: const HomeDrawer(),
       body: PageView(
         onPageChanged: _onPageViewChanged,
         controller: _pageController,
@@ -77,36 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: currentIndex,
         onTap: _onChangePage,
         tabs: _tabs,
-      ),
-    );
-  }
-
-  Widget _buildDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-          ),
-          ..._drawerItems.map((item) => ListTile(
-                leading: Icon(item.icon),
-                title: Text(item.title),
-                onTap: () {
-                  Navigator.pop(context);
-                  _onChangePage(item.pageIndex);
-                },
-              )),
-        ],
       ),
     );
   }
