@@ -1,5 +1,5 @@
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'custom_button.freezed.dart';
 part 'custom_button.g.dart';

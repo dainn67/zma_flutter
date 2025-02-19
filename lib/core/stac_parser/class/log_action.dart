@@ -1,5 +1,5 @@
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'log_action.freezed.dart';
 part 'log_action.g.dart';

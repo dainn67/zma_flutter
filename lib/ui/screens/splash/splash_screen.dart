@@ -57,15 +57,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     final colorScheme = Theme.of(context).colorScheme;
     
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              colorScheme.primary.withOpacity(0.1),
-              colorScheme.background,
+              colorScheme.primary.withValues(alpha: .1),
+              colorScheme.surface,
             ],
           ),
         ),
@@ -104,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 Text(
                   'Welcome Back',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onBackground.withOpacity(0.7),
+                    color: colorScheme.onSurface.withValues(alpha: .7),
                   ),
                 ),
                 const SizedBox(height: 48),
