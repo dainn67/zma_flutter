@@ -18,4 +18,4 @@ class SafeArea with _$SafeArea {
 
   factory SafeArea.fromJson(Map<String, dynamic> json) =>
       _$SafeAreaFromJson(json);
-} 
+}
