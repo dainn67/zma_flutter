@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check if a commit message was provided
+if [ -z "$1" ]; then
+    echo "Error: Please provide a commit message"
+    echo "Usage: ./push_all \"your commit message\""
+    exit 1
+fi
+
+# Store the commit message
+COMMIT_MESSAGE="$1"
+
+# Execute git commands
+git add .
+git commit -m "$COMMIT_MESSAGE"
+git push
+
+# Check if push was successful
+if [ $? -eq 0 ]; then
+    echo "✅ Successfully pushed changes to remote repository"
+else
+    echo "❌ Failed to push changes"
+    exit 1
+fi 
