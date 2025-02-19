@@ -12,7 +12,7 @@ class ErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Error'),
+        title: const Text('Error', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.red,
       ),
       body: Center(
