@@ -20,7 +20,7 @@ SafeArea _$SafeAreaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SafeArea {
-  dynamic get child => throw _privateConstructorUsedError;
+  Map<String, dynamic> get child => throw _privateConstructorUsedError;
   bool? get left => throw _privateConstructorUsedError;
   bool? get top => throw _privateConstructorUsedError;
   bool? get right => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $SafeAreaCopyWith<$Res> {
       _$SafeAreaCopyWithImpl<$Res, SafeArea>;
   @useResult
   $Res call(
-      {dynamic child,
+      {Map<String, dynamic> child,
       bool? left,
       bool? top,
       bool? right,
@@ -68,7 +68,7 @@ class _$SafeAreaCopyWithImpl<$Res, $Val extends SafeArea>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? child = freezed,
+    Object? child = null,
     Object? left = freezed,
     Object? top = freezed,
     Object? right = freezed,
@@ -77,10 +77,10 @@ class _$SafeAreaCopyWithImpl<$Res, $Val extends SafeArea>
     Object? minimum = freezed,
   }) {
     return _then(_value.copyWith(
-      child: freezed == child
+      child: null == child
           ? _value.child
           : child // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Map<String, dynamic>,
       left: freezed == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$SafeAreaImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic child,
+      {Map<String, dynamic> child,
       bool? left,
       bool? top,
       bool? right,
@@ -140,7 +140,7 @@ class __$$SafeAreaImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? child = freezed,
+    Object? child = null,
     Object? left = freezed,
     Object? top = freezed,
     Object? right = freezed,
@@ -149,10 +149,10 @@ class __$$SafeAreaImplCopyWithImpl<$Res>
     Object? minimum = freezed,
   }) {
     return _then(_$SafeAreaImpl(
-      child: freezed == child
-          ? _value.child
+      child: null == child
+          ? _value._child
           : child // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as Map<String, dynamic>,
       left: freezed == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
@@ -185,19 +185,26 @@ class __$$SafeAreaImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SafeAreaImpl implements _SafeArea {
   const _$SafeAreaImpl(
-      {required this.child,
+      {required final Map<String, dynamic> child,
       this.left,
       this.top,
       this.right,
       this.bottom,
       this.maintainBottomViewPadding,
-      this.minimum});
+      this.minimum})
+      : _child = child;
 
   factory _$SafeAreaImpl.fromJson(Map<String, dynamic> json) =>
       _$$SafeAreaImplFromJson(json);
 
+  final Map<String, dynamic> _child;
   @override
-  final dynamic child;
+  Map<String, dynamic> get child {
+    if (_child is EqualUnmodifiableMapView) return _child;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_child);
+  }
+
   @override
   final bool? left;
   @override
@@ -221,7 +228,7 @@ class _$SafeAreaImpl implements _SafeArea {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SafeAreaImpl &&
-            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality().equals(other._child, _child) &&
             (identical(other.left, left) || other.left == left) &&
             (identical(other.top, top) || other.top == top) &&
             (identical(other.right, right) || other.right == right) &&
@@ -236,7 +243,7 @@ class _$SafeAreaImpl implements _SafeArea {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(_child),
       left,
       top,
       right,
@@ -262,7 +269,7 @@ class _$SafeAreaImpl implements _SafeArea {
 
 abstract class _SafeArea implements SafeArea {
   const factory _SafeArea(
-      {required final dynamic child,
+      {required final Map<String, dynamic> child,
       final bool? left,
       final bool? top,
       final bool? right,
@@ -274,7 +281,7 @@ abstract class _SafeArea implements SafeArea {
       _$SafeAreaImpl.fromJson;
 
   @override
-  dynamic get child;
+  Map<String, dynamic> get child;
   @override
   bool? get left;
   @override

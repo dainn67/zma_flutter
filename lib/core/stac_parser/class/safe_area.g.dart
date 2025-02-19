@@ -8,7 +8,7 @@ part of 'safe_area.dart';
 
 _$SafeAreaImpl _$$SafeAreaImplFromJson(Map<String, dynamic> json) =>
     _$SafeAreaImpl(
-      child: json['child'],
+      child: json['child'] as Map<String, dynamic>,
       left: json['left'] as bool?,
       top: json['top'] as bool?,
       right: json['right'] as bool?,
