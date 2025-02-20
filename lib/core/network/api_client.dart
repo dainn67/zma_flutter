@@ -62,11 +62,10 @@ class ApiClient {
           "children": [
             {
               "type": "text",
-              "data":
-                  "Here is a detailed description of the item you selected. Enjoy exploring the details!",
+              "data": "Here is a detailed description of the item you selected. Enjoy exploring the details!",
             },
             {
-              "type": "customButton",
+              "type": "mainButton",
               "title": "More Details",
               "route": "/moreDetails",
             },
@@ -100,11 +99,7 @@ class ApiClient {
                 {
                   "type": "listTile",
                   "title": {"type": "text", "data": "Account Settings"},
-                  "onTap": {
-                    "actionType": "navigate",
-                    "routeName": "/account",
-                    "navigationStyle": "pushNamed"
-                  }
+                  "onTap": {"actionType": "navigate", "routeName": "/account", "navigationStyle": "pushNamed"}
                 },
                 {"type": "divider", "height": 1},
                 {
@@ -131,11 +126,7 @@ class ApiClient {
                   "type": "listTile",
                   "title": {"type": "text", "data": "Language"},
                   "subtitle": {"type": "text", "data": "English"},
-                  "onTap": {
-                    "actionType": "navigate",
-                    "routeName": "/language",
-                    "navigationStyle": "pushNamed"
-                  }
+                  "onTap": {"actionType": "navigate", "routeName": "/language", "navigationStyle": "pushNamed"}
                 }
               ]
             }
@@ -184,12 +175,18 @@ class ApiClient {
           {"type": "sizedBox", "height": 32},
           {
             "type": "mainButton",
-            "title": "Edit Profile",
+            "title": "Test Button",
             "isEnabled": true,
             "paddingHorizontal": 16,
             "paddingVertical": 12,
             "borderRadius": 20,
-            "route": "/profile/edit",
+            "onPressed": {
+              "actionType": "route",
+              "parameters": {
+                "route": "/details",
+                "navigationStyle": "pushNamed",
+              },
+            }
           },
           {"type": "sizedBox", "height": 32},
           {
@@ -200,31 +197,19 @@ class ApiClient {
                 {
                   "type": "listTile",
                   "title": {"type": "text", "data": "Edit Profile"},
-                  "onTap": {
-                    "actionType": "navigate",
-                    "routeName": "/profile/edit",
-                    "navigationStyle": "pushNamed"
-                  }
+                  "onTap": {"actionType": "navigate", "routeName": "/profile/edit", "navigationStyle": "pushNamed"}
                 },
                 {"type": "divider", "height": 1},
                 {
                   "type": "listTile",
                   "title": {"type": "text", "data": "Change Password"},
-                  "onTap": {
-                    "actionType": "navigate",
-                    "routeName": "/profile/password",
-                    "navigationStyle": "pushNamed"
-                  }
+                  "onTap": {"actionType": "navigate", "routeName": "/profile/password", "navigationStyle": "pushNamed"}
                 },
                 {"type": "divider", "height": 1},
                 {
                   "type": "listTile",
                   "title": {"type": "text", "data": "Privacy Settings"},
-                  "onTap": {
-                    "actionType": "navigate",
-                    "routeName": "/profile/privacy",
-                    "navigationStyle": "pushNamed"
-                  }
+                  "onTap": {"actionType": "navigate", "routeName": "/profile/privacy", "navigationStyle": "pushNamed"}
                 }
               ]
             }

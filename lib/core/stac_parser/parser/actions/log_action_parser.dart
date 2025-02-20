@@ -1,9 +1,10 @@
 import 'dart:async';
 
+// ignore: implementation_imports
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/services/log_service.dart';
-import 'package:stac_test/core/stac_parser/class/log_action.dart';
+import 'package:stac_test/core/stac_parser/data_classes/actions/log_action.dart';
 
 class LogActionParser implements StacActionParser<LogAction> {
   @override

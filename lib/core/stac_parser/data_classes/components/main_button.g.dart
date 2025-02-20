@@ -21,6 +21,9 @@ _$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
       textColor: json['textColor'] as String?,
       backgroundColor: json['backgroundColor'] as String?,
       borderColor: json['borderColor'] as String?,
+      onPressed: json['onPressed'] == null
+          ? null
+          : OnPressedAction.fromJson(json['onPressed'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
@@ -38,4 +41,19 @@ Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
       'textColor': instance.textColor,
       'backgroundColor': instance.backgroundColor,
       'borderColor': instance.borderColor,
+      'onPressed': instance.onPressed,
+    };
+
+_$OnPressedActionImpl _$$OnPressedActionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OnPressedActionImpl(
+      actionType: json['actionType'] as String,
+      parameters: json['parameters'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$$OnPressedActionImplToJson(
+        _$OnPressedActionImpl instance) =>
+    <String, dynamic>{
+      'actionType': instance.actionType,
+      'parameters': instance.parameters,
     };

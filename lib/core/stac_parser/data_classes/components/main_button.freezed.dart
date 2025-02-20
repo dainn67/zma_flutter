@@ -33,6 +33,7 @@ mixin _$MainButton {
   String? get textColor => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get borderColor => throw _privateConstructorUsedError;
+  OnPressedAction? get onPressed => throw _privateConstructorUsedError;
 
   /// Serializes this MainButton to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,7 +64,10 @@ abstract class $MainButtonCopyWith<$Res> {
       double? elevation,
       String? textColor,
       String? backgroundColor,
-      String? borderColor});
+      String? borderColor,
+      OnPressedAction? onPressed});
+
+  $OnPressedActionCopyWith<$Res>? get onPressed;
 }
 
 /// @nodoc
@@ -94,6 +98,7 @@ class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
     Object? textColor = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
+    Object? onPressed = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -148,7 +153,25 @@ class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
+      onPressed: freezed == onPressed
+          ? _value.onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as OnPressedAction?,
     ) as $Val);
+  }
+
+  /// Create a copy of MainButton
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OnPressedActionCopyWith<$Res>? get onPressed {
+    if (_value.onPressed == null) {
+      return null;
+    }
+
+    return $OnPressedActionCopyWith<$Res>(_value.onPressed!, (value) {
+      return _then(_value.copyWith(onPressed: value) as $Val);
+    });
   }
 }
 
@@ -173,7 +196,11 @@ abstract class _$$MainButtonImplCopyWith<$Res>
       double? elevation,
       String? textColor,
       String? backgroundColor,
-      String? borderColor});
+      String? borderColor,
+      OnPressedAction? onPressed});
+
+  @override
+  $OnPressedActionCopyWith<$Res>? get onPressed;
 }
 
 /// @nodoc
@@ -202,6 +229,7 @@ class __$$MainButtonImplCopyWithImpl<$Res>
     Object? textColor = freezed,
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
+    Object? onPressed = freezed,
   }) {
     return _then(_$MainButtonImpl(
       title: null == title
@@ -256,6 +284,10 @@ class __$$MainButtonImplCopyWithImpl<$Res>
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
+      onPressed: freezed == onPressed
+          ? _value.onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as OnPressedAction?,
     ));
   }
 }
@@ -276,7 +308,8 @@ class _$MainButtonImpl implements _MainButton {
       this.elevation,
       this.textColor,
       this.backgroundColor,
-      this.borderColor});
+      this.borderColor,
+      this.onPressed});
 
   factory _$MainButtonImpl.fromJson(Map<String, dynamic> json) =>
       _$$MainButtonImplFromJson(json);
@@ -307,10 +340,12 @@ class _$MainButtonImpl implements _MainButton {
   final String? backgroundColor;
   @override
   final String? borderColor;
+  @override
+  final OnPressedAction? onPressed;
 
   @override
   String toString() {
-    return 'MainButton(title: $title, route: $route, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
+    return 'MainButton(title: $title, route: $route, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor, onPressed: $onPressed)';
   }
 
   @override
@@ -340,7 +375,9 @@ class _$MainButtonImpl implements _MainButton {
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.borderColor, borderColor) ||
-                other.borderColor == borderColor));
+                other.borderColor == borderColor) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -359,7 +396,8 @@ class _$MainButtonImpl implements _MainButton {
       elevation,
       textColor,
       backgroundColor,
-      borderColor);
+      borderColor,
+      onPressed);
 
   /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
@@ -391,7 +429,8 @@ abstract class _MainButton implements MainButton {
       final double? elevation,
       final String? textColor,
       final String? backgroundColor,
-      final String? borderColor}) = _$MainButtonImpl;
+      final String? borderColor,
+      final OnPressedAction? onPressed}) = _$MainButtonImpl;
 
   factory _MainButton.fromJson(Map<String, dynamic> json) =
       _$MainButtonImpl.fromJson;
@@ -422,11 +461,193 @@ abstract class _MainButton implements MainButton {
   String? get backgroundColor;
   @override
   String? get borderColor;
+  @override
+  OnPressedAction? get onPressed;
 
   /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MainButtonImplCopyWith<_$MainButtonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OnPressedAction _$OnPressedActionFromJson(Map<String, dynamic> json) {
+  return _OnPressedAction.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OnPressedAction {
+  String get actionType => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get parameters => throw _privateConstructorUsedError;
+
+  /// Serializes this OnPressedAction to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OnPressedAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OnPressedActionCopyWith<OnPressedAction> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnPressedActionCopyWith<$Res> {
+  factory $OnPressedActionCopyWith(
+          OnPressedAction value, $Res Function(OnPressedAction) then) =
+      _$OnPressedActionCopyWithImpl<$Res, OnPressedAction>;
+  @useResult
+  $Res call({String actionType, Map<String, dynamic>? parameters});
+}
+
+/// @nodoc
+class _$OnPressedActionCopyWithImpl<$Res, $Val extends OnPressedAction>
+    implements $OnPressedActionCopyWith<$Res> {
+  _$OnPressedActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OnPressedAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? actionType = null,
+    Object? parameters = freezed,
+  }) {
+    return _then(_value.copyWith(
+      actionType: null == actionType
+          ? _value.actionType
+          : actionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      parameters: freezed == parameters
+          ? _value.parameters
+          : parameters // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OnPressedActionImplCopyWith<$Res>
+    implements $OnPressedActionCopyWith<$Res> {
+  factory _$$OnPressedActionImplCopyWith(_$OnPressedActionImpl value,
+          $Res Function(_$OnPressedActionImpl) then) =
+      __$$OnPressedActionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String actionType, Map<String, dynamic>? parameters});
+}
+
+/// @nodoc
+class __$$OnPressedActionImplCopyWithImpl<$Res>
+    extends _$OnPressedActionCopyWithImpl<$Res, _$OnPressedActionImpl>
+    implements _$$OnPressedActionImplCopyWith<$Res> {
+  __$$OnPressedActionImplCopyWithImpl(
+      _$OnPressedActionImpl _value, $Res Function(_$OnPressedActionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OnPressedAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? actionType = null,
+    Object? parameters = freezed,
+  }) {
+    return _then(_$OnPressedActionImpl(
+      actionType: null == actionType
+          ? _value.actionType
+          : actionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      parameters: freezed == parameters
+          ? _value._parameters
+          : parameters // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OnPressedActionImpl implements _OnPressedAction {
+  const _$OnPressedActionImpl(
+      {required this.actionType, final Map<String, dynamic>? parameters})
+      : _parameters = parameters;
+
+  factory _$OnPressedActionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OnPressedActionImplFromJson(json);
+
+  @override
+  final String actionType;
+  final Map<String, dynamic>? _parameters;
+  @override
+  Map<String, dynamic>? get parameters {
+    final value = _parameters;
+    if (value == null) return null;
+    if (_parameters is EqualUnmodifiableMapView) return _parameters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @override
+  String toString() {
+    return 'OnPressedAction(actionType: $actionType, parameters: $parameters)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnPressedActionImpl &&
+            (identical(other.actionType, actionType) ||
+                other.actionType == actionType) &&
+            const DeepCollectionEquality()
+                .equals(other._parameters, _parameters));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, actionType,
+      const DeepCollectionEquality().hash(_parameters));
+
+  /// Create a copy of OnPressedAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnPressedActionImplCopyWith<_$OnPressedActionImpl> get copyWith =>
+      __$$OnPressedActionImplCopyWithImpl<_$OnPressedActionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OnPressedActionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OnPressedAction implements OnPressedAction {
+  const factory _OnPressedAction(
+      {required final String actionType,
+      final Map<String, dynamic>? parameters}) = _$OnPressedActionImpl;
+
+  factory _OnPressedAction.fromJson(Map<String, dynamic> json) =
+      _$OnPressedActionImpl.fromJson;
+
+  @override
+  String get actionType;
+  @override
+  Map<String, dynamic>? get parameters;
+
+  /// Create a copy of OnPressedAction
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnPressedActionImplCopyWith<_$OnPressedActionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
