@@ -183,6 +183,16 @@ class ApiClient {
           },
           {"type": "sizedBox", "height": 32},
           {
+            "type": "mainButton",
+            "title": "Edit Profile",
+            "isEnabled": true,
+            "paddingHorizontal": 16,
+            "paddingVertical": 12,
+            "borderRadius": 20,
+            "route": "/profile/edit",
+          },
+          {"type": "sizedBox", "height": 32},
+          {
             "type": "card",
             "child": {
               "type": "column",

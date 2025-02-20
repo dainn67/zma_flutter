@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'custom_button.dart';
+part of 'main_button.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-CustomButton _$CustomButtonFromJson(Map<String, dynamic> json) {
-  return _CustomButton.fromJson(json);
+MainButton _$MainButtonFromJson(Map<String, dynamic> json) {
+  return _MainButton.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CustomButton {
+mixin _$MainButton {
   String get title => throw _privateConstructorUsedError;
   String get route => throw _privateConstructorUsedError;
   double? get fontSize => throw _privateConstructorUsedError;
@@ -34,21 +34,21 @@ mixin _$CustomButton {
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get borderColor => throw _privateConstructorUsedError;
 
-  /// Serializes this CustomButton to a JSON map.
+  /// Serializes this MainButton to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of CustomButton
+  /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CustomButtonCopyWith<CustomButton> get copyWith =>
+  $MainButtonCopyWith<MainButton> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CustomButtonCopyWith<$Res> {
-  factory $CustomButtonCopyWith(
-          CustomButton value, $Res Function(CustomButton) then) =
-      _$CustomButtonCopyWithImpl<$Res, CustomButton>;
+abstract class $MainButtonCopyWith<$Res> {
+  factory $MainButtonCopyWith(
+          MainButton value, $Res Function(MainButton) then) =
+      _$MainButtonCopyWithImpl<$Res, MainButton>;
   @useResult
   $Res call(
       {String title,
@@ -67,16 +67,16 @@ abstract class $CustomButtonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CustomButtonCopyWithImpl<$Res, $Val extends CustomButton>
-    implements $CustomButtonCopyWith<$Res> {
-  _$CustomButtonCopyWithImpl(this._value, this._then);
+class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
+    implements $MainButtonCopyWith<$Res> {
+  _$MainButtonCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CustomButton
+  /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -153,11 +153,11 @@ class _$CustomButtonCopyWithImpl<$Res, $Val extends CustomButton>
 }
 
 /// @nodoc
-abstract class _$$CustomButtonImplCopyWith<$Res>
-    implements $CustomButtonCopyWith<$Res> {
-  factory _$$CustomButtonImplCopyWith(
-          _$CustomButtonImpl value, $Res Function(_$CustomButtonImpl) then) =
-      __$$CustomButtonImplCopyWithImpl<$Res>;
+abstract class _$$MainButtonImplCopyWith<$Res>
+    implements $MainButtonCopyWith<$Res> {
+  factory _$$MainButtonImplCopyWith(
+          _$MainButtonImpl value, $Res Function(_$MainButtonImpl) then) =
+      __$$MainButtonImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -177,14 +177,14 @@ abstract class _$$CustomButtonImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CustomButtonImplCopyWithImpl<$Res>
-    extends _$CustomButtonCopyWithImpl<$Res, _$CustomButtonImpl>
-    implements _$$CustomButtonImplCopyWith<$Res> {
-  __$$CustomButtonImplCopyWithImpl(
-      _$CustomButtonImpl _value, $Res Function(_$CustomButtonImpl) _then)
+class __$$MainButtonImplCopyWithImpl<$Res>
+    extends _$MainButtonCopyWithImpl<$Res, _$MainButtonImpl>
+    implements _$$MainButtonImplCopyWith<$Res> {
+  __$$MainButtonImplCopyWithImpl(
+      _$MainButtonImpl _value, $Res Function(_$MainButtonImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CustomButton
+  /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -203,7 +203,7 @@ class __$$CustomButtonImplCopyWithImpl<$Res>
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
   }) {
-    return _then(_$CustomButtonImpl(
+    return _then(_$MainButtonImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -262,8 +262,8 @@ class __$$CustomButtonImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CustomButtonImpl implements _CustomButton {
-  const _$CustomButtonImpl(
+class _$MainButtonImpl implements _MainButton {
+  const _$MainButtonImpl(
       {required this.title,
       required this.route,
       this.fontSize,
@@ -278,8 +278,8 @@ class _$CustomButtonImpl implements _CustomButton {
       this.backgroundColor,
       this.borderColor});
 
-  factory _$CustomButtonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CustomButtonImplFromJson(json);
+  factory _$MainButtonImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MainButtonImplFromJson(json);
 
   @override
   final String title;
@@ -310,14 +310,14 @@ class _$CustomButtonImpl implements _CustomButton {
 
   @override
   String toString() {
-    return 'CustomButton(title: $title, route: $route, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
+    return 'MainButton(title: $title, route: $route, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomButtonImpl &&
+            other is _$MainButtonImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.route, route) || other.route == route) &&
             (identical(other.fontSize, fontSize) ||
@@ -361,24 +361,24 @@ class _$CustomButtonImpl implements _CustomButton {
       backgroundColor,
       borderColor);
 
-  /// Create a copy of CustomButton
+  /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomButtonImplCopyWith<_$CustomButtonImpl> get copyWith =>
-      __$$CustomButtonImplCopyWithImpl<_$CustomButtonImpl>(this, _$identity);
+  _$$MainButtonImplCopyWith<_$MainButtonImpl> get copyWith =>
+      __$$MainButtonImplCopyWithImpl<_$MainButtonImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CustomButtonImplToJson(
+    return _$$MainButtonImplToJson(
       this,
     );
   }
 }
 
-abstract class _CustomButton implements CustomButton {
-  const factory _CustomButton(
+abstract class _MainButton implements MainButton {
+  const factory _MainButton(
       {required final String title,
       required final String route,
       final double? fontSize,
@@ -391,10 +391,10 @@ abstract class _CustomButton implements CustomButton {
       final double? elevation,
       final String? textColor,
       final String? backgroundColor,
-      final String? borderColor}) = _$CustomButtonImpl;
+      final String? borderColor}) = _$MainButtonImpl;
 
-  factory _CustomButton.fromJson(Map<String, dynamic> json) =
-      _$CustomButtonImpl.fromJson;
+  factory _MainButton.fromJson(Map<String, dynamic> json) =
+      _$MainButtonImpl.fromJson;
 
   @override
   String get title;
@@ -423,10 +423,10 @@ abstract class _CustomButton implements CustomButton {
   @override
   String? get borderColor;
 
-  /// Create a copy of CustomButton
+  /// Create a copy of MainButton
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CustomButtonImplCopyWith<_$CustomButtonImpl> get copyWith =>
+  _$$MainButtonImplCopyWith<_$MainButtonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

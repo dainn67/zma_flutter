@@ -5,7 +5,7 @@ import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/routing/my_navigator_observer.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
-import 'package:stac_test/core/stac_parser/parser/custom_button_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/main_button_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/log_action_parser.dart';
 import 'package:stac_test/ui/screens/auth/auth_screen.dart';
 import 'package:stac_test/ui/screens/splash/splash_screen.dart';
@@ -63,7 +63,7 @@ class _AppStarterState extends State<AppStarter> {
         SharedPrefsService.init(),
         Stac.initialize(
           parsers: [
-            CustomButtonParser(),
+            MainButtonParser(),
           ],
           actionParsers: [
             LogActionParser(),

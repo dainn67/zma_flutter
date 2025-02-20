@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'custom_button.dart';
+part of 'main_button.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CustomButtonImpl _$$CustomButtonImplFromJson(Map<String, dynamic> json) =>
-    _$CustomButtonImpl(
+_$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
+    _$MainButtonImpl(
       title: json['title'] as String,
       route: json['route'] as String,
       fontSize: (json['fontSize'] as num?)?.toDouble(),
@@ -23,7 +23,7 @@ _$CustomButtonImpl _$$CustomButtonImplFromJson(Map<String, dynamic> json) =>
       borderColor: json['borderColor'] as String?,
     );
 
-Map<String, dynamic> _$$CustomButtonImplToJson(_$CustomButtonImpl instance) =>
+Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'route': instance.route,

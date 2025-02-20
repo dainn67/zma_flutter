@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/routing/route_management.dart';
-import 'package:stac_test/core/stac_parser/class/custom_button.dart';
+import 'package:stac_test/core/stac_parser/class/main_button.dart';
 
-class CustomButtonParser extends StacParser<CustomButton> {
+class MainButtonParser extends StacParser<MainButton> {
   @override
-  CustomButton getModel(Map<String, dynamic> json) =>
-      CustomButton.fromJson(json);
-
-  @override
-  String get type => 'customButton';
+  MainButton getModel(Map<String, dynamic> json) =>
+      MainButton.fromJson(json);
 
   @override
-  Widget parse(BuildContext context, CustomButton model) {
+  String get type => 'mainButton';
+
+  @override
+  Widget parse(BuildContext context, MainButton model) {
     return ElevatedButton(
       onPressed: model.isEnabled == false
           ? null
@@ -37,6 +37,11 @@ class CustomButtonParser extends StacParser<CustomButton> {
               : BorderSide.none,
         ),
         elevation: model.elevation ?? 2.0,
+        textStyle: TextStyle(
+          fontSize: model.fontSize ?? 16.0,
+          fontWeight:
+              model.isBold == true ? FontWeight.bold : FontWeight.normal,
+        ),
       ),
       child: Text(
         model.title,
