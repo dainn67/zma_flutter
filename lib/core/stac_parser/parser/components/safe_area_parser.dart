@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:stac_test/core/stac_parser/class/safe_area.dart' as model;
+import 'package:stac_test/core/stac_parser/data_classes/components/safe_area.dart' as model;
 
 class SafeAreaParser extends StacParser<model.SafeArea> {
   @override
-  String get type => 'safeArea';
+  String get type => 'safeArea1';
 
   @override
   model.SafeArea getModel(Map<String, dynamic> json) => model.SafeArea.fromJson(json);

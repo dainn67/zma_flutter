@@ -9,7 +9,7 @@ part of 'main_button.dart';
 _$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
     _$MainButtonImpl(
       title: json['title'] as String,
-      route: json['route'] as String,
+      onPressed: json['onPressed'] as Map<String, dynamic>,
       fontSize: (json['fontSize'] as num?)?.toDouble(),
       isBold: json['isBold'] as bool?,
       isEnabled: json['isEnabled'] as bool?,
@@ -26,7 +26,7 @@ _$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'route': instance.route,
+      'onPressed': instance.onPressed,
       'fontSize': instance.fontSize,
       'isBold': instance.isBold,
       'isEnabled': instance.isEnabled,

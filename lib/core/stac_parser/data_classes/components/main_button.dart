@@ -8,7 +8,7 @@ part 'main_button.g.dart';
 class MainButton with _$MainButton {
   const factory MainButton({
     required String title,
-    required String route,
+    required Map<String, dynamic> onPressed,
     double? fontSize,
     bool? isBold,
     bool? isEnabled,

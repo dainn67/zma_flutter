@@ -21,6 +21,7 @@ LogAction _$LogActionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LogAction {
   String get message => throw _privateConstructorUsedError;
+  String? get logType => throw _privateConstructorUsedError;
 
   /// Serializes this LogAction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,7 @@ abstract class $LogActionCopyWith<$Res> {
   factory $LogActionCopyWith(LogAction value, $Res Function(LogAction) then) =
       _$LogActionCopyWithImpl<$Res, LogAction>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, String? logType});
 }
 
 /// @nodoc
@@ -56,12 +57,17 @@ class _$LogActionCopyWithImpl<$Res, $Val extends LogAction>
   @override
   $Res call({
     Object? message = null,
+    Object? logType = freezed,
   }) {
     return _then(_value.copyWith(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      logType: freezed == logType
+          ? _value.logType
+          : logType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -74,7 +80,7 @@ abstract class _$$LogActionImplCopyWith<$Res>
       __$$LogActionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message});
+  $Res call({String message, String? logType});
 }
 
 /// @nodoc
@@ -91,12 +97,17 @@ class __$$LogActionImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? logType = freezed,
   }) {
     return _then(_$LogActionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      logType: freezed == logType
+          ? _value.logType
+          : logType // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -104,17 +115,19 @@ class __$$LogActionImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LogActionImpl implements _LogAction {
-  const _$LogActionImpl({required this.message});
+  const _$LogActionImpl({required this.message, this.logType});
 
   factory _$LogActionImpl.fromJson(Map<String, dynamic> json) =>
       _$$LogActionImplFromJson(json);
 
   @override
   final String message;
+  @override
+  final String? logType;
 
   @override
   String toString() {
-    return 'LogAction(message: $message)';
+    return 'LogAction(message: $message, logType: $logType)';
   }
 
   @override
@@ -122,12 +135,13 @@ class _$LogActionImpl implements _LogAction {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LogActionImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.logType, logType) || other.logType == logType));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, logType);
 
   /// Create a copy of LogAction
   /// with the given fields replaced by the non-null parameter values.
@@ -146,13 +160,16 @@ class _$LogActionImpl implements _LogAction {
 }
 
 abstract class _LogAction implements LogAction {
-  const factory _LogAction({required final String message}) = _$LogActionImpl;
+  const factory _LogAction(
+      {required final String message, final String? logType}) = _$LogActionImpl;
 
   factory _LogAction.fromJson(Map<String, dynamic> json) =
       _$LogActionImpl.fromJson;
 
   @override
   String get message;
+  @override
+  String? get logType;
 
   /// Create a copy of LogAction
   /// with the given fields replaced by the non-null parameter values.

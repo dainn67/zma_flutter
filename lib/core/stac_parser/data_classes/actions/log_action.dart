@@ -8,8 +8,8 @@ part 'log_action.g.dart';
 class LogAction with _$LogAction {
   const factory LogAction({
     required String message,
+    String? logType,
   }) = _LogAction;
 
-  factory LogAction.fromJson(Map<String, dynamic> json) =>
-      _$LogActionFromJson(json);
+  factory LogAction.fromJson(Map<String, dynamic> json) => _$LogActionFromJson(json);
 }

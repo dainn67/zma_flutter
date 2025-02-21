@@ -21,7 +21,7 @@ MainButton _$MainButtonFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MainButton {
   String get title => throw _privateConstructorUsedError;
-  String get route => throw _privateConstructorUsedError;
+  Map<String, dynamic> get onPressed => throw _privateConstructorUsedError;
   double? get fontSize => throw _privateConstructorUsedError;
   bool? get isBold => throw _privateConstructorUsedError;
   bool? get isEnabled => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $MainButtonCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String route,
+      Map<String, dynamic> onPressed,
       double? fontSize,
       bool? isBold,
       bool? isEnabled,
@@ -82,7 +82,7 @@ class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
   @override
   $Res call({
     Object? title = null,
-    Object? route = null,
+    Object? onPressed = null,
     Object? fontSize = freezed,
     Object? isBold = freezed,
     Object? isEnabled = freezed,
@@ -100,10 +100,10 @@ class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      route: null == route
-          ? _value.route
-          : route // ignore: cast_nullable_to_non_nullable
-              as String,
+      onPressed: null == onPressed
+          ? _value.onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ abstract class _$$MainButtonImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      String route,
+      Map<String, dynamic> onPressed,
       double? fontSize,
       bool? isBold,
       bool? isEnabled,
@@ -190,7 +190,7 @@ class __$$MainButtonImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? route = null,
+    Object? onPressed = null,
     Object? fontSize = freezed,
     Object? isBold = freezed,
     Object? isEnabled = freezed,
@@ -208,10 +208,10 @@ class __$$MainButtonImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      route: null == route
-          ? _value.route
-          : route // ignore: cast_nullable_to_non_nullable
-              as String,
+      onPressed: null == onPressed
+          ? _value._onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
@@ -265,7 +265,7 @@ class __$$MainButtonImplCopyWithImpl<$Res>
 class _$MainButtonImpl implements _MainButton {
   const _$MainButtonImpl(
       {required this.title,
-      required this.route,
+      required final Map<String, dynamic> onPressed,
       this.fontSize,
       this.isBold,
       this.isEnabled,
@@ -276,15 +276,22 @@ class _$MainButtonImpl implements _MainButton {
       this.elevation,
       this.textColor,
       this.backgroundColor,
-      this.borderColor});
+      this.borderColor})
+      : _onPressed = onPressed;
 
   factory _$MainButtonImpl.fromJson(Map<String, dynamic> json) =>
       _$$MainButtonImplFromJson(json);
 
   @override
   final String title;
+  final Map<String, dynamic> _onPressed;
   @override
-  final String route;
+  Map<String, dynamic> get onPressed {
+    if (_onPressed is EqualUnmodifiableMapView) return _onPressed;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_onPressed);
+  }
+
   @override
   final double? fontSize;
   @override
@@ -310,7 +317,7 @@ class _$MainButtonImpl implements _MainButton {
 
   @override
   String toString() {
-    return 'MainButton(title: $title, route: $route, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
+    return 'MainButton(title: $title, onPressed: $onPressed, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
   }
 
   @override
@@ -319,7 +326,8 @@ class _$MainButtonImpl implements _MainButton {
         (other.runtimeType == runtimeType &&
             other is _$MainButtonImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.route, route) || other.route == route) &&
+            const DeepCollectionEquality()
+                .equals(other._onPressed, _onPressed) &&
             (identical(other.fontSize, fontSize) ||
                 other.fontSize == fontSize) &&
             (identical(other.isBold, isBold) || other.isBold == isBold) &&
@@ -348,7 +356,7 @@ class _$MainButtonImpl implements _MainButton {
   int get hashCode => Object.hash(
       runtimeType,
       title,
-      route,
+      const DeepCollectionEquality().hash(_onPressed),
       fontSize,
       isBold,
       isEnabled,
@@ -380,7 +388,7 @@ class _$MainButtonImpl implements _MainButton {
 abstract class _MainButton implements MainButton {
   const factory _MainButton(
       {required final String title,
-      required final String route,
+      required final Map<String, dynamic> onPressed,
       final double? fontSize,
       final bool? isBold,
       final bool? isEnabled,
@@ -399,7 +407,7 @@ abstract class _MainButton implements MainButton {
   @override
   String get title;
   @override
-  String get route;
+  Map<String, dynamic> get onPressed;
   @override
   double? get fontSize;
   @override

@@ -9,9 +9,11 @@ part of 'log_action.dart';
 _$LogActionImpl _$$LogActionImplFromJson(Map<String, dynamic> json) =>
     _$LogActionImpl(
       message: json['message'] as String,
+      logType: json['logType'] as String?,
     );
 
 Map<String, dynamic> _$$LogActionImplToJson(_$LogActionImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
+      'logType': instance.logType,
     };
