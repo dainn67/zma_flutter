@@ -86,14 +86,16 @@ class DummyData {
           },
           {"type": "sizedBox", "height": 16},
           {
-            "type": "customButton",
-            "route": "/details",
-            "title": "Logout",
+            "type": "mainButton",
+            "title": "Log",
             "isBold": true,
-            "isEnabled": true,
             "paddingHorizontal": 16,
             "paddingVertical": 12,
             "borderRadius": 8,
+            "onPressed": {
+              "actionType": "log",
+              "message": "Logout Button Pressed",
+            }
           }
         ]
       }
@@ -129,16 +131,49 @@ class DummyData {
           {
             "type": "mainButton",
             "title": "Test Button",
-            "isEnabled": true,
-            "backgroundColor": "0xFFE3A651",
-            "textColor": "0xFFFFFFFF",
-            "paddingHorizontal": 16,
-            "paddingVertical": 12,
-            "borderRadius": 12,
             "onPressed": {
               "actionType": "log",
               "logType": "success",
               "message": "Test Button Pressed",
+            }
+          },
+          {"type": "sizedBox", "height": 32},
+          {
+            "type": "mainButton",
+            "title": "Dialog Button",
+            "onPressed": {
+              "actionType": "showDialog",
+              "widget": {
+                "type": "confirmDialog",
+                "title": "Confirm Dialog",
+                "message": "Are you sure you want to log out?",
+                "onConfirm": {
+                  "actionType": "log",
+                  "logType": "success",
+                  "message": "Confirm Button Pressed",
+                },
+                "onCancel": {
+                  "actionType": "log",
+                  "logType": "success",
+                  "message": "Cancel Button Pressed",
+                }
+              }
+            }
+          },
+          {"type": "sizedBox", "height": 32},
+          {
+            "type": "mainButton",
+            "title": "Form Button",
+            "onPressed": {
+              "actionType": "validateForm",
+              "isValid": {
+                "actionType": "showDialog",
+                "widget": {"type": "text", "data": "Form is valid!"}
+              },
+              "isNotValid": {
+                "actionType": "showDialog",
+                "widget": {"type": "text", "data": "Form is not valid!"}
+              }
             }
           },
           {"type": "sizedBox", "height": 32},

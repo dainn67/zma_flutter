@@ -6,6 +6,7 @@ import 'package:stac_test/core/routing/my_navigator_observer.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/route_action_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/components/confirm_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/main_button_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/log_action_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/safe_area_parser.dart';
@@ -67,6 +68,7 @@ class _AppStarterState extends State<AppStarter> {
           parsers: [
             MainButtonParser(),
             SafeAreaParser(),
+            ConfirmDialogParser(),
           ],
           actionParsers: [
             LogActionParser(),
