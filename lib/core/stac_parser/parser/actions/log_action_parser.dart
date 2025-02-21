@@ -15,6 +15,15 @@ class LogActionParser implements StacActionParser<LogAction> {
 
   @override
   FutureOr onCall(BuildContext context, LogAction model) {
-    LogService.success('Logging: ${model.message}');
+    switch (model.type) {
+      case 'success':
+        LogService.success(model.message);
+        break;
+      case 'error':
+        LogService.error(model.message);
+        break;
+      default:
+        LogService.info(model.message);
+    }
   }
 }

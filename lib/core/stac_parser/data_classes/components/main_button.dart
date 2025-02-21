@@ -8,7 +8,7 @@ part 'main_button.g.dart';
 class MainButton with _$MainButton {
   const factory MainButton({
     required String title,
-    required String route,
+    required OnPressedAction onPressed,
     double? fontSize,
     bool? isBold,
     bool? isEnabled,
@@ -20,7 +20,6 @@ class MainButton with _$MainButton {
     String? textColor,
     String? backgroundColor,
     String? borderColor,
-    OnPressedAction? onPressed,
   }) = _MainButton;
 
   factory MainButton.fromJson(Map<String, dynamic> json) =>
@@ -32,7 +31,10 @@ class MainButton with _$MainButton {
 class OnPressedAction with _$OnPressedAction {
   const factory OnPressedAction({
     required String actionType,
-    Map<String, dynamic>? parameters,
+    String? routeName,
+    String? removeUntilRoute,
+    String? navigationStyle,
+    String? message,
   }) = _OnPressedAction;
 
   factory OnPressedAction.fromJson(Map<String, dynamic> json) =>
