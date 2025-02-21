@@ -8,7 +8,7 @@ part 'main_button.g.dart';
 class MainButton with _$MainButton {
   const factory MainButton({
     required String title,
-    required OnPressedAction onPressed,
+    required Map<String, dynamic> onPressed,
     double? fontSize,
     bool? isBold,
     bool? isEnabled,
@@ -24,19 +24,4 @@ class MainButton with _$MainButton {
 
   factory MainButton.fromJson(Map<String, dynamic> json) =>
       _$MainButtonFromJson(json);
-}
-
-// Define a new model for onPressed action
-@freezed
-class OnPressedAction with _$OnPressedAction {
-  const factory OnPressedAction({
-    required String actionType,
-    String? routeName,
-    String? removeUntilRoute,
-    String? navigationStyle,
-    String? message,
-  }) = _OnPressedAction;
-
-  factory OnPressedAction.fromJson(Map<String, dynamic> json) =>
-      _$OnPressedActionFromJson(json);
 }

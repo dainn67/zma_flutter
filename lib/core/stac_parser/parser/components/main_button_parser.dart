@@ -12,7 +12,7 @@ class MainButtonParser extends StacParser<MainButton> {
   @override
   Widget parse(BuildContext context, MainButton model) {
     return ElevatedButton(
-      onPressed: model.isEnabled != false ? () => _handleOnPressedAction(context, model.onPressed) : null,
+      onPressed: model.isEnabled != false ? () => Stac.onCallFromJson(model.onPressed, context) : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: model.backgroundColor != null ? Color(int.parse(model.backgroundColor!)) : null,
         foregroundColor: model.textColor != null ? Color(int.parse(model.textColor!)) : null,
@@ -39,18 +39,5 @@ class MainButtonParser extends StacParser<MainButton> {
         ),
       ),
     );
-  }
-
-  void _handleOnPressedAction(BuildContext context, OnPressedAction action) {
-    final actionMap = {
-      'actionType': action.actionType,
-      if (action.message != null) 'message': action.message,
-      if (action.routeName != null) 'routeName': action.routeName,
-      if (action.removeUntilRoute != null) 'removeUntilRoute': action.removeUntilRoute,
-      if (action.navigationStyle != null) 'navigationStyle': action.navigationStyle,
-    };
-
-    // Use Stac's action execution system
-    Stac.onCallFromJson(actionMap, context);
   }
 }

@@ -9,8 +9,7 @@ part of 'main_button.dart';
 _$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
     _$MainButtonImpl(
       title: json['title'] as String,
-      onPressed:
-          OnPressedAction.fromJson(json['onPressed'] as Map<String, dynamic>),
+      onPressed: json['onPressed'] as Map<String, dynamic>,
       fontSize: (json['fontSize'] as num?)?.toDouble(),
       isBold: json['isBold'] as bool?,
       isEnabled: json['isEnabled'] as bool?,
@@ -39,24 +38,4 @@ Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
       'textColor': instance.textColor,
       'backgroundColor': instance.backgroundColor,
       'borderColor': instance.borderColor,
-    };
-
-_$OnPressedActionImpl _$$OnPressedActionImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OnPressedActionImpl(
-      actionType: json['actionType'] as String,
-      routeName: json['routeName'] as String?,
-      removeUntilRoute: json['removeUntilRoute'] as String?,
-      navigationStyle: json['navigationStyle'] as String?,
-      message: json['message'] as String?,
-    );
-
-Map<String, dynamic> _$$OnPressedActionImplToJson(
-        _$OnPressedActionImpl instance) =>
-    <String, dynamic>{
-      'actionType': instance.actionType,
-      'routeName': instance.routeName,
-      'removeUntilRoute': instance.removeUntilRoute,
-      'navigationStyle': instance.navigationStyle,
-      'message': instance.message,
     };

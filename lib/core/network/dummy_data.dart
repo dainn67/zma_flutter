@@ -130,11 +130,14 @@ class DummyData {
             "type": "mainButton",
             "title": "Test Button",
             "isEnabled": true,
+            "backgroundColor": "0xFFE3A651",
+            "textColor": "0xFFFFFFFF",
             "paddingHorizontal": 16,
             "paddingVertical": 12,
-            "borderRadius": 8,
+            "borderRadius": 12,
             "onPressed": {
               "actionType": "log",
+              "logType": "success",
               "message": "Test Button Pressed",
             }
           },
