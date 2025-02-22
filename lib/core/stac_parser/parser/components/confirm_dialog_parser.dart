@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:stac_test/core/stac_parser/data_classes/components/confirm_dialog.dart';
+import 'package:stac_test/core/stac_parser/data_classes/components/confirm_stac_dialog.dart';
 
 import '../../../../ui/components/main_button.dart';
 
-class ConfirmDialogParser extends StacParser<ConfirmDialog> {
+class ConfirmStacDialogParser extends StacParser<ConfirmStacDialog> {
   @override
-  ConfirmDialog getModel(Map<String, dynamic> json) => ConfirmDialog.fromJson(json);
+  ConfirmStacDialog getModel(Map<String, dynamic> json) => ConfirmStacDialog.fromJson(json);
 
   @override
   String get type => 'confirmDialog';
 
   @override
-  Widget parse(BuildContext context, ConfirmDialog model) {
+  Widget parse(BuildContext context, ConfirmStacDialog model) {
     return Center(
       child: Wrap(
         children: [

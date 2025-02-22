@@ -66,13 +66,13 @@ class _AppStarterState extends State<AppStarter> {
         SharedPrefsService.init(),
         Stac.initialize(
           parsers: [
-            MainButtonParser(),
-            SafeAreaParser(),
-            ConfirmDialogParser(),
+            MainStacButtonParser(),
+            SafeAreaStacParser(),
+            ConfirmStacDialogParser(),
           ],
           actionParsers: [
-            LogActionParser(),
-            RouteActionParser(),
+            LogStacActionParser(),
+            RouteStacActionParser(),
           ]
         ),
         Future(() {
