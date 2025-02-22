@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'confirm_dialog.dart';
+part of 'confirm_stac_dialog.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ConfirmDialog _$ConfirmDialogFromJson(Map<String, dynamic> json) {
-  return _ConfirmDialog.fromJson(json);
+ConfirmStacDialog _$ConfirmStacDialogFromJson(Map<String, dynamic> json) {
+  return _ConfirmStacDialog.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConfirmDialog {
+mixin _$ConfirmStacDialog {
   String get title => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   Map<String, dynamic> get onConfirm => throw _privateConstructorUsedError;
@@ -27,21 +27,21 @@ mixin _$ConfirmDialog {
   String? get confirmButtonText => throw _privateConstructorUsedError;
   String? get cancelButtonText => throw _privateConstructorUsedError;
 
-  /// Serializes this ConfirmDialog to a JSON map.
+  /// Serializes this ConfirmStacDialog to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ConfirmDialog
+  /// Create a copy of ConfirmStacDialog
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConfirmDialogCopyWith<ConfirmDialog> get copyWith =>
+  $ConfirmStacDialogCopyWith<ConfirmStacDialog> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConfirmDialogCopyWith<$Res> {
-  factory $ConfirmDialogCopyWith(
-          ConfirmDialog value, $Res Function(ConfirmDialog) then) =
-      _$ConfirmDialogCopyWithImpl<$Res, ConfirmDialog>;
+abstract class $ConfirmStacDialogCopyWith<$Res> {
+  factory $ConfirmStacDialogCopyWith(
+          ConfirmStacDialog value, $Res Function(ConfirmStacDialog) then) =
+      _$ConfirmStacDialogCopyWithImpl<$Res, ConfirmStacDialog>;
   @useResult
   $Res call(
       {String title,
@@ -53,16 +53,16 @@ abstract class $ConfirmDialogCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConfirmDialogCopyWithImpl<$Res, $Val extends ConfirmDialog>
-    implements $ConfirmDialogCopyWith<$Res> {
-  _$ConfirmDialogCopyWithImpl(this._value, this._then);
+class _$ConfirmStacDialogCopyWithImpl<$Res, $Val extends ConfirmStacDialog>
+    implements $ConfirmStacDialogCopyWith<$Res> {
+  _$ConfirmStacDialogCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConfirmDialog
+  /// Create a copy of ConfirmStacDialog
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -104,11 +104,11 @@ class _$ConfirmDialogCopyWithImpl<$Res, $Val extends ConfirmDialog>
 }
 
 /// @nodoc
-abstract class _$$ConfirmDialogImplCopyWith<$Res>
-    implements $ConfirmDialogCopyWith<$Res> {
-  factory _$$ConfirmDialogImplCopyWith(
-          _$ConfirmDialogImpl value, $Res Function(_$ConfirmDialogImpl) then) =
-      __$$ConfirmDialogImplCopyWithImpl<$Res>;
+abstract class _$$ConfirmStacDialogImplCopyWith<$Res>
+    implements $ConfirmStacDialogCopyWith<$Res> {
+  factory _$$ConfirmStacDialogImplCopyWith(_$ConfirmStacDialogImpl value,
+          $Res Function(_$ConfirmStacDialogImpl) then) =
+      __$$ConfirmStacDialogImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,14 +121,14 @@ abstract class _$$ConfirmDialogImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ConfirmDialogImplCopyWithImpl<$Res>
-    extends _$ConfirmDialogCopyWithImpl<$Res, _$ConfirmDialogImpl>
-    implements _$$ConfirmDialogImplCopyWith<$Res> {
-  __$$ConfirmDialogImplCopyWithImpl(
-      _$ConfirmDialogImpl _value, $Res Function(_$ConfirmDialogImpl) _then)
+class __$$ConfirmStacDialogImplCopyWithImpl<$Res>
+    extends _$ConfirmStacDialogCopyWithImpl<$Res, _$ConfirmStacDialogImpl>
+    implements _$$ConfirmStacDialogImplCopyWith<$Res> {
+  __$$ConfirmStacDialogImplCopyWithImpl(_$ConfirmStacDialogImpl _value,
+      $Res Function(_$ConfirmStacDialogImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ConfirmDialog
+  /// Create a copy of ConfirmStacDialog
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -140,7 +140,7 @@ class __$$ConfirmDialogImplCopyWithImpl<$Res>
     Object? confirmButtonText = freezed,
     Object? cancelButtonText = freezed,
   }) {
-    return _then(_$ConfirmDialogImpl(
+    return _then(_$ConfirmStacDialogImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -171,8 +171,8 @@ class __$$ConfirmDialogImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ConfirmDialogImpl implements _ConfirmDialog {
-  const _$ConfirmDialogImpl(
+class _$ConfirmStacDialogImpl implements _ConfirmStacDialog {
+  const _$ConfirmStacDialogImpl(
       {required this.title,
       required this.message,
       required final Map<String, dynamic> onConfirm,
@@ -182,8 +182,8 @@ class _$ConfirmDialogImpl implements _ConfirmDialog {
       : _onConfirm = onConfirm,
         _onCancel = onCancel;
 
-  factory _$ConfirmDialogImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfirmDialogImplFromJson(json);
+  factory _$ConfirmStacDialogImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConfirmStacDialogImplFromJson(json);
 
   @override
   final String title;
@@ -214,14 +214,14 @@ class _$ConfirmDialogImpl implements _ConfirmDialog {
 
   @override
   String toString() {
-    return 'ConfirmDialog(title: $title, message: $message, onConfirm: $onConfirm, onCancel: $onCancel, confirmButtonText: $confirmButtonText, cancelButtonText: $cancelButtonText)';
+    return 'ConfirmStacDialog(title: $title, message: $message, onConfirm: $onConfirm, onCancel: $onCancel, confirmButtonText: $confirmButtonText, cancelButtonText: $cancelButtonText)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfirmDialogImpl &&
+            other is _$ConfirmStacDialogImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality()
@@ -244,33 +244,34 @@ class _$ConfirmDialogImpl implements _ConfirmDialog {
       confirmButtonText,
       cancelButtonText);
 
-  /// Create a copy of ConfirmDialog
+  /// Create a copy of ConfirmStacDialog
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConfirmDialogImplCopyWith<_$ConfirmDialogImpl> get copyWith =>
-      __$$ConfirmDialogImplCopyWithImpl<_$ConfirmDialogImpl>(this, _$identity);
+  _$$ConfirmStacDialogImplCopyWith<_$ConfirmStacDialogImpl> get copyWith =>
+      __$$ConfirmStacDialogImplCopyWithImpl<_$ConfirmStacDialogImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConfirmDialogImplToJson(
+    return _$$ConfirmStacDialogImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConfirmDialog implements ConfirmDialog {
-  const factory _ConfirmDialog(
+abstract class _ConfirmStacDialog implements ConfirmStacDialog {
+  const factory _ConfirmStacDialog(
       {required final String title,
       required final String message,
       required final Map<String, dynamic> onConfirm,
       final Map<String, dynamic>? onCancel,
       final String? confirmButtonText,
-      final String? cancelButtonText}) = _$ConfirmDialogImpl;
+      final String? cancelButtonText}) = _$ConfirmStacDialogImpl;
 
-  factory _ConfirmDialog.fromJson(Map<String, dynamic> json) =
-      _$ConfirmDialogImpl.fromJson;
+  factory _ConfirmStacDialog.fromJson(Map<String, dynamic> json) =
+      _$ConfirmStacDialogImpl.fromJson;
 
   @override
   String get title;
@@ -285,10 +286,10 @@ abstract class _ConfirmDialog implements ConfirmDialog {
   @override
   String? get cancelButtonText;
 
-  /// Create a copy of ConfirmDialog
+  /// Create a copy of ConfirmStacDialog
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConfirmDialogImplCopyWith<_$ConfirmDialogImpl> get copyWith =>
+  _$$ConfirmStacDialogImplCopyWith<_$ConfirmStacDialogImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

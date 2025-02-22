@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/utils/stac_action_handler.dart';
 
 class MainButton extends StatefulWidget {
   final String title;
-  final void Function() onPressed;
+  final dynamic onPressed;
   final bool? isEnabled;
   final String? backgroundColor;
   final String? textColor;
@@ -32,6 +33,28 @@ class MainButton extends StatefulWidget {
     this.isBold,
   });
 
+  factory MainButton.fromJson(Map<String, dynamic> json, BuildContext context) {
+    return MainButton(
+      title: json['title'] ?? '',
+      onPressed: () {
+        if (json['onPressed'] is String) {
+          StacActionHandler.execute(json['onPressed'], context);
+        }
+      },
+      isEnabled: json['isEnabled'],
+      backgroundColor: json['backgroundColor'],
+      textColor: json['textColor'],
+      paddingHorizontal: json['paddingHorizontal']?.toDouble(),
+      paddingVertical: json['paddingVertical']?.toDouble(),
+      borderRadius: json['borderRadius']?.toDouble(),
+      borderColor: json['borderColor'],
+      borderWidth: json['borderWidth']?.toDouble(),
+      elevation: json['elevation']?.toDouble(),
+      fontSize: json['fontSize']?.toDouble(),
+      isBold: json['isBold'],
+    );
+  }
+
   @override
   State<MainButton> createState() => _MainButtonState();
 }
@@ -40,7 +63,9 @@ class _MainButtonState extends State<MainButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: widget.isEnabled != false ? () => widget.onPressed() : null,
+      onPressed: widget.isEnabled != false 
+          ? (widget.onPressed is Function ? widget.onPressed as Function : widget.onPressed)
+          : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: widget.backgroundColor != null ? Color(int.parse(widget.backgroundColor!)) : null,
         foregroundColor: widget.textColor != null ? Color(int.parse(widget.textColor!)) : null,

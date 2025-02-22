@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'confirm_dialog.dart';
+part of 'confirm_stac_dialog.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmDialogImpl _$$ConfirmDialogImplFromJson(Map<String, dynamic> json) =>
-    _$ConfirmDialogImpl(
+_$ConfirmStacDialogImpl _$$ConfirmStacDialogImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConfirmStacDialogImpl(
       title: json['title'] as String,
       message: json['message'] as String,
       onConfirm: json['onConfirm'] as Map<String, dynamic>,
@@ -16,7 +17,8 @@ _$ConfirmDialogImpl _$$ConfirmDialogImplFromJson(Map<String, dynamic> json) =>
       cancelButtonText: json['cancelButtonText'] as String?,
     );
 
-Map<String, dynamic> _$$ConfirmDialogImplToJson(_$ConfirmDialogImpl instance) =>
+Map<String, dynamic> _$$ConfirmStacDialogImplToJson(
+        _$ConfirmStacDialogImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'message': instance.message,

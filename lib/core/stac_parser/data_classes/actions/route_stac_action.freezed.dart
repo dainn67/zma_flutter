@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'route_action.dart';
+part of 'route_stac_action.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,32 +14,32 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-RouteAction _$RouteActionFromJson(Map<String, dynamic> json) {
-  return _RouteAction.fromJson(json);
+RouteStacAction _$RouteStacActionFromJson(Map<String, dynamic> json) {
+  return _RouteStacAction.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RouteAction {
+mixin _$RouteStacAction {
   String get route => throw _privateConstructorUsedError;
   String get navigationStyle => throw _privateConstructorUsedError;
   String get routeName => throw _privateConstructorUsedError;
   String? get removeUntilRoute => throw _privateConstructorUsedError;
 
-  /// Serializes this RouteAction to a JSON map.
+  /// Serializes this RouteStacAction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of RouteAction
+  /// Create a copy of RouteStacAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $RouteActionCopyWith<RouteAction> get copyWith =>
+  $RouteStacActionCopyWith<RouteStacAction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RouteActionCopyWith<$Res> {
-  factory $RouteActionCopyWith(
-          RouteAction value, $Res Function(RouteAction) then) =
-      _$RouteActionCopyWithImpl<$Res, RouteAction>;
+abstract class $RouteStacActionCopyWith<$Res> {
+  factory $RouteStacActionCopyWith(
+          RouteStacAction value, $Res Function(RouteStacAction) then) =
+      _$RouteStacActionCopyWithImpl<$Res, RouteStacAction>;
   @useResult
   $Res call(
       {String route,
@@ -49,16 +49,16 @@ abstract class $RouteActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RouteActionCopyWithImpl<$Res, $Val extends RouteAction>
-    implements $RouteActionCopyWith<$Res> {
-  _$RouteActionCopyWithImpl(this._value, this._then);
+class _$RouteStacActionCopyWithImpl<$Res, $Val extends RouteStacAction>
+    implements $RouteStacActionCopyWith<$Res> {
+  _$RouteStacActionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RouteAction
+  /// Create a copy of RouteStacAction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -90,11 +90,11 @@ class _$RouteActionCopyWithImpl<$Res, $Val extends RouteAction>
 }
 
 /// @nodoc
-abstract class _$$RouteActionImplCopyWith<$Res>
-    implements $RouteActionCopyWith<$Res> {
-  factory _$$RouteActionImplCopyWith(
-          _$RouteActionImpl value, $Res Function(_$RouteActionImpl) then) =
-      __$$RouteActionImplCopyWithImpl<$Res>;
+abstract class _$$RouteStacActionImplCopyWith<$Res>
+    implements $RouteStacActionCopyWith<$Res> {
+  factory _$$RouteStacActionImplCopyWith(_$RouteStacActionImpl value,
+          $Res Function(_$RouteStacActionImpl) then) =
+      __$$RouteStacActionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,14 +105,14 @@ abstract class _$$RouteActionImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RouteActionImplCopyWithImpl<$Res>
-    extends _$RouteActionCopyWithImpl<$Res, _$RouteActionImpl>
-    implements _$$RouteActionImplCopyWith<$Res> {
-  __$$RouteActionImplCopyWithImpl(
-      _$RouteActionImpl _value, $Res Function(_$RouteActionImpl) _then)
+class __$$RouteStacActionImplCopyWithImpl<$Res>
+    extends _$RouteStacActionCopyWithImpl<$Res, _$RouteStacActionImpl>
+    implements _$$RouteStacActionImplCopyWith<$Res> {
+  __$$RouteStacActionImplCopyWithImpl(
+      _$RouteStacActionImpl _value, $Res Function(_$RouteStacActionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RouteAction
+  /// Create a copy of RouteStacAction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -122,7 +122,7 @@ class __$$RouteActionImplCopyWithImpl<$Res>
     Object? routeName = null,
     Object? removeUntilRoute = freezed,
   }) {
-    return _then(_$RouteActionImpl(
+    return _then(_$RouteStacActionImpl(
       route: null == route
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
@@ -145,15 +145,15 @@ class __$$RouteActionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RouteActionImpl implements _RouteAction {
-  const _$RouteActionImpl(
+class _$RouteStacActionImpl implements _RouteStacAction {
+  const _$RouteStacActionImpl(
       {required this.route,
       required this.navigationStyle,
       required this.routeName,
       this.removeUntilRoute});
 
-  factory _$RouteActionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RouteActionImplFromJson(json);
+  factory _$RouteStacActionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RouteStacActionImplFromJson(json);
 
   @override
   final String route;
@@ -166,14 +166,14 @@ class _$RouteActionImpl implements _RouteAction {
 
   @override
   String toString() {
-    return 'RouteAction(route: $route, navigationStyle: $navigationStyle, routeName: $routeName, removeUntilRoute: $removeUntilRoute)';
+    return 'RouteStacAction(route: $route, navigationStyle: $navigationStyle, routeName: $routeName, removeUntilRoute: $removeUntilRoute)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RouteActionImpl &&
+            other is _$RouteStacActionImpl &&
             (identical(other.route, route) || other.route == route) &&
             (identical(other.navigationStyle, navigationStyle) ||
                 other.navigationStyle == navigationStyle) &&
@@ -188,31 +188,32 @@ class _$RouteActionImpl implements _RouteAction {
   int get hashCode => Object.hash(
       runtimeType, route, navigationStyle, routeName, removeUntilRoute);
 
-  /// Create a copy of RouteAction
+  /// Create a copy of RouteStacAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$RouteActionImplCopyWith<_$RouteActionImpl> get copyWith =>
-      __$$RouteActionImplCopyWithImpl<_$RouteActionImpl>(this, _$identity);
+  _$$RouteStacActionImplCopyWith<_$RouteStacActionImpl> get copyWith =>
+      __$$RouteStacActionImplCopyWithImpl<_$RouteStacActionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RouteActionImplToJson(
+    return _$$RouteStacActionImplToJson(
       this,
     );
   }
 }
 
-abstract class _RouteAction implements RouteAction {
-  const factory _RouteAction(
+abstract class _RouteStacAction implements RouteStacAction {
+  const factory _RouteStacAction(
       {required final String route,
       required final String navigationStyle,
       required final String routeName,
-      final String? removeUntilRoute}) = _$RouteActionImpl;
+      final String? removeUntilRoute}) = _$RouteStacActionImpl;
 
-  factory _RouteAction.fromJson(Map<String, dynamic> json) =
-      _$RouteActionImpl.fromJson;
+  factory _RouteStacAction.fromJson(Map<String, dynamic> json) =
+      _$RouteStacActionImpl.fromJson;
 
   @override
   String get route;
@@ -223,10 +224,10 @@ abstract class _RouteAction implements RouteAction {
   @override
   String? get removeUntilRoute;
 
-  /// Create a copy of RouteAction
+  /// Create a copy of RouteStacAction
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RouteActionImplCopyWith<_$RouteActionImpl> get copyWith =>
+  _$$RouteStacActionImplCopyWith<_$RouteStacActionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

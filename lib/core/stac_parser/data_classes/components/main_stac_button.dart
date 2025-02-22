@@ -1,12 +1,12 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'main_button.freezed.dart';
-part 'main_button.g.dart';
+part 'main_stac_button.freezed.dart';
+part 'main_stac_button.g.dart';
 
 @freezed
-class MainButton with _$MainButton {
-  const factory MainButton({
+class MainStacButton with _$MainStacButton {
+  const factory MainStacButton({
     required String title,
     required Map<String, dynamic> onPressed,
     double? fontSize,
@@ -20,8 +20,8 @@ class MainButton with _$MainButton {
     String? textColor,
     String? backgroundColor,
     String? borderColor,
-  }) = _MainButton;
+  }) = _MainStacButton;
 
-  factory MainButton.fromJson(Map<String, dynamic> json) =>
-      _$MainButtonFromJson(json);
+  factory MainStacButton.fromJson(Map<String, dynamic> json) =>
+      _$MainStacButtonFromJson(json);
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'safe_area.dart';
+part of 'safe_area_stac.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-SafeArea _$SafeAreaFromJson(Map<String, dynamic> json) {
-  return _SafeArea.fromJson(json);
+SafeAreaStac _$SafeAreaStacFromJson(Map<String, dynamic> json) {
+  return _SafeAreaStac.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SafeArea {
+mixin _$SafeAreaStac {
   Map<String, dynamic> get child => throw _privateConstructorUsedError;
   bool? get left => throw _privateConstructorUsedError;
   bool? get top => throw _privateConstructorUsedError;
@@ -28,20 +28,21 @@ mixin _$SafeArea {
   bool? get maintainBottomViewPadding => throw _privateConstructorUsedError;
   double? get minimum => throw _privateConstructorUsedError;
 
-  /// Serializes this SafeArea to a JSON map.
+  /// Serializes this SafeAreaStac to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SafeArea
+  /// Create a copy of SafeAreaStac
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SafeAreaCopyWith<SafeArea> get copyWith =>
+  $SafeAreaStacCopyWith<SafeAreaStac> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SafeAreaCopyWith<$Res> {
-  factory $SafeAreaCopyWith(SafeArea value, $Res Function(SafeArea) then) =
-      _$SafeAreaCopyWithImpl<$Res, SafeArea>;
+abstract class $SafeAreaStacCopyWith<$Res> {
+  factory $SafeAreaStacCopyWith(
+          SafeAreaStac value, $Res Function(SafeAreaStac) then) =
+      _$SafeAreaStacCopyWithImpl<$Res, SafeAreaStac>;
   @useResult
   $Res call(
       {Map<String, dynamic> child,
@@ -54,16 +55,16 @@ abstract class $SafeAreaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SafeAreaCopyWithImpl<$Res, $Val extends SafeArea>
-    implements $SafeAreaCopyWith<$Res> {
-  _$SafeAreaCopyWithImpl(this._value, this._then);
+class _$SafeAreaStacCopyWithImpl<$Res, $Val extends SafeAreaStac>
+    implements $SafeAreaStacCopyWith<$Res> {
+  _$SafeAreaStacCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SafeArea
+  /// Create a copy of SafeAreaStac
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -110,11 +111,11 @@ class _$SafeAreaCopyWithImpl<$Res, $Val extends SafeArea>
 }
 
 /// @nodoc
-abstract class _$$SafeAreaImplCopyWith<$Res>
-    implements $SafeAreaCopyWith<$Res> {
-  factory _$$SafeAreaImplCopyWith(
-          _$SafeAreaImpl value, $Res Function(_$SafeAreaImpl) then) =
-      __$$SafeAreaImplCopyWithImpl<$Res>;
+abstract class _$$SafeAreaStacImplCopyWith<$Res>
+    implements $SafeAreaStacCopyWith<$Res> {
+  factory _$$SafeAreaStacImplCopyWith(
+          _$SafeAreaStacImpl value, $Res Function(_$SafeAreaStacImpl) then) =
+      __$$SafeAreaStacImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,14 +129,14 @@ abstract class _$$SafeAreaImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SafeAreaImplCopyWithImpl<$Res>
-    extends _$SafeAreaCopyWithImpl<$Res, _$SafeAreaImpl>
-    implements _$$SafeAreaImplCopyWith<$Res> {
-  __$$SafeAreaImplCopyWithImpl(
-      _$SafeAreaImpl _value, $Res Function(_$SafeAreaImpl) _then)
+class __$$SafeAreaStacImplCopyWithImpl<$Res>
+    extends _$SafeAreaStacCopyWithImpl<$Res, _$SafeAreaStacImpl>
+    implements _$$SafeAreaStacImplCopyWith<$Res> {
+  __$$SafeAreaStacImplCopyWithImpl(
+      _$SafeAreaStacImpl _value, $Res Function(_$SafeAreaStacImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SafeArea
+  /// Create a copy of SafeAreaStac
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -148,7 +149,7 @@ class __$$SafeAreaImplCopyWithImpl<$Res>
     Object? maintainBottomViewPadding = freezed,
     Object? minimum = freezed,
   }) {
-    return _then(_$SafeAreaImpl(
+    return _then(_$SafeAreaStacImpl(
       child: null == child
           ? _value._child
           : child // ignore: cast_nullable_to_non_nullable
@@ -183,8 +184,8 @@ class __$$SafeAreaImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SafeAreaImpl implements _SafeArea {
-  const _$SafeAreaImpl(
+class _$SafeAreaStacImpl implements _SafeAreaStac {
+  const _$SafeAreaStacImpl(
       {required final Map<String, dynamic> child,
       this.left,
       this.top,
@@ -194,8 +195,8 @@ class _$SafeAreaImpl implements _SafeArea {
       this.minimum})
       : _child = child;
 
-  factory _$SafeAreaImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SafeAreaImplFromJson(json);
+  factory _$SafeAreaStacImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SafeAreaStacImplFromJson(json);
 
   final Map<String, dynamic> _child;
   @override
@@ -220,14 +221,14 @@ class _$SafeAreaImpl implements _SafeArea {
 
   @override
   String toString() {
-    return 'SafeArea(child: $child, left: $left, top: $top, right: $right, bottom: $bottom, maintainBottomViewPadding: $maintainBottomViewPadding, minimum: $minimum)';
+    return 'SafeAreaStac(child: $child, left: $left, top: $top, right: $right, bottom: $bottom, maintainBottomViewPadding: $maintainBottomViewPadding, minimum: $minimum)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SafeAreaImpl &&
+            other is _$SafeAreaStacImpl &&
             const DeepCollectionEquality().equals(other._child, _child) &&
             (identical(other.left, left) || other.left == left) &&
             (identical(other.top, top) || other.top == top) &&
@@ -251,34 +252,34 @@ class _$SafeAreaImpl implements _SafeArea {
       maintainBottomViewPadding,
       minimum);
 
-  /// Create a copy of SafeArea
+  /// Create a copy of SafeAreaStac
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SafeAreaImplCopyWith<_$SafeAreaImpl> get copyWith =>
-      __$$SafeAreaImplCopyWithImpl<_$SafeAreaImpl>(this, _$identity);
+  _$$SafeAreaStacImplCopyWith<_$SafeAreaStacImpl> get copyWith =>
+      __$$SafeAreaStacImplCopyWithImpl<_$SafeAreaStacImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SafeAreaImplToJson(
+    return _$$SafeAreaStacImplToJson(
       this,
     );
   }
 }
 
-abstract class _SafeArea implements SafeArea {
-  const factory _SafeArea(
+abstract class _SafeAreaStac implements SafeAreaStac {
+  const factory _SafeAreaStac(
       {required final Map<String, dynamic> child,
       final bool? left,
       final bool? top,
       final bool? right,
       final bool? bottom,
       final bool? maintainBottomViewPadding,
-      final double? minimum}) = _$SafeAreaImpl;
+      final double? minimum}) = _$SafeAreaStacImpl;
 
-  factory _SafeArea.fromJson(Map<String, dynamic> json) =
-      _$SafeAreaImpl.fromJson;
+  factory _SafeAreaStac.fromJson(Map<String, dynamic> json) =
+      _$SafeAreaStacImpl.fromJson;
 
   @override
   Map<String, dynamic> get child;
@@ -295,10 +296,10 @@ abstract class _SafeArea implements SafeArea {
   @override
   double? get minimum;
 
-  /// Create a copy of SafeArea
+  /// Create a copy of SafeAreaStac
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SafeAreaImplCopyWith<_$SafeAreaImpl> get copyWith =>
+  _$$SafeAreaStacImplCopyWith<_$SafeAreaStacImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
