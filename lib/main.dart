@@ -6,6 +6,7 @@ import 'package:stac_test/core/routing/my_navigator_observer.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/route_action_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/actions/open_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/confirm_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/main_button_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/log_action_parser.dart';
@@ -73,7 +74,8 @@ class _AppStarterState extends State<AppStarter> {
           actionParsers: [
             LogStacActionParser(),
             RouteStacActionParser(),
-          ]
+            OpenDialogParser(),
+          ],
         ),
         Future(() {
           setupServiceLocator();
@@ -86,8 +88,7 @@ class _AppStarterState extends State<AppStarter> {
 
       // Check authentication status
       final prefs = await SharedPreferences.getInstance();
-      final authToken =
-          prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
+      final authToken = prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
 
       setState(() {
         _initialized = true;

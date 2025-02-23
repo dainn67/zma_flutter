@@ -11,8 +11,8 @@ _$ConfirmStacDialogImpl _$$ConfirmStacDialogImplFromJson(
     _$ConfirmStacDialogImpl(
       title: json['title'] as String,
       message: json['message'] as String,
-      onConfirm: json['onConfirm'] as Map<String, dynamic>,
-      onCancel: json['onCancel'] as Map<String, dynamic>?,
+      onConfirm: json['onConfirm'],
+      onCancel: json['onCancel'],
       confirmButtonText: json['confirmButtonText'] as String?,
       cancelButtonText: json['cancelButtonText'] as String?,
     );

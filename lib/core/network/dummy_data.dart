@@ -130,11 +130,11 @@ class DummyData {
           {"type": "sizedBox", "height": 32},
           {
             "type": "mainButton",
-            "title": "Test Button",
+            "title": "Log",
             "onPressed": {
               "actionType": "log",
               "logType": "success",
-              "message": "Test Button Pressed",
+              "message": "A success log",
             }
           },
           {"type": "sizedBox", "height": 32},
@@ -142,8 +142,8 @@ class DummyData {
             "type": "mainButton",
             "title": "Dialog Button",
             "onPressed": {
-              "actionType": "showDialog",
-              "widget": {
+              "actionType": "openDialog",
+              "child": {
                 "type": "confirmDialog",
                 "title": "Confirm Dialog",
                 "message": "Are you sure you want to log out?",
@@ -152,27 +152,6 @@ class DummyData {
                   "logType": "success",
                   "message": "Confirm Button Pressed",
                 },
-                "onCancel": {
-                  "actionType": "log",
-                  "logType": "success",
-                  "message": "Cancel Button Pressed",
-                }
-              }
-            }
-          },
-          {"type": "sizedBox", "height": 32},
-          {
-            "type": "mainButton",
-            "title": "Form Button",
-            "onPressed": {
-              "actionType": "validateForm",
-              "isValid": {
-                "actionType": "showDialog",
-                "widget": {"type": "text", "data": "Form is valid!"}
-              },
-              "isNotValid": {
-                "actionType": "showDialog",
-                "widget": {"type": "text", "data": "Form is not valid!"}
               }
             }
           },

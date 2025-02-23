@@ -22,8 +22,8 @@ ConfirmStacDialog _$ConfirmStacDialogFromJson(Map<String, dynamic> json) {
 mixin _$ConfirmStacDialog {
   String get title => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  Map<String, dynamic> get onConfirm => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get onCancel => throw _privateConstructorUsedError;
+  dynamic get onConfirm => throw _privateConstructorUsedError;
+  dynamic get onCancel => throw _privateConstructorUsedError;
   String? get confirmButtonText => throw _privateConstructorUsedError;
   String? get cancelButtonText => throw _privateConstructorUsedError;
 
@@ -46,8 +46,8 @@ abstract class $ConfirmStacDialogCopyWith<$Res> {
   $Res call(
       {String title,
       String message,
-      Map<String, dynamic> onConfirm,
-      Map<String, dynamic>? onCancel,
+      dynamic onConfirm,
+      dynamic onCancel,
       String? confirmButtonText,
       String? cancelButtonText});
 }
@@ -69,7 +69,7 @@ class _$ConfirmStacDialogCopyWithImpl<$Res, $Val extends ConfirmStacDialog>
   $Res call({
     Object? title = null,
     Object? message = null,
-    Object? onConfirm = null,
+    Object? onConfirm = freezed,
     Object? onCancel = freezed,
     Object? confirmButtonText = freezed,
     Object? cancelButtonText = freezed,
@@ -83,14 +83,14 @@ class _$ConfirmStacDialogCopyWithImpl<$Res, $Val extends ConfirmStacDialog>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      onConfirm: null == onConfirm
+      onConfirm: freezed == onConfirm
           ? _value.onConfirm
           : onConfirm // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as dynamic,
       onCancel: freezed == onCancel
           ? _value.onCancel
           : onCancel // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as dynamic,
       confirmButtonText: freezed == confirmButtonText
           ? _value.confirmButtonText
           : confirmButtonText // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ abstract class _$$ConfirmStacDialogImplCopyWith<$Res>
   $Res call(
       {String title,
       String message,
-      Map<String, dynamic> onConfirm,
-      Map<String, dynamic>? onCancel,
+      dynamic onConfirm,
+      dynamic onCancel,
       String? confirmButtonText,
       String? cancelButtonText});
 }
@@ -135,7 +135,7 @@ class __$$ConfirmStacDialogImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? message = null,
-    Object? onConfirm = null,
+    Object? onConfirm = freezed,
     Object? onCancel = freezed,
     Object? confirmButtonText = freezed,
     Object? cancelButtonText = freezed,
@@ -149,14 +149,14 @@ class __$$ConfirmStacDialogImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      onConfirm: null == onConfirm
-          ? _value._onConfirm
+      onConfirm: freezed == onConfirm
+          ? _value.onConfirm
           : onConfirm // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as dynamic,
       onCancel: freezed == onCancel
-          ? _value._onCancel
+          ? _value.onCancel
           : onCancel // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as dynamic,
       confirmButtonText: freezed == confirmButtonText
           ? _value.confirmButtonText
           : confirmButtonText // ignore: cast_nullable_to_non_nullable
@@ -175,12 +175,10 @@ class _$ConfirmStacDialogImpl implements _ConfirmStacDialog {
   const _$ConfirmStacDialogImpl(
       {required this.title,
       required this.message,
-      required final Map<String, dynamic> onConfirm,
-      final Map<String, dynamic>? onCancel,
+      required this.onConfirm,
+      this.onCancel,
       this.confirmButtonText,
-      this.cancelButtonText})
-      : _onConfirm = onConfirm,
-        _onCancel = onCancel;
+      this.cancelButtonText});
 
   factory _$ConfirmStacDialogImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConfirmStacDialogImplFromJson(json);
@@ -189,24 +187,10 @@ class _$ConfirmStacDialogImpl implements _ConfirmStacDialog {
   final String title;
   @override
   final String message;
-  final Map<String, dynamic> _onConfirm;
   @override
-  Map<String, dynamic> get onConfirm {
-    if (_onConfirm is EqualUnmodifiableMapView) return _onConfirm;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_onConfirm);
-  }
-
-  final Map<String, dynamic>? _onCancel;
+  final dynamic onConfirm;
   @override
-  Map<String, dynamic>? get onCancel {
-    final value = _onCancel;
-    if (value == null) return null;
-    if (_onCancel is EqualUnmodifiableMapView) return _onCancel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
-
+  final dynamic onCancel;
   @override
   final String? confirmButtonText;
   @override
@@ -224,9 +208,8 @@ class _$ConfirmStacDialogImpl implements _ConfirmStacDialog {
             other is _$ConfirmStacDialogImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality()
-                .equals(other._onConfirm, _onConfirm) &&
-            const DeepCollectionEquality().equals(other._onCancel, _onCancel) &&
+            const DeepCollectionEquality().equals(other.onConfirm, onConfirm) &&
+            const DeepCollectionEquality().equals(other.onCancel, onCancel) &&
             (identical(other.confirmButtonText, confirmButtonText) ||
                 other.confirmButtonText == confirmButtonText) &&
             (identical(other.cancelButtonText, cancelButtonText) ||
@@ -239,8 +222,8 @@ class _$ConfirmStacDialogImpl implements _ConfirmStacDialog {
       runtimeType,
       title,
       message,
-      const DeepCollectionEquality().hash(_onConfirm),
-      const DeepCollectionEquality().hash(_onCancel),
+      const DeepCollectionEquality().hash(onConfirm),
+      const DeepCollectionEquality().hash(onCancel),
       confirmButtonText,
       cancelButtonText);
 
@@ -265,8 +248,8 @@ abstract class _ConfirmStacDialog implements ConfirmStacDialog {
   const factory _ConfirmStacDialog(
       {required final String title,
       required final String message,
-      required final Map<String, dynamic> onConfirm,
-      final Map<String, dynamic>? onCancel,
+      required final dynamic onConfirm,
+      final dynamic onCancel,
       final String? confirmButtonText,
       final String? cancelButtonText}) = _$ConfirmStacDialogImpl;
 
@@ -278,9 +261,9 @@ abstract class _ConfirmStacDialog implements ConfirmStacDialog {
   @override
   String get message;
   @override
-  Map<String, dynamic> get onConfirm;
+  dynamic get onConfirm;
   @override
-  Map<String, dynamic>? get onCancel;
+  dynamic get onCancel;
   @override
   String? get confirmButtonText;
   @override

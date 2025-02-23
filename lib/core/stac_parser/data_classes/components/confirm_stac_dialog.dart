@@ -8,8 +8,8 @@ class ConfirmStacDialog with _$ConfirmStacDialog {
   const factory ConfirmStacDialog({
     required String title,
     required String message,
-    required Map<String, dynamic> onConfirm,
-    Map<String, dynamic>? onCancel,
+    required dynamic onConfirm,
+    dynamic onCancel,
     String? confirmButtonText,
     String? cancelButtonText,
   }) = _ConfirmStacDialog;

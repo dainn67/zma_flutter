@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
+import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/stac_parser/data_classes/components/confirm_stac_dialog.dart';
 
 import '../../../../ui/components/main_button.dart';
@@ -47,7 +48,7 @@ class ConfirmStacDialogParser extends StacParser<ConfirmStacDialog> {
                       title: model.cancelButtonText ?? 'Cancel',
                       paddingVertical: 16,
                       borderRadius: 16,
-                      onPressed: () {},
+                      onPressed: () => _handleCancel(model, context),
                     )),
                     const SizedBox(width: 16),
                     Expanded(
@@ -55,7 +56,7 @@ class ConfirmStacDialogParser extends StacParser<ConfirmStacDialog> {
                       title: model.confirmButtonText ?? 'Confirm',
                       paddingVertical: 16,
                       borderRadius: 16,
-                      onPressed: () {},
+                      onPressed: () => _handleConfirm(model, context),
                     )),
                   ],
                 ),
@@ -65,5 +66,25 @@ class ConfirmStacDialogParser extends StacParser<ConfirmStacDialog> {
         ],
       ),
     );
+  }
+
+  _handleCancel(ConfirmStacDialog model, BuildContext context) {
+    if (model.onCancel is Map<String, dynamic>) {
+      Stac.onCallFromJson(model.onCancel, context);
+    } else if (model.onCancel is Function) {
+      model.onCancel();
+    } else {
+      RouteManagement.instance.pop();
+    }
+  }
+
+  _handleConfirm(ConfirmStacDialog model, BuildContext context) {
+    if (model.onConfirm is Map<String, dynamic>) {
+      Stac.onCallFromJson(model.onConfirm, context);
+    } else if (model.onConfirm is Function) {
+      model.onConfirm();
+    } else {
+      debugPrint('Not implemented');
+    }
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stac_test/core/routing/route_management.dart';
-import 'package:stac_test/core/stac_parser/data_classes/components/confirm_stac_dialog.dart';
 import 'package:stac_test/ui/components/main_button.dart';
 
 class DrawerItem {
