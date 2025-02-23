@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/routing/app_router.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/open_dialog_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/actions/route_action_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/confirm_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/main_button_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/log_action_parser.dart';
@@ -71,6 +72,7 @@ class _AppStarterState extends State<AppStarter> {
           actionParsers: [
             LogStacActionParser(),
             OpenDialogParser(),
+            RouteActionParser(),
           ],
         ),
         Future(() {

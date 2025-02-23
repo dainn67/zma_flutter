@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stac_test/ui/components/main_button.dart';
+import 'package:stac_test/ui/common/main_button.dart';
 
 class DrawerItem {
   final IconData icon;

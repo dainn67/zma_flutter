@@ -112,25 +112,8 @@ class DummyData {
         "padding": {"top": 24, "left": 16, "right": 16},
         "children": [
           {
-            "type": "column",
-            "children": [
-              {"type": "sizedBox", "height": 16},
-              {
-                "type": "text",
-                "data": "John Doe",
-                "style": {"fontSize": 24, "fontWeight": "w600"}
-              },
-              {
-                "type": "text",
-                "data": "john.doe@example.com",
-                "style": {"fontSize": 16, "color": "#666666"}
-              }
-            ]
-          },
-          {"type": "sizedBox", "height": 32},
-          {
             "type": "mainButton",
-            "title": "Log",
+            "title": "Log Button",
             "onPressed": {
               "actionType": "log",
               "logType": "success",
@@ -157,48 +140,22 @@ class DummyData {
           },
           {"type": "sizedBox", "height": 32},
           {
-            "type": "card",
-            "child": {
-              "type": "column",
-              "children": [
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Edit Profile"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/edit", "navigationStyle": "pushNamed"}
-                },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Change Password"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/password", "navigationStyle": "pushNamed"}
-                },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Privacy Settings"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/privacy", "navigationStyle": "pushReplacementNamed"}
-                }
-              ]
+            "type": "mainButton",
+            "title": "Test Go Router",
+            "onPressed": {
+              "actionType": "routing",
+              "routeName": "home",
+              "navigationStyle": "pushNamed",
             }
           },
-          {"type": "sizedBox", "height": 24},
+          {"type": "sizedBox", "height": 32},
           {
-            "type": "card",
-            "child": {
-              "type": "column",
-              "children": [
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Phone"},
-                  "subtitle": {"type": "text", "data": "+1 234 567 8900"}
-                },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Location"},
-                  "subtitle": {"type": "text", "data": "New York, USA"}
-                }
-              ]
+            "type": "mainButton",
+            "title": "Predefined Route",
+            "onPressed": {
+              "actionType": "routing",
+              "routeName": "/detail",
+              "navigationStyle": "pushNamed",
             }
           }
         ]

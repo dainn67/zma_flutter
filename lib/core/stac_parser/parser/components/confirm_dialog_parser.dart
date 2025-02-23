@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/stac_parser/data_classes/components/confirm_stac_dialog.dart';
 
-import '../../../../ui/components/main_button.dart';
+import '../../../../ui/common/main_button.dart';
 
 class ConfirmStacDialogParser extends StacParser<ConfirmStacDialog> {
   @override

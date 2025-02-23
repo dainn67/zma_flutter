@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
-import 'package:stac_test/ui/components/custom_icon.dart';
+import 'package:stac_test/ui/common/custom_icon.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
