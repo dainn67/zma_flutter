@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stac_test/core/routing/route_management.dart';
+import 'package:go_router/go_router.dart';
 
 class StacActionHandler {
   static void execute(String action, BuildContext context) {
@@ -7,12 +7,12 @@ class StacActionHandler {
     // Example:
     switch (action) {
       case 'navigateBack':
-        RouteManagement.instance.pop();
+        context.pop();
         break;
       case 'openSettings':
-        RouteManagement.instance.pushNamed('/settings');
+        context.push('/settings');
         break;
       // Add more action handlers as needed
     }
   }
-} 
+}

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
-import 'package:stac_test/core/routing/route_config.dart';
-import 'package:stac_test/core/routing/route_management.dart';
 import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/ui/components/custom_bottom_nav_bar.dart';
 import 'package:stac_test/ui/screens/common/loading_screen.dart';
@@ -82,8 +81,6 @@ class _HomeScreenState extends State<HomeScreen> {
   _handleLogout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(SharedPrefsKeys.isLoggedIn, false);
-    if (context.mounted) {
-      RouteManagement.instance.pushReplacementNamed(RouteConfig.login);
-    }
+    if (mounted) context.go('/login');
   }
 }
