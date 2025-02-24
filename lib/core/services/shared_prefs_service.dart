@@ -1,62 +1,76 @@
-import '../helpers/storage_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../constants/storage_keys.dart';
 
 class SharedPrefsService {
-  static SharedPrefsService? _instance;
-  
-  // Private constructor
-  SharedPrefsService._();
-  
-  // Singleton instance getter
-  static SharedPrefsService get instance {
-    _instance ??= SharedPrefsService._();
-    return _instance!;
+  final SharedPreferences _prefs;
+
+  SharedPrefsService(this._prefs);
+
+  // Helper functions
+  Future<bool> setString(String key, String value) async {
+    return await _prefs.setString(key, value);
   }
-  
-  // Initialize SharedPreferences
-  static Future<void> init() async {
-    await StorageHelper.init();
+
+  String? getString(String key) {
+    return _prefs.getString(key);
   }
-  
+
+  Future<bool> setBool(String key, bool value) async {
+    return await _prefs.setBool(key, value);
+  }
+
+  bool? getBool(String key) {
+    return _prefs.getBool(key);
+  }
+
+  Future<bool> setInt(String key, int value) async {
+    return await _prefs.setInt(key, value);
+  }
+
+  int? getInt(String key) {
+    return _prefs.getInt(key);
+  }
+
+  Future<bool> remove(String key) async {
+    return await _prefs.remove(key);
+  }
+
+  Future<bool> clear() async {
+    return await _prefs.clear();
+  }
+
   // Auth Related Methods
   Future<bool> setAuthToken(String token) async {
-    return await StorageHelper.setString(StorageKeys.authToken, token);
+    return await setString(StorageKeys.authToken, token);
   }
-  
+
   String? getAuthToken() {
-    return StorageHelper.getString(StorageKeys.authToken);
+    return getString(StorageKeys.authToken);
   }
-  
+
   Future<bool> setRefreshToken(String token) async {
-    return await StorageHelper.setString(StorageKeys.refreshToken, token);
+    return await setString(StorageKeys.refreshToken, token);
   }
-  
+
   String? getRefreshToken() {
-    return StorageHelper.getString(StorageKeys.refreshToken);
+    return getString(StorageKeys.refreshToken);
   }
-  
-  Future<bool> setUserInfo(Map<String, dynamic> userInfo) async {
-    return await StorageHelper.setObject(StorageKeys.userInfo, userInfo);
-  }
-  
-  Map<String, dynamic>? getUserInfo() {
-    return StorageHelper.getObject(StorageKeys.userInfo);
-  }
-  
+
   Future<bool> setIsLoggedIn(bool value) async {
-    return await StorageHelper.setBool(StorageKeys.isLoggedIn, value);
+    return await setBool(StorageKeys.isLoggedIn, value);
   }
-  
+
   bool isLoggedIn() {
-    return StorageHelper.getBool(StorageKeys.isLoggedIn) ?? false;
+    return getBool(StorageKeys.isLoggedIn) ?? false;
   }
-  
+
   Future<bool> setLastLoginTime(DateTime time) async {
-    return await StorageHelper.setString(StorageKeys.lastLoginTime, time.toIso8601String());
+    return await setString(StorageKeys.lastLoginTime, time.toIso8601String());
   }
-  
+
   DateTime? getLastLoginTime() {
-    final timeStr = StorageHelper.getString(StorageKeys.lastLoginTime);
+    final timeStr = getString(StorageKeys.lastLoginTime);
     if (timeStr == null) return null;
     try {
       return DateTime.parse(timeStr);
@@ -64,66 +78,55 @@ class SharedPrefsService {
       return null;
     }
   }
-  
+
   // App Settings Methods
   Future<bool> setAppTheme(String theme) async {
-    return await StorageHelper.setString(StorageKeys.appTheme, theme);
+    return await setString(StorageKeys.appTheme, theme);
   }
-  
+
   String getAppTheme() {
-    return StorageHelper.getString(StorageKeys.appTheme) ?? 'light';
+    return getString(StorageKeys.appTheme) ?? 'light';
   }
-  
+
   Future<bool> setLanguage(String languageCode) async {
-    return await StorageHelper.setString(StorageKeys.language, languageCode);
+    return await setString(StorageKeys.language, languageCode);
   }
-  
+
   String getLanguage() {
-    return StorageHelper.getString(StorageKeys.language) ?? 'en';
+    return getString(StorageKeys.language) ?? 'en';
   }
-  
+
   Future<bool> setOnboardingComplete(bool value) async {
-    return await StorageHelper.setBool(StorageKeys.onboardingComplete, value);
+    return await setBool(StorageKeys.onboardingComplete, value);
   }
-  
+
   bool isOnboardingComplete() {
-    return StorageHelper.getBool(StorageKeys.onboardingComplete) ?? false;
+    return getBool(StorageKeys.onboardingComplete) ?? false;
   }
-  
-  Future<bool> setAppSettings(Map<String, dynamic> settings) async {
-    return await StorageHelper.setObject(StorageKeys.appSettings, settings);
-  }
-  
-  Map<String, dynamic>? getAppSettings() {
-    return StorageHelper.getObject(StorageKeys.appSettings);
-  }
-  
+
   // Session Management
   Future<bool> setSessionId(String sessionId) async {
-    return await StorageHelper.setString(StorageKeys.sessionId, sessionId);
+    return await setString(StorageKeys.sessionId, sessionId);
   }
 
   String? getSessionId() {
-    return StorageHelper.getString(StorageKeys.sessionId);
+    return getString(StorageKeys.sessionId);
   }
 
   Future<bool> setDeviceId(String deviceId) async {
-    return await StorageHelper.setString(StorageKeys.deviceId, deviceId);
+    return await setString(StorageKeys.deviceId, deviceId);
   }
 
   String? getDeviceId() {
-    return StorageHelper.getString(StorageKeys.deviceId);
+    return getString(StorageKeys.deviceId);
   }
 
   Future<bool> updateLastActiveTime() async {
-    return await StorageHelper.setString(
-      StorageKeys.lastActiveTime,
-      DateTime.now().toIso8601String()
-    );
+    return await setString(StorageKeys.lastActiveTime, DateTime.now().toIso8601String());
   }
 
   DateTime? getLastActiveTime() {
-    final timeStr = StorageHelper.getString(StorageKeys.lastActiveTime);
+    final timeStr = getString(StorageKeys.lastActiveTime);
     if (timeStr == null) return null;
     try {
       return DateTime.parse(timeStr);
@@ -131,7 +134,7 @@ class SharedPrefsService {
       return null;
     }
   }
-  
+
   // Auth Session Management
   Future<void> saveAuthInfo({
     required String authToken,
@@ -142,36 +145,35 @@ class SharedPrefsService {
     await Future.wait([
       setAuthToken(authToken),
       setRefreshToken(refreshToken),
-      setUserInfo(userInfo),
       setIsLoggedIn(true),
       setLastLoginTime(loginTime ?? DateTime.now()),
     ]);
   }
-  
+
   Future<void> clearAuthInfo() async {
     await Future.wait([
-      StorageHelper.remove(StorageKeys.authToken),
-      StorageHelper.remove(StorageKeys.refreshToken),
-      StorageHelper.remove(StorageKeys.userInfo),
-      StorageHelper.remove(StorageKeys.isLoggedIn),
-      StorageHelper.remove(StorageKeys.lastLoginTime),
+      remove(StorageKeys.authToken),
+      remove(StorageKeys.refreshToken),
+      remove(StorageKeys.userInfo),
+      remove(StorageKeys.isLoggedIn),
+      remove(StorageKeys.lastLoginTime),
     ]);
   }
 
-  // Feature Flags
-  Future<bool> setFeatureFlags(Map<String, dynamic> flags) async {
-    return await StorageHelper.setObject(StorageKeys.featureFlags, flags);
+  // Notification permission
+  Future<bool> setShowNotificationPermission() async {
+    return await setBool(StorageKeys.showNotificationPermission, true);
   }
 
-  Map<String, dynamic>? getFeatureFlags() {
-    return StorageHelper.getObject(StorageKeys.featureFlags);
+  bool getShowNotificationPermission() {
+    return getBool(StorageKeys.showNotificationPermission) ?? false;
   }
 
-  Future<bool> setExperimentGroup(String group) async {
-    return await StorageHelper.setString(StorageKeys.experimentGroup, group);
+  Future<bool> setNotifyEnabled(bool value) async {
+    return await setBool(StorageKeys.notifyEnabled, value);
   }
 
-  String? getExperimentGroup() {
-    return StorageHelper.getString(StorageKeys.experimentGroup);
+  bool getNotifyEnabled() {
+    return getBool(StorageKeys.notifyEnabled) ?? false;
   }
-} 
+}

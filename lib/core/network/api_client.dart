@@ -39,12 +39,10 @@ class ApiClient {
       if (response.statusCode == 200) {
         return Map<String, dynamic>.from(jsonDecode(response.body));
       }
-
-      return null;
     } catch (e) {
       debugPrint('Fetching screen data failed: $e');
-      return null;
     }
+    return null;
   }
 
   void dispose() {

@@ -148,7 +148,7 @@ class DummyData {
             "onPressed": {
               "actionType": "routing",
               "routeName": RouteConfig.login,
-              "navigationStyle": RouteAction.pushReplacement,
+              "navigationStyle": RouteAction.pushNamed,
             }
           },
           {"type": "sizedBox", "height": 32},
@@ -158,7 +158,25 @@ class DummyData {
             "onPressed": {
               "actionType": "routing",
               "routeName": "/detail",
-              "navigationStyle": "pushNamed",
+              "navigationStyle": RouteAction.pushNamed,
+            }
+          },
+          {"type": "sizedBox", "height": 32},
+          {
+            "type": "mainButton",
+            "title": "Snackbar",
+            "onPressed": {
+              "actionType": "showSnackBar",
+              "content": {"type": "text", "data": "This is a Snackbar"},
+              "action": {
+                "label": "Done",
+                "textColor": "#73C2FB",
+                "onPressed": {
+                  "actionType": "log",
+                  "message": "Snackbar Action Button Pressed",
+                },
+              },
+              "behavior": "floating"
             }
           }
         ]

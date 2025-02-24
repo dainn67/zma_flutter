@@ -3,6 +3,7 @@ import 'package:stac/stac.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/routing/app_router.dart';
+import 'package:stac_test/core/services/shared_prefs_service.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/open_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/route_action_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/confirm_dialog_parser.dart';
@@ -14,10 +15,10 @@ import 'package:stac_test/ui/screens/splash/splash_screen.dart';
 import 'core/di/service_locator.dart';
 import 'core/config/config.dart';
 import 'core/services/log_service.dart';
-import 'core/services/shared_prefs_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   runApp(const MyApp());
 }
 
@@ -49,6 +50,8 @@ class _AppStarterState extends State<AppStarter> {
   bool _initialized = false;
   bool _isAuthenticated = false;
 
+  final sharedPrefsService = getIt<SharedPrefsService>();
+
   @override
   void initState() {
     super.initState();
@@ -62,7 +65,6 @@ class _AppStarterState extends State<AppStarter> {
 
       // Run all initialization tasks
       final initFuture = Future.wait([
-        SharedPrefsService.init(),
         Stac.initialize(
           parsers: [
             MainStacButtonParser(),
@@ -76,7 +78,6 @@ class _AppStarterState extends State<AppStarter> {
           ],
         ),
         Future(() {
-          setupServiceLocator();
           AppConfig.initialize();
         }),
       ]);
@@ -85,12 +86,11 @@ class _AppStarterState extends State<AppStarter> {
       await Future.wait([minLoadingFuture, initFuture]);
 
       // Check authentication status
-      final prefs = await SharedPreferences.getInstance();
-      final authToken = prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
+      final authToken = sharedPrefsService.isLoggedIn();
 
       setState(() {
         _initialized = true;
-        _isAuthenticated = authToken != null;
+        _isAuthenticated = authToken;
       });
     } catch (e) {
       LogService.error('Failed to initialize app: $e');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -81,7 +82,8 @@ class _AuthScreenState extends State<AuthScreen> {
         setState(() {
           _isLoading = false;
         });
-        await SharedPrefsService.instance.setIsLoggedIn(true);
+        final sharedPrefsService = getIt<SharedPrefsService>();
+        await sharedPrefsService.setIsLoggedIn(_isLogin);
         if (mounted) context.go('/home');
       }
     }
