@@ -1,3 +1,6 @@
+import 'package:stac_test/core/routing/route_action.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+
 class DummyData {
   DummyData._();
 
@@ -144,8 +147,8 @@ class DummyData {
             "title": "Test Go Router",
             "onPressed": {
               "actionType": "routing",
-              "routeName": "home",
-              "navigationStyle": "pushNamed",
+              "routeName": RouteConfig.login,
+              "navigationStyle": RouteAction.pushReplacement,
             }
           },
           {"type": "sizedBox", "height": 32},

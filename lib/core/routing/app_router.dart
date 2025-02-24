@@ -25,15 +25,8 @@ class AppRouter {
         builder: (context, state) => const AuthScreen(),
       ),
     ],
-    errorBuilder: (context, state) {
-      print(state.uri.path);
-      print(state.path);
-      print(state.fullPath);
-      print(state.uri.queryParameters);
 
-      return DynamicScreen(
-        routeName: state.path ?? '',
-      );
-    },
+    // Handle SDUI routing
+    errorBuilder: (context, state) => DynamicScreen(routeName: state.uri.path),
   );
 }

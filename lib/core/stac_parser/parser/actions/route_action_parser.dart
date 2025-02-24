@@ -15,8 +15,6 @@ class RouteActionParser implements StacActionParser<RouteStacAction> {
 
   @override
   FutureOr onCall(BuildContext context, RouteStacAction model) {
-    print('Navigating to: ${model.routeName} with style: ${model.navigationStyle}');
-
     // Remove leading slash if present for named routes
     final routeName = model.routeName.startsWith('/') ? model.routeName.substring(1) : model.routeName;
 

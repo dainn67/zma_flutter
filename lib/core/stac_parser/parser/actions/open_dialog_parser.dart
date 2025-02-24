@@ -13,6 +13,10 @@ class OpenDialogParser extends StacActionParser<ShowDialogAction> {
 
   @override
   FutureOr onCall(BuildContext context, ShowDialogAction model) {
-    showDialog(context: context, builder: (context) => Stac.fromJson(model.child, context) ?? const SizedBox());
+    showDialog(
+      context: context,
+      useRootNavigator: false,
+      builder: (context) => Stac.fromJson(model.child, context) ?? const SizedBox(),
+    );
   }
 }

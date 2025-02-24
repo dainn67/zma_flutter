@@ -29,7 +29,7 @@ class DynamicScreen extends StatelessWidget {
           return Stac.fromJson(snapshot.data!.uiConfig, context) ?? const ErrorScreen(error: 'Stac failed to load screen');
         }
 
-        return const ErrorScreen(error: 'Failed to load screen data');
+        return ErrorScreen(error: 'Failed to load route: $routeName');
       },
     );
   }
