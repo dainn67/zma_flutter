@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stac_test/core/constants/storage_keys.dart';
 import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
@@ -11,8 +10,6 @@ import 'package:stac_test/ui/screens/common/loading_screen.dart';
 import 'package:stac_test/ui/screens/dynamic/dynamic_tab.dart';
 import 'package:stac_test/ui/screens/home/home_drawer.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
-import 'package:stac_test/core/constants/shared_prefs_keys.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -92,14 +89,5 @@ class _HomeScreenState extends State<HomeScreen> {
   _handleLogout() async {
     await _prefsService.setBool(StorageKeys.isLoggedIn, false);
     if (mounted) context.go('/login');
-  }
-
-  Future<void> _saveData() async {
-    await _prefsService.setString(SharedPrefsKeys.userToken, 'your_token');
-    await _prefsService.setBool(SharedPrefsKeys.isFirstTime, false);
-  }
-
-  String? _getUserToken() {
-    return _prefsService.getString(SharedPrefsKeys.userToken);
   }
 }

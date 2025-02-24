@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stac_test/core/constants/shared_prefs_keys.dart';
 import 'package:stac_test/core/routing/app_router.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/open_dialog_parser.dart';
