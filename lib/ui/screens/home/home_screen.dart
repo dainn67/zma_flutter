@@ -10,6 +10,7 @@ import 'package:stac_test/ui/screens/common/loading_screen.dart';
 import 'package:stac_test/ui/screens/dynamic/dynamic_tab.dart';
 import 'package:stac_test/ui/screens/home/home_drawer.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -28,9 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController = PageController(initialPage: currentIndex);
     ScreenService.loadHomeTabs().then((tabs) => setState(() => _tabs = tabs));
 
-    getIt<NotificationService>().init();
-    Future.delayed(const Duration(seconds: 2), () {
-      getIt<NotificationService>().scheduleNotification(title: 'Hello', body: 'Hi there', id: 1);
+    final notificationService = getIt<NotificationService>();
+    notificationService.init().then((data) {
+      Future.delayed(const Duration(seconds: 2), () {
+        notificationService.showNotification(title: 'Hello', body: 'Hi there', id: 1).then((_) {
+          print('DONE');
+        });
+        // notificationService.scheduleNotification(title: 'Hello', body: 'Hi there', id: 1);
+      });
     });
 
     super.initState();

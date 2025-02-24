@@ -39,6 +39,9 @@ class NotificationService {
           requestAlertPermission: true,
           requestBadgePermission: true,
           requestSoundPermission: true,
+          defaultPresentAlert: true,
+          defaultPresentBadge: true,
+          defaultPresentSound: true,
         );
         const initializationSettings = InitializationSettings(
           android: initializationSettingsAndroid,
@@ -74,10 +77,13 @@ class NotificationService {
 
       if (!_prefsService.getShowNotificationPermission()) {
         permission = await androidPlugin?.requestNotificationsPermission().onError((a, b) => false).catchError((e) => false) ?? false;
+
         await _prefsService.setShowNotificationPermission();
         systemEnabled = permission;
+
         await _prefsService.setNotifyEnabled(true);
       }
+
       return permission;
     } else if (Platform.isIOS) {
       var granted = await _notificationsPlugin
@@ -86,6 +92,7 @@ class NotificationService {
             alert: true,
             badge: true,
             sound: true,
+            critical: true,
           )
           .catchError((e) {
         debugPrint('request system permission error: $e');
@@ -96,18 +103,6 @@ class NotificationService {
         await _prefsService.setNotifyEnabled(granted);
       }
       return granted ?? false;
-    } else if (Platform.isMacOS) {
-      return await _notificationsPlugin
-              .resolvePlatformSpecificImplementation<MacOSFlutterLocalNotificationsPlugin>()
-              ?.requestPermissions(
-                alert: true,
-                badge: true,
-                sound: true,
-              )
-              .catchError((e) {
-            return false;
-          }) ??
-          false;
     }
     return false;
   }
@@ -177,14 +172,15 @@ class NotificationService {
       notificationChannelId,
       notificationChannelName,
       channelDescription: notificationChannelDescription,
-      importance: Importance.high,
-      priority: Priority.high,
+      importance: Importance.max,
+      priority: Priority.max,
     );
 
     const iosDetails = DarwinNotificationDetails(
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
+      interruptionLevel: InterruptionLevel.active,
     );
 
     const details = NotificationDetails(
