@@ -1,10 +1,9 @@
 import 'dart:io';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:stac_test/core/config/app_config.dart';
+import 'package:stac_test/utils/notification_utils.dart';
 // ignore: depend_on_referenced_packages
 import 'package:timezone/data/latest_all.dart' as tz;
 // ignore: depend_on_referenced_packages
@@ -20,9 +19,9 @@ class NotificationService {
       : _notificationsPlugin = FlutterLocalNotificationsPlugin(),
         _prefsService = GetIt.instance<SharedPrefsService>();
 
-  static const String notificationChannelId = 'default_channel';
-  static const String notificationChannelName = 'Default Channel';
-  static const String notificationChannelDescription = 'Default notification channel';
+  static const String notificationChannelId = 'notification_channel_id';
+  static const String notificationChannelName = 'Notification Channel';
+  static const String notificationChannelDescription = 'Notification channel';
 
   bool initialized = false;
 
@@ -58,6 +57,7 @@ class NotificationService {
           }
         });
 
+        // If initialized, check to request notification permission
         if (initialized) {
           await _requestNotification();
           await _notificationsPlugin.cancelAll();
@@ -77,16 +77,15 @@ class NotificationService {
 
       if (!_prefsService.getShowNotificationPermission()) {
         permission = await androidPlugin?.requestNotificationsPermission().onError((a, b) => false).catchError((e) => false) ?? false;
-
-        await _prefsService.setShowNotificationPermission();
         systemEnabled = permission;
 
+        await _prefsService.setShowNotificationPermission();
         await _prefsService.setNotifyEnabled(true);
       }
 
       return permission;
     } else if (Platform.isIOS) {
-      var granted = await _notificationsPlugin
+      final granted = await _notificationsPlugin
           .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
           ?.requestPermissions(
             alert: true,
@@ -111,56 +110,15 @@ class NotificationService {
     required String title,
     required String body,
     required int id,
+    required DateTime dateTime,
   }) async {
-    final localTime = tz.TZDateTime.from(DateTime.now(), tz.local);
+    final localTime = tz.TZDateTime.from(dateTime, tz.local);
 
-    _notificationsPlugin.zonedSchedule(id, AppConfig.appName, body, localTime, await getChannel(''),
+    _notificationsPlugin.zonedSchedule(id, AppConfig.appName, body, localTime, await NotificationUtils.getChannel(''),
         uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         matchDateTimeComponents: DateTimeComponents.dateAndTime,
         payload: '');
-  }
-
-  Future<NotificationDetails> getChannel(String image, [String? categoryIdentifier]) async {
-    AndroidNotificationDetails androidChannelDetail = const AndroidNotificationDetails(
-      'id1',
-      'id2',
-      channelDescription: 'default',
-    );
-    DarwinNotificationDetails iosChannelDetail = DarwinNotificationDetails(
-      interruptionLevel: InterruptionLevel.active,
-      categoryIdentifier: categoryIdentifier,
-      attachments: image.isEmpty
-          ? []
-          : [
-              DarwinNotificationAttachment(
-                await moveImageFileToLocal(image),
-                thumbnailClippingRect: const DarwinNotificationAttachmentThumbnailClippingRect(
-                  x: 0,
-                  y: 0,
-                  height: 1,
-                  width: 1,
-                ),
-              ),
-            ],
-    );
-    return NotificationDetails(android: androidChannelDetail, iOS: iosChannelDetail);
-  }
-
-  Future<String> moveImageFileToLocal(String assetFilePath) async {
-    String fileName = assetFilePath.substring(assetFilePath.lastIndexOf("/") + 1);
-    final Directory directory = await getApplicationDocumentsDirectory();
-    final String filePath = '${directory.path}/$fileName';
-    final File file = File(filePath);
-    if (await file.exists()) {
-      return file.path;
-    } else {
-      await file.create();
-    }
-
-    ByteData data = await rootBundle.load(assetFilePath);
-    await file.writeAsBytes(data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
-    return file.path;
   }
 
   Future<void> showNotification({
@@ -168,27 +126,7 @@ class NotificationService {
     required String body,
     required int id,
   }) async {
-    const androidDetails = AndroidNotificationDetails(
-      notificationChannelId,
-      notificationChannelName,
-      channelDescription: notificationChannelDescription,
-      importance: Importance.max,
-      priority: Priority.max,
-    );
-
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-      interruptionLevel: InterruptionLevel.active,
-    );
-
-    const details = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
-
-    await _notificationsPlugin.show(id, title, body, details);
+    await _notificationsPlugin.show(id, title, body, await NotificationUtils.getChannel(''));
   }
 
   Future<void> cancelNotification(int id) async {
@@ -198,6 +136,4 @@ class NotificationService {
   Future<void> cancelAllNotifications() async {
     await _notificationsPlugin.cancelAll();
   }
-
-  getApplicationDocumentsDirectory() {}
 }
