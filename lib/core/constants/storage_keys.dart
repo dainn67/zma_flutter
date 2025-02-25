@@ -31,4 +31,8 @@ class StorageKeys {
   // Feature flags
   static const String featureFlags = 'feature_flags';
   static const String experimentGroup = 'experiment_group';
-} 
+
+  // Notification permission
+  static const String showNotificationPermission = 'show_notification_permission';
+  static const String notifyEnabled = 'notify_enabled';
+}

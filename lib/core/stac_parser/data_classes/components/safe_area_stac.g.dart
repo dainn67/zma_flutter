@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'safe_area.dart';
+part of 'safe_area_stac.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SafeAreaImpl _$$SafeAreaImplFromJson(Map<String, dynamic> json) =>
-    _$SafeAreaImpl(
+_$SafeAreaStacImpl _$$SafeAreaStacImplFromJson(Map<String, dynamic> json) =>
+    _$SafeAreaStacImpl(
       child: json['child'] as Map<String, dynamic>,
       left: json['left'] as bool?,
       top: json['top'] as bool?,
@@ -17,7 +17,7 @@ _$SafeAreaImpl _$$SafeAreaImplFromJson(Map<String, dynamic> json) =>
       minimum: (json['minimum'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$SafeAreaImplToJson(_$SafeAreaImpl instance) =>
+Map<String, dynamic> _$$SafeAreaStacImplToJson(_$SafeAreaStacImpl instance) =>
     <String, dynamic>{
       'child': instance.child,
       'left': instance.left,

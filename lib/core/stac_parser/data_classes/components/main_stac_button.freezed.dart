@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'main_button.dart';
+part of 'main_stac_button.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MainButton _$MainButtonFromJson(Map<String, dynamic> json) {
-  return _MainButton.fromJson(json);
+MainStacButton _$MainStacButtonFromJson(Map<String, dynamic> json) {
+  return _MainStacButton.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MainButton {
+mixin _$MainStacButton {
   String get title => throw _privateConstructorUsedError;
   Map<String, dynamic> get onPressed => throw _privateConstructorUsedError;
   double? get fontSize => throw _privateConstructorUsedError;
@@ -34,21 +34,21 @@ mixin _$MainButton {
   String? get backgroundColor => throw _privateConstructorUsedError;
   String? get borderColor => throw _privateConstructorUsedError;
 
-  /// Serializes this MainButton to a JSON map.
+  /// Serializes this MainStacButton to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MainButton
+  /// Create a copy of MainStacButton
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MainButtonCopyWith<MainButton> get copyWith =>
+  $MainStacButtonCopyWith<MainStacButton> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MainButtonCopyWith<$Res> {
-  factory $MainButtonCopyWith(
-          MainButton value, $Res Function(MainButton) then) =
-      _$MainButtonCopyWithImpl<$Res, MainButton>;
+abstract class $MainStacButtonCopyWith<$Res> {
+  factory $MainStacButtonCopyWith(
+          MainStacButton value, $Res Function(MainStacButton) then) =
+      _$MainStacButtonCopyWithImpl<$Res, MainStacButton>;
   @useResult
   $Res call(
       {String title,
@@ -67,16 +67,16 @@ abstract class $MainButtonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
-    implements $MainButtonCopyWith<$Res> {
-  _$MainButtonCopyWithImpl(this._value, this._then);
+class _$MainStacButtonCopyWithImpl<$Res, $Val extends MainStacButton>
+    implements $MainStacButtonCopyWith<$Res> {
+  _$MainStacButtonCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MainButton
+  /// Create a copy of MainStacButton
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -153,11 +153,11 @@ class _$MainButtonCopyWithImpl<$Res, $Val extends MainButton>
 }
 
 /// @nodoc
-abstract class _$$MainButtonImplCopyWith<$Res>
-    implements $MainButtonCopyWith<$Res> {
-  factory _$$MainButtonImplCopyWith(
-          _$MainButtonImpl value, $Res Function(_$MainButtonImpl) then) =
-      __$$MainButtonImplCopyWithImpl<$Res>;
+abstract class _$$MainStacButtonImplCopyWith<$Res>
+    implements $MainStacButtonCopyWith<$Res> {
+  factory _$$MainStacButtonImplCopyWith(_$MainStacButtonImpl value,
+          $Res Function(_$MainStacButtonImpl) then) =
+      __$$MainStacButtonImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -177,14 +177,14 @@ abstract class _$$MainButtonImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MainButtonImplCopyWithImpl<$Res>
-    extends _$MainButtonCopyWithImpl<$Res, _$MainButtonImpl>
-    implements _$$MainButtonImplCopyWith<$Res> {
-  __$$MainButtonImplCopyWithImpl(
-      _$MainButtonImpl _value, $Res Function(_$MainButtonImpl) _then)
+class __$$MainStacButtonImplCopyWithImpl<$Res>
+    extends _$MainStacButtonCopyWithImpl<$Res, _$MainStacButtonImpl>
+    implements _$$MainStacButtonImplCopyWith<$Res> {
+  __$$MainStacButtonImplCopyWithImpl(
+      _$MainStacButtonImpl _value, $Res Function(_$MainStacButtonImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MainButton
+  /// Create a copy of MainStacButton
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -203,7 +203,7 @@ class __$$MainButtonImplCopyWithImpl<$Res>
     Object? backgroundColor = freezed,
     Object? borderColor = freezed,
   }) {
-    return _then(_$MainButtonImpl(
+    return _then(_$MainStacButtonImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -262,8 +262,8 @@ class __$$MainButtonImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MainButtonImpl implements _MainButton {
-  const _$MainButtonImpl(
+class _$MainStacButtonImpl implements _MainStacButton {
+  const _$MainStacButtonImpl(
       {required this.title,
       required final Map<String, dynamic> onPressed,
       this.fontSize,
@@ -279,8 +279,8 @@ class _$MainButtonImpl implements _MainButton {
       this.borderColor})
       : _onPressed = onPressed;
 
-  factory _$MainButtonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MainButtonImplFromJson(json);
+  factory _$MainStacButtonImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MainStacButtonImplFromJson(json);
 
   @override
   final String title;
@@ -317,14 +317,14 @@ class _$MainButtonImpl implements _MainButton {
 
   @override
   String toString() {
-    return 'MainButton(title: $title, onPressed: $onPressed, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
+    return 'MainStacButton(title: $title, onPressed: $onPressed, fontSize: $fontSize, isBold: $isBold, isEnabled: $isEnabled, paddingHorizontal: $paddingHorizontal, paddingVertical: $paddingVertical, borderRadius: $borderRadius, borderWidth: $borderWidth, elevation: $elevation, textColor: $textColor, backgroundColor: $backgroundColor, borderColor: $borderColor)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MainButtonImpl &&
+            other is _$MainStacButtonImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
                 .equals(other._onPressed, _onPressed) &&
@@ -369,24 +369,25 @@ class _$MainButtonImpl implements _MainButton {
       backgroundColor,
       borderColor);
 
-  /// Create a copy of MainButton
+  /// Create a copy of MainStacButton
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MainButtonImplCopyWith<_$MainButtonImpl> get copyWith =>
-      __$$MainButtonImplCopyWithImpl<_$MainButtonImpl>(this, _$identity);
+  _$$MainStacButtonImplCopyWith<_$MainStacButtonImpl> get copyWith =>
+      __$$MainStacButtonImplCopyWithImpl<_$MainStacButtonImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MainButtonImplToJson(
+    return _$$MainStacButtonImplToJson(
       this,
     );
   }
 }
 
-abstract class _MainButton implements MainButton {
-  const factory _MainButton(
+abstract class _MainStacButton implements MainStacButton {
+  const factory _MainStacButton(
       {required final String title,
       required final Map<String, dynamic> onPressed,
       final double? fontSize,
@@ -399,10 +400,10 @@ abstract class _MainButton implements MainButton {
       final double? elevation,
       final String? textColor,
       final String? backgroundColor,
-      final String? borderColor}) = _$MainButtonImpl;
+      final String? borderColor}) = _$MainStacButtonImpl;
 
-  factory _MainButton.fromJson(Map<String, dynamic> json) =
-      _$MainButtonImpl.fromJson;
+  factory _MainStacButton.fromJson(Map<String, dynamic> json) =
+      _$MainStacButtonImpl.fromJson;
 
   @override
   String get title;
@@ -431,10 +432,10 @@ abstract class _MainButton implements MainButton {
   @override
   String? get borderColor;
 
-  /// Create a copy of MainButton
+  /// Create a copy of MainStacButton
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MainButtonImplCopyWith<_$MainButtonImpl> get copyWith =>
+  _$$MainStacButtonImplCopyWith<_$MainStacButtonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

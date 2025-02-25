@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:stac_test/core/stac_parser/data_classes/components/main_button.dart';
+import 'package:stac_test/core/stac_parser/data_classes/components/main_stac_button.dart';
 
-class MainButtonParser extends StacParser<MainButton> {
+class MainStacButtonParser extends StacParser<MainStacButton> {
   @override
-  MainButton getModel(Map<String, dynamic> json) => MainButton.fromJson(json);
+  MainStacButton getModel(Map<String, dynamic> json) => MainStacButton.fromJson(json);
 
   @override
   String get type => 'mainButton';
 
   @override
-  Widget parse(BuildContext context, MainButton model) {
+  Widget parse(BuildContext context, MainStacButton model) {
     return ElevatedButton(
       onPressed: model.isEnabled != false ? () => Stac.onCallFromJson(model.onPressed, context) : null,
       style: ElevatedButton.styleFrom(

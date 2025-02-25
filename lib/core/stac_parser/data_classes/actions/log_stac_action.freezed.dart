@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'log_action.dart';
+part of 'log_stac_action.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,44 +14,45 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LogAction _$LogActionFromJson(Map<String, dynamic> json) {
-  return _LogAction.fromJson(json);
+LogStacAction _$LogStacActionFromJson(Map<String, dynamic> json) {
+  return _LogStacAction.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LogAction {
+mixin _$LogStacAction {
   String get message => throw _privateConstructorUsedError;
   String? get logType => throw _privateConstructorUsedError;
 
-  /// Serializes this LogAction to a JSON map.
+  /// Serializes this LogStacAction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of LogAction
+  /// Create a copy of LogStacAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $LogActionCopyWith<LogAction> get copyWith =>
+  $LogStacActionCopyWith<LogStacAction> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LogActionCopyWith<$Res> {
-  factory $LogActionCopyWith(LogAction value, $Res Function(LogAction) then) =
-      _$LogActionCopyWithImpl<$Res, LogAction>;
+abstract class $LogStacActionCopyWith<$Res> {
+  factory $LogStacActionCopyWith(
+          LogStacAction value, $Res Function(LogStacAction) then) =
+      _$LogStacActionCopyWithImpl<$Res, LogStacAction>;
   @useResult
   $Res call({String message, String? logType});
 }
 
 /// @nodoc
-class _$LogActionCopyWithImpl<$Res, $Val extends LogAction>
-    implements $LogActionCopyWith<$Res> {
-  _$LogActionCopyWithImpl(this._value, this._then);
+class _$LogStacActionCopyWithImpl<$Res, $Val extends LogStacAction>
+    implements $LogStacActionCopyWith<$Res> {
+  _$LogStacActionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LogAction
+  /// Create a copy of LogStacAction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -73,25 +74,25 @@ class _$LogActionCopyWithImpl<$Res, $Val extends LogAction>
 }
 
 /// @nodoc
-abstract class _$$LogActionImplCopyWith<$Res>
-    implements $LogActionCopyWith<$Res> {
-  factory _$$LogActionImplCopyWith(
-          _$LogActionImpl value, $Res Function(_$LogActionImpl) then) =
-      __$$LogActionImplCopyWithImpl<$Res>;
+abstract class _$$LogStacActionImplCopyWith<$Res>
+    implements $LogStacActionCopyWith<$Res> {
+  factory _$$LogStacActionImplCopyWith(
+          _$LogStacActionImpl value, $Res Function(_$LogStacActionImpl) then) =
+      __$$LogStacActionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, String? logType});
 }
 
 /// @nodoc
-class __$$LogActionImplCopyWithImpl<$Res>
-    extends _$LogActionCopyWithImpl<$Res, _$LogActionImpl>
-    implements _$$LogActionImplCopyWith<$Res> {
-  __$$LogActionImplCopyWithImpl(
-      _$LogActionImpl _value, $Res Function(_$LogActionImpl) _then)
+class __$$LogStacActionImplCopyWithImpl<$Res>
+    extends _$LogStacActionCopyWithImpl<$Res, _$LogStacActionImpl>
+    implements _$$LogStacActionImplCopyWith<$Res> {
+  __$$LogStacActionImplCopyWithImpl(
+      _$LogStacActionImpl _value, $Res Function(_$LogStacActionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LogAction
+  /// Create a copy of LogStacAction
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -99,7 +100,7 @@ class __$$LogActionImplCopyWithImpl<$Res>
     Object? message = null,
     Object? logType = freezed,
   }) {
-    return _then(_$LogActionImpl(
+    return _then(_$LogStacActionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -114,11 +115,11 @@ class __$$LogActionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LogActionImpl implements _LogAction {
-  const _$LogActionImpl({required this.message, this.logType});
+class _$LogStacActionImpl implements _LogStacAction {
+  const _$LogStacActionImpl({required this.message, this.logType});
 
-  factory _$LogActionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LogActionImplFromJson(json);
+  factory _$LogStacActionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LogStacActionImplFromJson(json);
 
   @override
   final String message;
@@ -127,14 +128,14 @@ class _$LogActionImpl implements _LogAction {
 
   @override
   String toString() {
-    return 'LogAction(message: $message, logType: $logType)';
+    return 'LogStacAction(message: $message, logType: $logType)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LogActionImpl &&
+            other is _$LogStacActionImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.logType, logType) || other.logType == logType));
   }
@@ -143,38 +144,39 @@ class _$LogActionImpl implements _LogAction {
   @override
   int get hashCode => Object.hash(runtimeType, message, logType);
 
-  /// Create a copy of LogAction
+  /// Create a copy of LogStacAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LogActionImplCopyWith<_$LogActionImpl> get copyWith =>
-      __$$LogActionImplCopyWithImpl<_$LogActionImpl>(this, _$identity);
+  _$$LogStacActionImplCopyWith<_$LogStacActionImpl> get copyWith =>
+      __$$LogStacActionImplCopyWithImpl<_$LogStacActionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LogActionImplToJson(
+    return _$$LogStacActionImplToJson(
       this,
     );
   }
 }
 
-abstract class _LogAction implements LogAction {
-  const factory _LogAction(
-      {required final String message, final String? logType}) = _$LogActionImpl;
+abstract class _LogStacAction implements LogStacAction {
+  const factory _LogStacAction(
+      {required final String message,
+      final String? logType}) = _$LogStacActionImpl;
 
-  factory _LogAction.fromJson(Map<String, dynamic> json) =
-      _$LogActionImpl.fromJson;
+  factory _LogStacAction.fromJson(Map<String, dynamic> json) =
+      _$LogStacActionImpl.fromJson;
 
   @override
   String get message;
   @override
   String? get logType;
 
-  /// Create a copy of LogAction
+  /// Create a copy of LogStacAction
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LogActionImplCopyWith<_$LogActionImpl> get copyWith =>
+  _$$LogStacActionImplCopyWith<_$LogStacActionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

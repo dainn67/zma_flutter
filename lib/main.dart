@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stac_test/core/constants/shared_prefs_keys.dart';
-import 'package:stac_test/core/routing/my_navigator_observer.dart';
-import 'package:stac_test/core/routing/route_config.dart';
-import 'package:stac_test/core/routing/route_management.dart';
+import 'package:stac_test/core/routing/app_router.dart';
+import 'package:stac_test/core/services/shared_prefs_service.dart';
+import 'package:stac_test/core/stac_parser/parser/actions/open_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/route_action_parser.dart';
+import 'package:stac_test/core/stac_parser/parser/components/confirm_dialog_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/main_button_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/actions/log_action_parser.dart';
 import 'package:stac_test/core/stac_parser/parser/components/safe_area_parser.dart';
@@ -14,10 +13,10 @@ import 'package:stac_test/ui/screens/splash/splash_screen.dart';
 import 'core/di/service_locator.dart';
 import 'core/config/config.dart';
 import 'core/services/log_service.dart';
-import 'core/services/shared_prefs_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   runApp(const MyApp());
 }
 
@@ -49,6 +48,8 @@ class _AppStarterState extends State<AppStarter> {
   bool _initialized = false;
   bool _isAuthenticated = false;
 
+  final sharedPrefsService = getIt<SharedPrefsService>();
+
   @override
   void initState() {
     super.initState();
@@ -62,19 +63,19 @@ class _AppStarterState extends State<AppStarter> {
 
       // Run all initialization tasks
       final initFuture = Future.wait([
-        SharedPrefsService.init(),
         Stac.initialize(
           parsers: [
-            MainButtonParser(),
-            SafeAreaParser(),
+            MainStacButtonParser(),
+            SafeAreaStacParser(),
+            ConfirmStacDialogParser(),
           ],
           actionParsers: [
-            LogActionParser(),
+            LogStacActionParser(),
+            OpenDialogParser(),
             RouteActionParser(),
-          ]
+          ],
         ),
         Future(() {
-          setupServiceLocator();
           AppConfig.initialize();
         }),
       ]);
@@ -83,13 +84,11 @@ class _AppStarterState extends State<AppStarter> {
       await Future.wait([minLoadingFuture, initFuture]);
 
       // Check authentication status
-      final prefs = await SharedPreferences.getInstance();
-      final authToken =
-          prefs.getBool(SharedPrefsKeys.isLoggedIn); // or whatever key you use
+      final authToken = sharedPrefsService.isLoggedIn();
 
       setState(() {
         _initialized = true;
-        _isAuthenticated = authToken != null;
+        _isAuthenticated = authToken;
       });
     } catch (e) {
       LogService.error('Failed to initialize app: $e');
@@ -116,17 +115,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: !AppConfig.isProduction,
       title: AppConfig.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      navigatorObservers: [MyNavigatorObServer()],
-      onGenerateRoute: RouteManagement.instance.onGenerateRoute,
-      initialRoute: RouteConfig.home,
-      navigatorKey: RouteManagement.navigationKey,
+      routerConfig: AppRouter().router,
     );
   }
 }

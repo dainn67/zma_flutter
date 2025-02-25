@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stac_test/core/routing/route_config.dart';
-import 'package:stac_test/core/routing/route_management.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -82,8 +82,9 @@ class _AuthScreenState extends State<AuthScreen> {
         setState(() {
           _isLoading = false;
         });
-        await SharedPrefsService.instance.setIsLoggedIn(true);
-        RouteManagement.instance.pushNamedAndRemoveUntil(RouteConfig.home, '/');
+        final sharedPrefsService = getIt<SharedPrefsService>();
+        await sharedPrefsService.setIsLoggedIn(_isLogin);
+        if (mounted) context.go('/home');
       }
     }
   }
@@ -125,9 +126,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       prefixIcon: const Icon(Icons.lock_outline),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
+                          _isPasswordVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
                         ),
                         onPressed: () {
                           setState(() {
@@ -173,9 +172,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   TextButton(
                     onPressed: _isLoading ? null : _switchAuthMode,
                     child: Text(
-                      _isLogin
-                          ? 'Create new account'
-                          : 'Already have an account? Login',
+                      _isLogin ? 'Create new account' : 'Already have an account? Login',
                     ),
                   ),
                 ],
@@ -186,4 +183,4 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-} 
+}

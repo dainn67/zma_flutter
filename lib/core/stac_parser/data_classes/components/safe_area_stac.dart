@@ -1,12 +1,12 @@
 // ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'safe_area.freezed.dart';
-part 'safe_area.g.dart';
+part 'safe_area_stac.freezed.dart';
+part 'safe_area_stac.g.dart';
 
 @freezed
-class SafeArea with _$SafeArea {
-  const factory SafeArea({
+class SafeAreaStac with _$SafeAreaStac {
+  const factory SafeAreaStac({
     required Map<String, dynamic> child,
     bool? left,
     bool? top,
@@ -14,8 +14,8 @@ class SafeArea with _$SafeArea {
     bool? bottom,
     bool? maintainBottomViewPadding,
     double? minimum,
-  }) = _SafeArea;
+  }) = _SafeAreaStac;
 
-  factory SafeArea.fromJson(Map<String, dynamic> json) =>
-      _$SafeAreaFromJson(json);
+  factory SafeAreaStac.fromJson(Map<String, dynamic> json) =>
+      _$SafeAreaStacFromJson(json);
 }

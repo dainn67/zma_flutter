@@ -1,3 +1,6 @@
+import 'package:stac_test/core/routing/route_action.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+
 class DummyData {
   DummyData._();
 
@@ -86,14 +89,16 @@ class DummyData {
           },
           {"type": "sizedBox", "height": 16},
           {
-            "type": "customButton",
-            "route": "/details",
-            "title": "Logout",
+            "type": "mainButton",
+            "title": "Log",
             "isBold": true,
-            "isEnabled": true,
             "paddingHorizontal": 16,
             "paddingVertical": 12,
             "borderRadius": 8,
+            "onPressed": {
+              "actionType": "log",
+              "message": "Logout Button Pressed",
+            }
           }
         ]
       }
@@ -110,81 +115,68 @@ class DummyData {
         "padding": {"top": 24, "left": 16, "right": 16},
         "children": [
           {
-            "type": "column",
-            "children": [
-              {"type": "sizedBox", "height": 16},
-              {
-                "type": "text",
-                "data": "John Doe",
-                "style": {"fontSize": 24, "fontWeight": "w600"}
-              },
-              {
-                "type": "text",
-                "data": "john.doe@example.com",
-                "style": {"fontSize": 16, "color": "#666666"}
-              }
-            ]
+            "type": "mainButton",
+            "title": "Log Button",
+            "onPressed": {
+              "actionType": "log",
+              "logType": "success",
+              "message": "A success log",
+            }
           },
           {"type": "sizedBox", "height": 32},
           {
             "type": "mainButton",
-            "title": "Test Button",
-            "isEnabled": true,
-            "backgroundColor": "0xFFE3A651",
-            "textColor": "0xFFFFFFFF",
-            "paddingHorizontal": 16,
-            "paddingVertical": 12,
-            "borderRadius": 12,
+            "title": "Dialog Button",
             "onPressed": {
-              "actionType": "log",
-              "logType": "success",
-              "message": "Test Button Pressed",
+              "actionType": "openDialog",
+              "child": {
+                "type": "confirmDialog",
+                "title": "Confirm Dialog",
+                "message": "Are you sure you want to log out?",
+                "onConfirm": {
+                  "actionType": "log",
+                  "logType": "success",
+                  "message": "Confirm Button Pressed",
+                },
+              }
             }
           },
           {"type": "sizedBox", "height": 32},
           {
-            "type": "card",
-            "child": {
-              "type": "column",
-              "children": [
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Edit Profile"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/edit", "navigationStyle": "pushNamed"}
-                },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Change Password"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/password", "navigationStyle": "pushNamed"}
-                },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Privacy Settings"},
-                  "onTap": {"actionType": "navigate", "routeName": "/profile/privacy", "navigationStyle": "pushReplacementNamed"}
-                }
-              ]
+            "type": "mainButton",
+            "title": "Test Go Router",
+            "onPressed": {
+              "actionType": "routing",
+              "routeName": RouteConfig.login,
+              "navigationStyle": RouteAction.pushNamed,
             }
           },
-          {"type": "sizedBox", "height": 24},
+          {"type": "sizedBox", "height": 32},
           {
-            "type": "card",
-            "child": {
-              "type": "column",
-              "children": [
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Phone"},
-                  "subtitle": {"type": "text", "data": "+1 234 567 8900"}
+            "type": "mainButton",
+            "title": "Predefined Route",
+            "onPressed": {
+              "actionType": "routing",
+              "routeName": "/detail",
+              "navigationStyle": RouteAction.pushNamed,
+            }
+          },
+          {"type": "sizedBox", "height": 32},
+          {
+            "type": "mainButton",
+            "title": "Snackbar",
+            "onPressed": {
+              "actionType": "showSnackBar",
+              "content": {"type": "text", "data": "This is a Snackbar"},
+              "action": {
+                "label": "Done",
+                "textColor": "#73C2FB",
+                "onPressed": {
+                  "actionType": "log",
+                  "message": "Snackbar Action Button Pressed",
                 },
-                {"type": "divider", "height": 1},
-                {
-                  "type": "listTile",
-                  "title": {"type": "text", "data": "Location"},
-                  "subtitle": {"type": "text", "data": "New York, USA"}
-                }
-              ]
+              },
+              "behavior": "floating"
             }
           }
         ]

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main_button.dart';
+part of 'main_stac_button.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
-    _$MainButtonImpl(
+_$MainStacButtonImpl _$$MainStacButtonImplFromJson(Map<String, dynamic> json) =>
+    _$MainStacButtonImpl(
       title: json['title'] as String,
       onPressed: json['onPressed'] as Map<String, dynamic>,
       fontSize: (json['fontSize'] as num?)?.toDouble(),
@@ -23,7 +23,8 @@ _$MainButtonImpl _$$MainButtonImplFromJson(Map<String, dynamic> json) =>
       borderColor: json['borderColor'] as String?,
     );
 
-Map<String, dynamic> _$$MainButtonImplToJson(_$MainButtonImpl instance) =>
+Map<String, dynamic> _$$MainStacButtonImplToJson(
+        _$MainStacButtonImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'onPressed': instance.onPressed,
