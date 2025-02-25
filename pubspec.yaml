@@ -23,6 +23,7 @@ dependencies:
   go_router: ^14.8.0
   flutter_local_notifications: ^16.3.2
   path_provider: ^2.1.5
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -34,5 +35,14 @@ dev_dependencies:
   json_serializable: ^6.7.1
 
 flutter:
-
   uses-material-design: true
+
+  assets:
+    - assets/app_logo.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_logo.png"
+  adaptive_icon_background: "#FFFFFF" # Optional: for Android adaptive icons
+  adaptive_icon_foreground: "assets/app_logo_foreground.png" # Optional: for Android adaptive icons

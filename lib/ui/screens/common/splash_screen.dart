@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stac_test/core/config/app_config.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -19,7 +20,7 @@ class SplashScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Your App Name',
+              AppConfig.appName,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
