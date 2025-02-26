@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stac_test/core/constants/storage_keys.dart';
 import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
 import 'package:stac_test/core/routing/route_config.dart';
@@ -10,7 +9,6 @@ import 'package:stac_test/ui/common/custom_bottom_nav_bar.dart';
 import 'package:stac_test/ui/screens/common_screen/loading_screen.dart';
 import 'package:stac_test/ui/screens/dynamic_screen/dynamic_tab.dart';
 import 'package:stac_test/ui/screens/home_screen/home_drawer.dart';
-import 'package:stac_test/core/services/shared_prefs_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   late final PageController _pageController;
   List<HomeTabConfig> _tabs = [];
-  final _prefsService = getIt<SharedPrefsService>();
 
   @override
   void initState() {

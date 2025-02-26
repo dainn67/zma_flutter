@@ -81,19 +81,4 @@ class DevScreen extends StatelessWidget {
       dense: true,
     );
   }
-
-  Widget _buildActionTile(
-    String title,
-    String subtitle,
-    IconData icon,
-    VoidCallback onTap,
-  ) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      subtitle: Text(subtitle),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: onTap,
-    );
-  }
 }
