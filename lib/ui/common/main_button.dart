@@ -5,12 +5,12 @@ class MainButton extends StatefulWidget {
   final String title;
   final dynamic onPressed;
   final bool? isEnabled;
-  final String? backgroundColor;
-  final String? textColor;
+  final dynamic backgroundColor;
+  final dynamic textColor;
   final double? paddingHorizontal;
   final double? paddingVertical;
   final double? borderRadius;
-  final String? borderColor;
+  final dynamic borderColor;
   final double? borderWidth;
   final double? elevation;
   final double? fontSize;
@@ -60,15 +60,20 @@ class MainButton extends StatefulWidget {
 }
 
 class _MainButtonState extends State<MainButton> {
+  Color? _resolveColor(dynamic colorValue) {
+    if (colorValue == null) return null;
+    if (colorValue is Color) return colorValue;
+    if (colorValue is String) return Color(int.parse(colorValue));
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: widget.isEnabled != false 
-          ? (widget.onPressed is Function ? widget.onPressed as Function : widget.onPressed)
-          : null,
+      onPressed: widget.isEnabled != false ? (widget.onPressed is Function ? widget.onPressed as Function : widget.onPressed) : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: widget.backgroundColor != null ? Color(int.parse(widget.backgroundColor!)) : null,
-        foregroundColor: widget.textColor != null ? Color(int.parse(widget.textColor!)) : null,
+        backgroundColor: _resolveColor(widget.backgroundColor),
+        foregroundColor: _resolveColor(widget.textColor),
         padding: EdgeInsets.symmetric(
           horizontal: widget.paddingHorizontal ?? 16.0,
           vertical: widget.paddingVertical ?? 8.0,
@@ -77,7 +82,7 @@ class _MainButtonState extends State<MainButton> {
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.0),
           side: widget.borderColor != null
               ? BorderSide(
-                  color: Color(int.parse(widget.borderColor!)),
+                  color: _resolveColor(widget.borderColor)!,
                   width: widget.borderWidth ?? 1.0,
                 )
               : BorderSide.none,

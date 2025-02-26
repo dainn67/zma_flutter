@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:stac_test/core/routing/route_config.dart';
-import 'package:stac_test/ui/screens/auth/auth_screen.dart';
-import 'package:stac_test/ui/screens/dynamic/dynamic_screen.dart';
-import 'package:stac_test/ui/screens/home/home_screen.dart';
-import 'package:stac_test/ui/screens/splash/splash_screen.dart';
+import 'package:stac_test/ui/screens/auth_screen/auth_screen.dart';
+import 'package:stac_test/ui/screens/dynamic_screen/dynamic_screen.dart';
+import 'package:stac_test/ui/screens/home_screen/home_screen.dart';
+import 'package:stac_test/ui/screens/splash_screen/splash_screen.dart';
 
 class AppRouter {
   final GoRouter router = GoRouter(

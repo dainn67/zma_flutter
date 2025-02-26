@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
+        fontFamily: 'Poppins',
       ),
       routerConfig: AppRouter().router,
     );

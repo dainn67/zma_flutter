@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/services/screen_service.dart';
-import 'package:stac_test/ui/screens/common/error_screen.dart';
-import 'package:stac_test/ui/screens/common/loading_screen.dart';
+import 'package:stac_test/ui/screens/common_screen/error_screen.dart';
+import 'package:stac_test/ui/screens/common_screen/loading_screen.dart';
 
 class DynamicScreen extends StatelessWidget {
   final String routeName;

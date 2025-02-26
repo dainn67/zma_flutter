@@ -6,9 +6,9 @@ import 'package:stac_test/core/models/home_tab_config.dart';
 import 'package:stac_test/core/services/notification_service.dart';
 import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/ui/common/custom_bottom_nav_bar.dart';
-import 'package:stac_test/ui/screens/common/loading_screen.dart';
-import 'package:stac_test/ui/screens/dynamic/dynamic_tab.dart';
-import 'package:stac_test/ui/screens/home/home_drawer.dart';
+import 'package:stac_test/ui/screens/common_screen/loading_screen.dart';
+import 'package:stac_test/ui/screens/dynamic_screen/dynamic_tab.dart';
+import 'package:stac_test/ui/screens/home_screen/home_drawer.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
 
 class HomeScreen extends StatefulWidget {

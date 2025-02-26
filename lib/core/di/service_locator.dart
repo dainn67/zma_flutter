@@ -28,7 +28,5 @@ Future<void> setupServiceLocator() async {
   );
 
   // Register AuthService
-  getIt.registerSingleton<AuthService>(AuthService(
-    getIt<SharedPreferences>(),
-  ));
+  getIt.registerSingleton<AuthService>(AuthService());
 }

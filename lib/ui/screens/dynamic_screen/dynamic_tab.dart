@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stac/stac.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
-import 'package:stac_test/ui/screens/common/error_screen.dart';
+import 'package:stac_test/ui/screens/common_screen/error_screen.dart';
 
 class DynamicTab extends StatefulWidget {
   final HomeTabConfig tab;
