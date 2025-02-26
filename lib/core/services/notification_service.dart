@@ -59,6 +59,26 @@ class NotificationService {
     await AwesomeNotifications().cancel(id);
   }
 
+  Future<void> scheduleNotification({
+    required String title,
+    required String body,
+    required DateTime scheduleDate,
+    String? payload,
+    Map<String, String>? data,
+  }) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: DateTime.now().millisecondsSinceEpoch.remainder(100000),
+        channelKey: _channelKey,
+        title: title,
+        body: body,
+        payload: data,
+        notificationLayout: NotificationLayout.Default,
+      ),
+      schedule: NotificationCalendar.fromDate(date: scheduleDate),
+    );
+  }
+
   Function(String?)? _onNotificationClickCallback;
 
   void setNotificationClickCallback(Function(String?) onNotificationClick) {

@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/ui/screens/auth_screen/auth_screen.dart';
+import 'package:stac_test/ui/screens/dev_screen/dev_screen.dart';
 import 'package:stac_test/ui/screens/dynamic_screen/dynamic_screen.dart';
 import 'package:stac_test/ui/screens/home_screen/home_screen.dart';
 import 'package:stac_test/ui/screens/splash_screen/splash_screen.dart';
@@ -23,6 +24,11 @@ class AppRouter {
         path: RouteConfig.login,
         name: RouteConfig.login.name,
         builder: (context, state) => const AuthScreen(),
+      ),
+      GoRoute(
+        path: RouteConfig.dev,
+        name: RouteConfig.dev.name,
+        builder: (context, state) => const DevScreen(),
       ),
     ],
 

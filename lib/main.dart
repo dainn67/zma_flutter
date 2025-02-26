@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stac_test/core/routing/app_router.dart';
+import 'package:toastification/toastification.dart';
 import 'core/di/service_locator.dart';
 import 'core/config/config.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return ToastificationWrapper(
+        child: MaterialApp.router(
       debugShowCheckedModeBanner: !AppConfig.isProduction,
       title: AppConfig.appName,
       theme: ThemeData(
@@ -28,6 +30,6 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'Poppins',
       ),
       routerConfig: AppRouter().router,
-    );
+    ));
   }
 }

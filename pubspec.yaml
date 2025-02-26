@@ -23,6 +23,7 @@ dependencies:
   go_router: ^14.8.0
   path_provider: ^2.1.5
   awesome_notifications: ^0.10.1
+  toastification: ^3.0.1
 
 dev_dependencies:
   flutter_test:

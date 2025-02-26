@@ -1,5 +1,5 @@
 // Generated file - do not modify manually
-// Generated on Wed Feb 26 15:36:39 +07 2025
+// Generated on Wed Feb 26 16:00:57 +07 2025
 
 class CurrentConfig {
   static const String appName = 'App One';

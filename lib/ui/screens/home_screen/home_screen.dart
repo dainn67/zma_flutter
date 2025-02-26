@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:stac_test/core/constants/storage_keys.dart';
 import 'package:stac_test/core/di/service_locator.dart';
 import 'package:stac_test/core/models/home_tab_config.dart';
-import 'package:stac_test/core/services/notification_service.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/core/services/auth_service.dart';
 import 'package:stac_test/core/services/screen_service.dart';
 import 'package:stac_test/ui/common/custom_bottom_nav_bar.dart';
 import 'package:stac_test/ui/screens/common_screen/loading_screen.dart';
@@ -28,16 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _pageController = PageController(initialPage: currentIndex);
     ScreenService.loadHomeTabs().then((tabs) => setState(() => _tabs = tabs));
-
-    final notificationService = getIt<NotificationService>();
-    notificationService.initialize().then((data) {
-      Future.delayed(const Duration(seconds: 2), () {
-        notificationService.showNotification(title: 'Hello', body: 'Hi there').then((_) {
-          print('DONE');
-        });
-        // notificationService.scheduleNotification(title: 'Hello', body: 'Hi there', id: 1);
-      });
-    });
 
     super.initState();
   }
@@ -93,7 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _handleLogout() async {
-    await _prefsService.setBool(StorageKeys.isLoggedIn, false);
-    if (mounted) context.go('/login');
+    final authService = getIt<AuthService>();
+    await authService.logout().then((_) {
+      if (mounted) context.go(RouteConfig.login);
+    });
   }
 }

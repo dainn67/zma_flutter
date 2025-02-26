@@ -178,6 +178,16 @@ class DummyData {
               },
               "behavior": "floating"
             }
+          },
+          {"type": "sizedBox", "height": 32},
+          {
+            "type": "mainButton",
+            "title": "Dev",
+            "onPressed": {
+              "actionType": "routing",
+              "routeName": RouteConfig.dev,
+              "navigationStyle": RouteAction.pushNamed,
+            }
           }
         ]
       }
