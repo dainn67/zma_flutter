@@ -3,11 +3,17 @@ import 'package:stac_test/core/routing/route_config.dart';
 import 'package:stac_test/ui/screens/auth/auth_screen.dart';
 import 'package:stac_test/ui/screens/dynamic/dynamic_screen.dart';
 import 'package:stac_test/ui/screens/home/home_screen.dart';
+import 'package:stac_test/ui/screens/splash/splash_screen.dart';
 
 class AppRouter {
   final GoRouter router = GoRouter(
-    initialLocation: RouteConfig.home,
+    initialLocation: RouteConfig.splash,
     routes: [
+      GoRoute(
+        path: RouteConfig.splash,
+        name: RouteConfig.splash.name,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: RouteConfig.home,
         name: RouteConfig.home.name,

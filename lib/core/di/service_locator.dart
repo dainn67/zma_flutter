@@ -4,6 +4,7 @@ import 'package:stac_test/core/config/app_config.dart';
 import 'package:stac_test/core/services/notification_service.dart';
 import 'package:stac_test/core/services/shared_prefs_service.dart';
 import '../network/api_client.dart';
+import 'package:stac_test/core/services/auth_service.dart';
 
 final getIt = GetIt.instance;
 
@@ -25,4 +26,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerSingleton<SharedPrefsService>(
     SharedPrefsService(getIt<SharedPreferences>()),
   );
+
+  // Register AuthService
+  getIt.registerSingleton<AuthService>(AuthService(
+    getIt<SharedPreferences>(),
+  ));
 }

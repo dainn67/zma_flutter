@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stac_test/core/config/app_config.dart';
+import 'package:stac_test/core/routing/route_config.dart';
+import 'package:stac_test/core/services/log_service.dart';
+import 'package:stac_test/core/services/initialization_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +18,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   void initState() {
+    _initAnimations();
+    _initializeApp();
     super.initState();
+  }
+
+  Future<void> _initAnimations() async {
     _controller = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
@@ -26,7 +35,30 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     );
 
     _controller.repeat(reverse: true);
-    _checkAuthStatus();
+  }
+
+  Future<void> _initializeApp() async {
+    try {
+      // Start a timer for minimum splash screen duration
+      final minLoadingFuture = Future.delayed(const Duration(seconds: 1));
+
+      // Initialize app
+      await Future.wait([
+        minLoadingFuture,
+        InitializationService.initializeApp(),
+      ]);
+
+      final isAuthenticated = await InitializationService.checkAuthStatus();
+
+      if (!mounted) return;
+      if (isAuthenticated) {
+        context.go(RouteConfig.home);
+      } else {
+        context.go(RouteConfig.login);
+      }
+    } catch (e) {
+      LogService.error('Failed to initialize app: $e');
+    }
   }
 
   @override
@@ -35,27 +67,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     super.dispose();
   }
 
-  Future<void> _checkAuthStatus() async {
-    // Simulate some initialization time
-    await Future.delayed(const Duration(seconds: 2));
-    
-    if (!mounted) return;
-
-    final prefs = await SharedPreferences.getInstance();
-    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-
-    if (!mounted) return;
-
-    // Navigate to the appropriate screen based on auth status
-    Navigator.of(context).pushReplacementNamed(
-      isLoggedIn ? '/' : '/auth',
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    
+
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: Container(
@@ -94,18 +109,18 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  'Your App Name',
+                  AppConfig.appName,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: colorScheme.primary,
-                  ),
+                        fontWeight: FontWeight.bold,
+                        color: colorScheme.primary,
+                      ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Welcome Back',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: .7),
-                  ),
+                        color: colorScheme.onSurface.withValues(alpha: .7),
+                      ),
                 ),
                 const SizedBox(height: 48),
                 SizedBox(
@@ -125,4 +140,4 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       ),
     );
   }
-} 
+}

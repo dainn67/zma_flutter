@@ -30,9 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
     ScreenService.loadHomeTabs().then((tabs) => setState(() => _tabs = tabs));
 
     final notificationService = getIt<NotificationService>();
-    notificationService.init().then((data) {
+    notificationService.initialize().then((data) {
       Future.delayed(const Duration(seconds: 2), () {
-        notificationService.showNotification(title: 'Hello', body: 'Hi there', id: 1).then((_) {
+        notificationService.showNotification(title: 'Hello', body: 'Hi there').then((_) {
           print('DONE');
         });
         // notificationService.scheduleNotification(title: 'Hello', body: 'Hi there', id: 1);

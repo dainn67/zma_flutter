@@ -1,54 +1,16 @@
-import 'current_config.dart';
-
 enum Environment { dev, staging, prod }
 
 class AppConfig {
-  static late final Environment environment;
-  static late final String apiBaseUrl;
-  static late final String appName;
-  static late final bool enableLogging;
-  static late final String sdkVersion;
-  static late final String buildNumber;
+  static const Environment environment = Environment.dev;
+  static const String apiBaseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'https://dev-api.example.com');
+  static const String appName = String.fromEnvironment('APP_NAME', defaultValue: 'App (Dev)');
+  static const bool enableLogging = bool.fromEnvironment('ENABLE_LOGGING', defaultValue: true);
+  static const String sdkVersion = String.fromEnvironment('SDK_VERSION');
+  static const String buildNumber = String.fromEnvironment('BUILD_NUMBER');
 
-  static void initialize() {
-    environment = _getEnvironment(CurrentConfig.environment);
-    apiBaseUrl = CurrentConfig.apiUrl;
-    appName = CurrentConfig.appName;
-    sdkVersion = CurrentConfig.version;
-    buildNumber = CurrentConfig.buildNumber;
-    enableLogging = environment != Environment.prod;
-  }
-
-  static Environment _getEnvironment(String env) {
-    switch (env.toLowerCase()) {
-      case 'dev':
-        return Environment.dev;
-      case 'staging':
-        return Environment.staging;
-      case 'prod':
-        return Environment.prod;
-      default:
-        return Environment.dev;
-    }
-  }
-
-  static bool get isDevelopment => environment == Environment.dev;
-  static bool get isStaging => environment == Environment.staging;
-  static bool get isProduction => environment == Environment.prod;
+  static bool get isDevelopment => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev') == 'dev';
+  static bool get isStaging => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev') == 'staging';
+  static bool get isProduction => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev') == 'prod';
 }
 
-// Environment-specific configurations
-class DevConfig {
-  static const apiBaseUrl = 'https://dev-api.example.com';
-  static const appName = 'App (Dev)';
-}
-
-class StagingConfig {
-  static const apiBaseUrl = 'https://staging-api.example.com';
-  static const appName = 'App (Staging)';
-}
-
-class ProdConfig {
-  static const apiBaseUrl = 'https://api.example.com';
-  static const appName = 'App';
-} 
+// Remove environment-specific config classes since we'll use build arguments

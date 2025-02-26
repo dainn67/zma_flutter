@@ -1,0 +1,2 @@
+/Users/dainguyen/StudioProjects/zma_flutter/android/app/.cxx/Debug/6g5d1e70/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/dainguyen/StudioProjects/zma_flutter/android/app/.cxx/Debug/6g5d1e70/armeabi-v7a/CMakeFiles/rebuild_cache.dir
