@@ -12,5 +12,3 @@ class AppConfig {
   static bool get isStaging => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev') == 'staging';
   static bool get isProduction => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev') == 'prod';
 }
-
-// Remove environment-specific config classes since we'll use build arguments
