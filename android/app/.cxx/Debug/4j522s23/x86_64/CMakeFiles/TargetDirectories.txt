@@ -1,0 +1,2 @@
+/Users/dainn/StudioProjects/zma_flutter/android/app/.cxx/Debug/4j522s23/x86_64/CMakeFiles/edit_cache.dir
+/Users/dainn/StudioProjects/zma_flutter/android/app/.cxx/Debug/4j522s23/x86_64/CMakeFiles/rebuild_cache.dir
