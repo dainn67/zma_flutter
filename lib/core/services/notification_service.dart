@@ -90,9 +90,6 @@ class NotificationService {
   static Future<void> _onActionReceivedMethod(ReceivedAction receivedAction) async {
     // Handle notification click
     final payload = receivedAction.payload?['payload'];
-    // Get instance through GetIt and call the callback
-    // Note: You might need to handle this differently since static methods
-    // can't directly access instance properties
   }
 
   @pragma('vm:entry-point')
